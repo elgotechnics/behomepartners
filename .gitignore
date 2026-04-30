@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# preview routes (local dev only — not deployed)
+/src/app/hero-preview
+/src/app/hero-preview-2
+/src/app/services-preview
+/src/app/marquee-preview
+/src/app/testimonials-preview
+/src/app/why-choose-preview
+/src/app/why-choose-preview-2
+/src/app/estimation-preview
+
+# claude
+/.claude

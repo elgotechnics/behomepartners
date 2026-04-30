@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-ink: #1a2845;
+  --color-accent: #8b1538;
+  --color-paper: #ffffff;
+  --color-cream: #fafaf7;
+  --color-bg: #f5f5f2;
+  --color-grid: #e6e6e0;
+  --color-hairline: #e6e6e0;
+  --color-muted: #9aa3b2;
+
+  --color-background: #ffffff;
+  --color-foreground: #1a2845;
+  --color-border: #e6e6e0;
+  --color-input: #e6e6e0;
+  --color-ring: #8b1538;
+  --color-primary: #8b1538;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #fafaf7;
+  --color-secondary-foreground: #1a2845;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-accent-foreground: #ffffff;
+  --color-muted-foreground: #6b7280;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-ink: var(--color-ink);
+  --color-accent: var(--color-accent);
+  --color-paper: var(--color-paper);
+  --color-cream: var(--color-cream);
+  --color-bg: var(--color-bg);
+  --color-grid: var(--color-grid);
+  --color-hairline: var(--color-hairline);
+  --color-muted: var(--color-muted);
+  --font-sans: var(--font-manrope);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-border: var(--color-border);
+  --color-input: var(--color-input);
+  --color-ring: var(--color-ring);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-destructive: var(--color-destructive);
+  --color-destructive-foreground: var(--color-destructive-foreground);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-muted-foreground: var(--color-muted-foreground);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@theme inline {
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-scroll-dot: scroll-dot 1.6s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-25%); }
+  }
+}
+
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 0; }
+  30% { opacity: 1; }
+  80% { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(12px); opacity: 0; }
+}
+
+@keyframes testimonials-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
