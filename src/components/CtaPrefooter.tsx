@@ -1,7 +1,7 @@
 export function CtaPrefooter() {
   return (
     <section id="contact" className="bg-bg">
-      <div className="max-w-[1480px] mx-auto px-3 sm:px-4 pt-4 lg:pt-6 pb-4">
+      <div className="w-full px-4 sm:px-6 lg:px-8 pt-4 lg:pt-6 pb-4">
         <div className="grid lg:grid-cols-12 gap-4 lg:gap-5 items-stretch">
           {/* Left: photo (format natif 4:5) */}
           <div className="lg:col-span-4 relative rounded-[14px] overflow-hidden aspect-[954/1194]">

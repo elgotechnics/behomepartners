@@ -235,7 +235,7 @@ export function TestimonialsMarquee() {
   const [paused, setPaused] = useState(false);
   return (
     <section className="bg-bg overflow-hidden">
-      <div className="max-w-[1480px] mx-auto px-3 sm:px-4 py-16 lg:py-24">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="text-center max-w-[680px] mx-auto mb-12">
           <div className="text-[11px] tracking-[.2em] uppercase text-accent font-bold mb-3">
             Ils nous font confiance

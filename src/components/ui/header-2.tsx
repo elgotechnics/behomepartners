@@ -85,17 +85,13 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 mx-auto w-full max-w-6xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out",
-        scrolled || open ? "bg-white" : "bg-transparent",
-        {
-          "border-border md:top-4 md:max-w-5xl md:shadow":
-            scrolled && !open,
-        },
+        "sticky top-0 z-50 mx-auto w-full bg-white border-b border-hairline md:transition-all md:ease-out",
+        scrolled && !open && "md:top-4 md:max-w-5xl md:rounded-md md:border md:border-border md:shadow",
       )}
     >
       <nav
         className={cn(
-          "flex h-16 w-full items-center justify-between px-4 py-3 md:h-20 md:py-4 md:transition-all md:ease-out",
+          "mx-auto flex h-16 w-full max-w-[1280px] xl:max-w-[1480px] 2xl:max-w-[1600px] items-center justify-between px-4 py-3 md:h-20 md:px-6 md:py-4 md:transition-all md:ease-out lg:px-8 2xl:h-24",
           {
             "md:px-2 md:h-16 md:py-2": scrolled,
           },
@@ -104,18 +100,11 @@ export function Header() {
         <a
           href="/"
           aria-label="Be Home Partners — accueil"
-          className={cn(
-            "flex items-center md:transition-all md:ease-out",
-            scrolled || open ? "md:ml-0" : "md:-ml-8 lg:-ml-16",
-          )}
+          className="flex items-center md:transition-all md:ease-out"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={
-              scrolled || open
-                ? "/assets/logos/horizontal/BeHome_logo_horizontal.svg"
-                : "/assets/logos/horizontal/BeHome_logo_horizontal_blanc.svg"
-            }
+            src="/assets/logos/horizontal/BeHome_logo_horizontal.svg"
             alt="Be Home Partners"
             className={cn(
               "h-9 w-auto md:transition-all md:ease-out",
@@ -136,10 +125,7 @@ export function Header() {
                   type="button"
                   aria-haspopup="menu"
                   aria-expanded={servicesOpen}
-                  className={cn(
-                    buttonVariants({ variant: "ghost" }),
-                    !scrolled && !open && "text-white hover:bg-white/10 hover:text-white",
-                  )}
+                  className={cn(buttonVariants({ variant: "ghost" }), "xl:text-[15px] 2xl:text-base 2xl:h-11 2xl:px-5")}
                   onClick={() => setServicesOpen((v) => !v)}
                 >
                   {link.label}
@@ -185,10 +171,7 @@ export function Header() {
             ) : (
               <a
                 key={i}
-                className={cn(
-                  buttonVariants({ variant: "ghost" }),
-                  !scrolled && !open && "text-white hover:bg-white/10 hover:text-white",
-                )}
+                className={cn(buttonVariants({ variant: "ghost" }), "xl:text-[15px] 2xl:text-base 2xl:h-11 2xl:px-5")}
                 href={link.href}
               >
                 {link.label}

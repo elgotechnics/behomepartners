@@ -1,5 +1,5 @@
 import { Header } from "@/components/ui/header-2";
-import { Hero } from "@/components/Hero";
+import { HeroSlider } from "@/components/HeroSlider";
 import { Marquee } from "@/components/Marquee";
 import { Listings } from "@/components/Listings";
 import { Services } from "@/components/Services";
@@ -12,18 +12,8 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <div
-        style={{
-          backgroundImage:
-            "url('/assets/images/hero-building.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center right",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <Header />
-        <Hero />
-      </div>
+      <Header />
+      <HeroSlider />
       <main className="flex-1">
         <Marquee />
         <Listings />

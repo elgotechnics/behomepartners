@@ -1,6 +1,4 @@
-"use client";
-
-import { useRef, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type Service = {
   title: string;
@@ -161,88 +159,48 @@ const services: Service[] = [
 ];
 
 export function Services() {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (dir: "left" | "right") => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelector<HTMLElement>("[data-card]");
-    const step = card ? card.offsetWidth + 24 : 320;
-    track.scrollBy({ left: dir === "left" ? -step : step, behavior: "smooth" });
-  };
-
   return (
-    <section id="services" className="bg-ink overflow-hidden">
-      <div className="pt-16 lg:pt-24 pb-32 lg:pb-48">
-        <div className="max-w-[1140px] mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-end mb-10">
-          <div>
-            <div className="text-[11px] tracking-[.2em] uppercase text-white font-bold mb-2 opacity-80">
-              Nos services
-            </div>
-            <h2 className="text-3xl lg:text-[38px] font-extrabold leading-[1.1] tracking-tight mb-3 text-white">
-              Un accompagnement complet
-            </h2>
-            <p className="text-sm text-white/65 max-w-[600px]">
-              De l&apos;estimation à la signature, nos experts vous accompagnent
-              à chaque étape avec une approche professionnelle, humaine et
-              tournée vers la qualité.
-            </p>
+    <section id="services" className="bg-ink">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-20 lg:pt-28 pb-20 lg:pb-28">
+        <div className="mb-12 lg:mb-16">
+          <div className="text-[11px] tracking-[.2em] uppercase text-white font-bold mb-2 opacity-80">
+            Nos services
           </div>
-          <div className="hidden lg:flex gap-2 flex-shrink-0">
-            <button
-              type="button"
-              onClick={() => scroll("left")}
-              aria-label="Précédent"
-              className="w-12 h-12 rounded-[14px] bg-white/5 border border-white/15 flex items-center justify-center font-bold text-white/70 hover:text-white hover:border-white/30 transition-colors"
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll("right")}
-              aria-label="Suivant"
-              className="w-12 h-12 rounded-[14px] bg-accent text-white flex items-center justify-center font-bold hover:opacity-90 transition-opacity"
-            >
-              →
-            </button>
-          </div>
+          <h2 className="text-3xl lg:text-[38px] font-extrabold leading-[1.1] tracking-tight mb-3 text-white">
+            Un accompagnement complet
+          </h2>
+          <p className="text-sm text-white/65 max-w-[600px]">
+            De l&apos;estimation à la signature, nos experts vous accompagnent à
+            chaque étape avec une approche professionnelle, humaine et tournée
+            vers la qualité.
+          </p>
         </div>
 
-        <div className="relative">
-          <div
-            ref={trackRef}
-            style={{
-              paddingLeft: "max(calc((100vw - 1140px) / 2 + 32px), 24px)",
-              scrollPaddingLeft: "max(calc((100vw - 1140px) / 2 + 32px), 24px)",
-            }}
-            className="flex gap-6 lg:gap-10 overflow-x-auto pt-3 pb-4 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {services.map((s) => (
-              <article
-                key={s.title}
-                data-card
-                className="group relative snap-start flex-shrink-0 w-[85%] sm:w-[46%] lg:w-[340px] flex flex-col p-6 sm:p-8 bg-gradient-to-b from-white/[0.09] to-white/[0.02] border border-white/20 rounded-[20px] ring-1 ring-inset ring-white/10 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/40 hover:ring-white/20 hover:from-white/[0.14] hover:to-white/[0.05] cursor-pointer"
-              >
-                <div className="flex flex-col flex-1">
-                  <div className="w-14 h-14 bg-accent text-white flex items-center justify-center mb-6 rounded-[12px] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                    {s.icon}
-                  </div>
-                  <h3 className="font-extrabold text-xl text-white mb-3">
-                    {s.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-white/65 flex-1">
-                    {s.description}
-                  </p>
-                  <div className="flex items-center gap-2 mt-6 text-[12px] font-bold tracking-[.12em] uppercase text-white/90 group-hover:text-white transition-colors duration-500">
-                    {s.cta}
-                    <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">
-                      →
-                    </span>
-                  </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {services.map((s) => (
+            <article
+              key={s.title}
+              className="group relative flex flex-col p-6 sm:p-8 bg-gradient-to-b from-white/[0.09] to-white/[0.02] border border-white/20 rounded-[20px] ring-1 ring-inset ring-white/10 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/40 hover:ring-white/20 hover:from-white/[0.14] hover:to-white/[0.05] cursor-pointer"
+            >
+              <div className="flex flex-col flex-1">
+                <div className="w-14 h-14 bg-accent text-white flex items-center justify-center mb-6 rounded-[12px] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                  {s.icon}
                 </div>
-              </article>
-            ))}
-          </div>
+                <h3 className="font-extrabold text-xl text-white mb-3">
+                  {s.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-white/65 flex-1">
+                  {s.description}
+                </p>
+                <div className="flex items-center gap-2 mt-6 text-[12px] font-bold tracking-[.12em] uppercase text-white/90 group-hover:text-white transition-colors duration-500">
+                  {s.cta}
+                  <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">
+                    →
+                  </span>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

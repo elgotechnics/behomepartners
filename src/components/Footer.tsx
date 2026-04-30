@@ -34,7 +34,7 @@ const agencies = [
 export function Footer() {
   return (
     <footer className="bg-bg">
-      <div className="max-w-[1480px] mx-auto px-3 sm:px-4 pb-2">
+      <div className="w-full px-4 sm:px-6 lg:px-8 pb-2">
         <div className="bg-ink text-white rounded-[14px] overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 px-8 lg:px-14 pt-14 pb-10 items-end border-b border-white/10">
             <div>
@@ -48,11 +48,11 @@ export function Footer() {
               </h2>
             </div>
             <div className="flex flex-col gap-3.5 items-start">
-              <p className="text-[13px] opacity-70 leading-relaxed">
+              <p className="text-[13px] opacity-70 leading-relaxed max-w-[460px]">
                 Recevez en avant-première nos nouvelles annonces, off-market et
                 tendances du Brabant wallon.
               </p>
-              <form className="relative flex w-full rounded-[10px] overflow-hidden bg-white border border-white/30 shadow-sm">
+              <form className="relative flex w-full max-w-[460px] rounded-[10px] overflow-hidden bg-white border border-white/30 shadow-sm">
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email
                 </label>
@@ -72,7 +72,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.4fr] gap-10 lg:gap-12 p-8 lg:p-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_2.4fr] gap-10 lg:gap-16 px-8 pt-8 pb-4 lg:px-14 lg:pt-14 lg:pb-3">
             <div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -129,7 +129,7 @@ export function Footer() {
               <div className="text-[11px] tracking-[.2em] uppercase font-bold opacity-70 mb-5">
                 Nos agences
               </div>
-              <div className="flex flex-col gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {agencies.map((a) => (
                   <div
                     key={a.city}

@@ -66,7 +66,7 @@ export function Listings() {
 
   return (
     <section id="listings" className="bg-bg">
-      <div className="max-w-[1280px] mx-auto px-6 py-16 lg:py-20">
+      <div className="max-w-[1280px] xl:max-w-[1480px] mx-auto px-6 py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-end mb-8">
           <div>
             <div className="text-[11px] tracking-[.2em] uppercase text-accent font-bold mb-2">
@@ -81,16 +81,16 @@ export function Listings() {
             </p>
           </div>
 
-          <div className="relative inline-flex justify-self-start p-1 rounded-[14px] bg-white border border-grid shadow-sm overflow-hidden">
+          <div className="relative inline-flex justify-self-start p-1.5 rounded-full bg-ink/5 ring-1 ring-inset ring-ink/10">
             {(["vente", "location"] as const).map((t) => (
               <button
                 key={t}
                 type="button"
                 onClick={() => setTab(t)}
-                className={`relative px-5 py-2.5 text-[13px] font-bold tracking-wider uppercase rounded-[12px] transition-all duration-300 ${
+                className={`relative px-7 py-2.5 text-[13px] font-bold tracking-[.2em] uppercase rounded-full transition-all duration-300 ${
                   tab === t
-                    ? "bg-ink text-white shadow-[0_4px_16px_-4px_rgba(15,23,42,0.35)]"
-                    : "text-ink/60 hover:text-ink"
+                    ? "bg-ink text-white ring-1 ring-inset ring-white/10 shadow-[0_6px_18px_-4px_rgba(15,23,42,0.45)]"
+                    : "text-ink/50 hover:text-ink/85"
                 }`}
               >
                 {t === "vente" ? "À vendre" : "À louer"}
@@ -202,19 +202,19 @@ function ListingCard({
       icon: <FeatureIcon name={f} />,
       label: f,
     })),
-  ];
+  ].slice(0, 4);
 
   return (
     <article
       data-card
-      className="group relative snap-start flex-shrink-0 w-[calc((100%-48px)/3)] min-w-[300px] bg-gradient-to-b from-white to-paper border border-hairline rounded-[14px] overflow-hidden ring-1 ring-inset ring-white/80 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_18px_40px_-20px_rgba(15,23,42,0.25)] hover:border-ink/15 cursor-pointer"
+      className="group relative snap-start flex-shrink-0 w-[calc((100%-48px)/3)] xl:w-[calc((100%-72px)/4)] min-w-[280px] bg-gradient-to-b from-white to-paper border border-hairline rounded-[14px] overflow-hidden ring-1 ring-inset ring-white/80 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_18px_40px_-20px_rgba(15,23,42,0.25)] hover:border-ink/15 cursor-pointer"
     >
       <div className="relative aspect-[4/3]">
         <Image
           src={listing.image}
           alt={`${listing.imageAlt} — ${mode === "vente" ? "à vendre" : "à louer"}`}
           fill
-          sizes="(max-width: 1024px) 100vw, 33vw"
+          sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 33vw, 25vw"
           className="object-cover"
         />
         <span className="absolute top-3 left-3 bg-accent text-white px-3 py-1.5 font-bold text-[11px] tracking-[.15em] uppercase rounded-sm">
