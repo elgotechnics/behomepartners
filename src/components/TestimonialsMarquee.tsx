@@ -186,7 +186,7 @@ function FractionalStars({ rating, size = 16 }: { rating: number; size?: number 
 
 function Card({ t }: { t: Testimonial }) {
   return (
-    <article className="w-[340px] sm:w-[380px] flex-shrink-0 bg-white rounded-[16px] p-6 shadow-[0_1px_2px_rgba(26,40,69,0.04)] hover:shadow-[0_8px_20px_-6px_rgba(26,40,69,0.15)] transition-shadow">
+    <article className="w-[340px] sm:w-[380px] flex-shrink-0 bg-white rounded-[16px] p-6 shadow-[0_1px_2px_rgba(46,49,142,0.04)] hover:shadow-[0_8px_20px_-6px_rgba(46,49,142,0.15)] transition-shadow">
       <Stars rating={t.rating} />
       <p className="mt-4 text-[14px] text-ink/85 leading-relaxed min-h-[6.5rem]">
         “{t.text}”

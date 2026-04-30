@@ -4,7 +4,7 @@ export function Estimation() {
   return (
     <section id="estimation" className="bg-paper">
       <div className="max-w-[1280px] mx-auto px-6 py-16 lg:py-20">
-        <div className="group relative bg-gradient-to-b from-[#1a2845] to-[#0f1b34] ring-1 ring-inset ring-white/10 rounded-[24px] p-10 lg:p-20 transition-transform duration-500 hover:-translate-y-1.5">
+        <div className="group relative bg-gradient-to-b from-[#2e318e] to-[#1c1f5e] ring-1 ring-inset ring-white/10 rounded-[24px] p-10 lg:p-20 transition-transform duration-500 hover:-translate-y-1.5">
           <div className="grid grid-cols-1 lg:grid-cols-[1.45fr_1fr] gap-10 lg:gap-12 items-center">
             <div>
               <div className="text-[11px] tracking-[.2em] uppercase text-white/80 font-bold mb-5">
@@ -24,7 +24,7 @@ export function Estimation() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Card 1 — Estimation en ligne */}
-                <div className="relative flex flex-col bg-[#1f3052] rounded-[16px] p-7 ring-1 ring-inset ring-white/20 hover:ring-white/50 transition-all duration-300 hover:-translate-y-0.5">
+                <div className="relative flex flex-col bg-[#3b3eaa] rounded-[16px] p-7 ring-1 ring-inset ring-white/20 hover:ring-white/50 transition-all duration-300 hover:-translate-y-0.5">
                   <svg
                     width="32"
                     height="32"
@@ -72,7 +72,7 @@ export function Estimation() {
                 </div>
 
                 {/* Card 2 — Estimation par agent (recommandé) */}
-                <div className="relative flex flex-col bg-white rounded-[16px] p-7 ring-2 ring-accent shadow-[0_18px_40px_-10px_rgba(139,21,56,0.28)] hover:shadow-[0_24px_50px_-10px_rgba(139,21,56,0.4)] transition-all duration-300 hover:-translate-y-0.5">
+                <div className="relative flex flex-col bg-white rounded-[16px] p-7 ring-2 ring-accent shadow-[0_18px_40px_-10px_rgba(237,25,46,0.28)] hover:shadow-[0_24px_50px_-10px_rgba(237,25,46,0.4)] transition-all duration-300 hover:-translate-y-0.5">
                   <div className="absolute -top-3 left-6 bg-accent text-white text-[10px] tracking-[.2em] uppercase font-bold px-3 py-1 rounded-full">
                     Recommandé
                   </div>
@@ -103,7 +103,7 @@ export function Estimation() {
                   </ul>
                   <button
                     type="button"
-                    className="w-full inline-flex whitespace-nowrap items-center justify-center gap-2.5 bg-accent text-white rounded-[12px] px-5 py-3.5 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-[#6f1029] transition-colors"
+                    className="w-full inline-flex whitespace-nowrap items-center justify-center gap-2.5 bg-accent text-white rounded-[12px] px-5 py-3.5 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-[#c40c20] transition-colors"
                   >
                     Prendre rendez-vous
                     <svg
