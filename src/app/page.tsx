@@ -4,9 +4,10 @@ import { Marquee } from "@/components/Marquee";
 import { Listings } from "@/components/Listings";
 import { Services } from "@/components/Services";
 import { WhyChoose } from "@/components/WhyChoose";
-import { Estimation } from "@/components/Estimation";
+import { EstimationVariantABlue } from "@/components/EstimationPreview";
 import { TestimonialsMarquee } from "@/components/TestimonialsMarquee";
 import { CtaPrefooter } from "@/components/CtaPrefooter";
+import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -19,8 +20,9 @@ export default function Home() {
         <Listings />
         <Services />
         <WhyChoose />
-        <Estimation />
+        <EstimationVariantABlue />
         <TestimonialsMarquee />
+        <Faq />
         <CtaPrefooter />
       </main>
       <Footer />

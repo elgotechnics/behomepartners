@@ -30,7 +30,7 @@ function SelectField({
     <div className={`relative ${className}`}>
       <select
         {...props}
-        className="appearance-none w-full pl-4 pr-10 py-3 text-[13px] font-medium text-ink bg-transparent focus:outline-none cursor-pointer rounded-[10px] hover:bg-ink/[0.03] focus:bg-ink/[0.04] transition-colors"
+        className="appearance-none w-full pl-4 pr-10 py-3 text-[13px] font-medium text-ink bg-transparent focus:outline-none cursor-pointer rounded-[12px] hover:bg-ink/[0.03] focus:bg-ink/[0.04] transition-colors"
       >
         {children}
       </select>
@@ -44,13 +44,13 @@ export function SearchBar() {
 
   return (
     <div className="max-w-[520px]">
-      <div className="relative inline-flex p-1 mb-3 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/15">
+      <div className="relative inline-flex p-1.5 mb-3 rounded-[14px] bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/15">
         {(["acheter", "louer"] as const).map((m) => (
           <button
             key={m}
             type="button"
             onClick={() => setMode(m)}
-            className={`relative px-5 py-1.5 text-[11px] font-bold tracking-[.18em] uppercase rounded-full transition-all duration-300 ${
+            className={`relative px-5 py-2 text-[11px] font-bold tracking-[.15em] uppercase rounded-[10px] transition-all duration-300 ${
               mode === m
                 ? "bg-white text-ink ring-1 ring-inset ring-ink/10 shadow-[0_4px_14px_-4px_rgba(0,0,0,0.35)]"
                 : "text-white/50 hover:text-white/85"
@@ -61,12 +61,12 @@ export function SearchBar() {
         ))}
       </div>
 
-      <form className="relative grid grid-cols-2 rounded-[16px] overflow-hidden bg-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.45)] p-1.5 gap-1">
+      <form className="relative grid grid-cols-2 rounded-[14px] overflow-hidden bg-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.45)] p-1.5 gap-1">
         <input
           type="text"
-          placeholder="Commune ou code postal"
-          aria-label="Commune ou code postal"
-          className="px-4 py-3 text-[13px] font-medium text-ink placeholder:text-ink/50 bg-transparent rounded-[10px] hover:bg-ink/[0.03] focus:bg-ink/[0.04] focus:outline-none transition-colors"
+          placeholder="Localisation"
+          aria-label="Localisation"
+          className="px-4 py-3 text-[13px] font-medium text-ink placeholder:text-ink bg-transparent rounded-[12px] hover:bg-ink/[0.03] focus:bg-ink/[0.04] focus:outline-none transition-colors"
           suppressHydrationWarning
         />
         <SelectField aria-label="Type de bien" defaultValue="">
@@ -98,7 +98,7 @@ export function SearchBar() {
         </SelectField>
         <button
           type="submit"
-          className="col-span-2 mt-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-[#6f1029] text-white px-5 py-3 rounded-[10px] font-bold text-[12px] tracking-[.18em] uppercase transition-colors"
+          className="col-span-2 mt-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white px-5 py-3 rounded-[12px] font-bold text-[12px] tracking-[.15em] uppercase transition-colors"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <circle cx="11" cy="11" r="7" />

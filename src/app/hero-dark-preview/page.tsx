@@ -43,7 +43,7 @@ export default function HeroDarkPreview() {
           <div className="text-[11px] tracking-[.2em] uppercase text-accent font-bold mb-2">
             Preview hero · Dark mode
           </div>
-          <h1 className="text-3xl lg:text-[42px] font-extrabold tracking-tight mb-3">
+          <h1 className="text-3xl lg:text-[38px] font-extrabold tracking-tight mb-3">
             Directions sombres pour la hero
           </h1>
           <p className="text-sm text-muted max-w-[820px] mb-12">

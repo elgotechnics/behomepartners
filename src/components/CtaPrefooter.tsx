@@ -30,7 +30,7 @@ export function CtaPrefooter() {
               src="/assets/images/listing-maison-1.jpg"
               alt=""
               aria-hidden
-              className="hidden lg:block absolute z-10 right-[5%] top-1/2 -translate-y-1/2 w-[260px] h-[300px] object-cover rounded-[18px] shadow-2xl rotate-[6deg] pointer-events-none ring-1 ring-white/15"
+              className="hidden lg:block absolute z-10 right-[5%] top-1/2 -translate-y-1/2 w-[260px] h-[300px] object-cover rounded-[14px] shadow-2xl rotate-[6deg] pointer-events-none ring-1 ring-white/15"
             />
 
             <div className="relative lg:max-w-[60%]">
@@ -83,7 +83,7 @@ export function CtaPrefooter() {
               </div>
 
               <div className="mt-7 pt-6 border-t border-white/15">
-                <div className="flex items-center gap-2 text-[11px] tracking-[.18em] uppercase font-bold opacity-70 mb-3">
+                <div className="flex items-center gap-2 text-[11px] tracking-[.15em] uppercase font-bold opacity-70 mb-3">
                   <ClockIcon />
                   Heures d&apos;ouverture
                 </div>
@@ -133,7 +133,7 @@ function ContactColumn({
 }) {
   return (
     <div>
-      <div className="text-[11px] tracking-[.18em] uppercase font-bold opacity-70 mb-2">
+      <div className="text-[11px] tracking-[.15em] uppercase font-bold opacity-70 mb-2">
         {agency}
       </div>
       <a
@@ -150,7 +150,7 @@ function ContactColumn({
 function HoursRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col">
-      <dt className="text-[12px] uppercase tracking-[.12em] opacity-70 font-semibold">
+      <dt className="text-[12px] uppercase tracking-[.15em] opacity-70 font-semibold">
         {label}
       </dt>
       <dd className="font-bold whitespace-nowrap">{value}</dd>

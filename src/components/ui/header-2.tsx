@@ -41,12 +41,16 @@ export function Header() {
   const [mobileServicesOpen, setMobileServicesOpen] = React.useState(false);
   const [phoneOpen, setPhoneOpen] = React.useState(false);
   const phoneRef = React.useRef<HTMLDivElement>(null);
+  const mobilePhoneRef = React.useRef<HTMLDivElement>(null);
   const scrolled = useScroll(10);
 
   React.useEffect(() => {
     if (!phoneOpen) return;
     const handler = (e: MouseEvent) => {
-      if (phoneRef.current && !phoneRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      const insideDesktop = phoneRef.current?.contains(target);
+      const insideMobile = mobilePhoneRef.current?.contains(target);
+      if (!insideDesktop && !insideMobile) {
         setPhoneOpen(false);
       }
     };
@@ -91,16 +95,33 @@ export function Header() {
     >
       <nav
         className={cn(
-          "mx-auto flex h-16 w-full max-w-[1280px] xl:max-w-[1480px] 2xl:max-w-[1600px] items-center justify-between px-4 py-3 md:h-20 md:px-6 md:py-4 md:transition-all md:ease-out lg:px-8 2xl:h-24",
+          "mx-auto grid grid-cols-[auto_1fr_auto] md:flex h-16 w-full max-w-[1280px] xl:max-w-[1480px] 2xl:max-w-[1600px] items-center md:justify-between px-4 py-3 md:h-20 md:px-6 md:py-4 md:transition-all md:ease-out lg:px-8 2xl:h-24",
           {
             "md:px-2 md:h-16 md:py-2": scrolled,
           },
         )}
       >
+        <button
+          type="button"
+          onClick={() => setOpen(!open)}
+          aria-label="Menu"
+          className="md:hidden justify-self-start inline-flex h-10 w-10 items-center justify-center rounded-md bg-white ring-1 ring-inset ring-hairline text-ink hover:bg-bg transition-colors"
+        >
+          {open ? (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden>
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+
         <a
           href="/"
           aria-label="Be Home Partners — accueil"
-          className="flex items-center md:transition-all md:ease-out"
+          className="flex items-center justify-self-center md:justify-self-auto md:transition-all md:ease-out"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -234,50 +255,73 @@ export function Header() {
               </div>
             )}
           </div>
-          <Button asChild>
+          <Button asChild className="2xl:h-11 2xl:px-5 2xl:text-[15px]">
             <a href="#estimation">Estimer mon bien</a>
           </Button>
         </div>
-        <Button
-          size="icon"
-          variant="outline"
-          onClick={() => setOpen(!open)}
-          className="md:hidden"
-        >
-          <MenuToggleIcon open={open} className="size-5" duration={300} />
-        </Button>
+        <div className="md:hidden justify-self-end relative" ref={mobilePhoneRef}>
+          <button
+            type="button"
+            onClick={() => setPhoneOpen((v) => !v)}
+            aria-haspopup="menu"
+            aria-expanded={phoneOpen}
+            aria-label="Nous appeler"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-accent text-white hover:bg-accent-deep transition-colors"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z" />
+            </svg>
+          </button>
+          {phoneOpen && (
+            <div
+              role="menu"
+              className="absolute right-0 top-full z-50 mt-2 w-[280px] rounded-md border border-border bg-white p-2 shadow-lg"
+            >
+              <div className="px-2 py-1.5 text-[11px] tracking-[.2em] uppercase font-bold text-muted-foreground">
+                Appeler une agence
+              </div>
+              {agencies.map((a) => (
+                <a
+                  key={a.tel}
+                  href={`tel:${a.tel}`}
+                  role="menuitem"
+                  onClick={() => setPhoneOpen(false)}
+                  className="flex flex-col gap-0.5 rounded-sm px-3 py-2.5 hover:bg-secondary"
+                >
+                  <span className="text-sm font-bold text-foreground">{a.city}</span>
+                  <span className="text-xs text-muted-foreground">{a.address}</span>
+                  <span className="text-sm font-semibold text-accent mt-0.5">{a.phone}</span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
       </nav>
 
       <div
         className={cn(
-          "bg-background/90 fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y md:hidden",
+          "fixed top-16 right-0 bottom-0 left-0 z-50 bg-white md:hidden",
           open ? "block" : "hidden",
         )}
       >
         <div
           data-slot={open ? "open" : "closed"}
-          className={cn(
-            "data-[slot=open]:animate-in data-[slot=open]:zoom-in-95 data-[slot=closed]:animate-out data-[slot=closed]:zoom-out-95 ease-out",
-            "flex h-full w-full flex-col justify-between gap-y-2 p-4 overflow-y-auto",
-          )}
+          className="data-[slot=open]:animate-in data-[slot=open]:fade-in data-[slot=open]:slide-in-from-top-2 data-[slot=closed]:animate-out data-[slot=closed]:fade-out flex h-full w-full flex-col overflow-y-auto"
         >
-          <div className="grid gap-y-2">
+          <nav className="flex flex-col px-6 pt-4">
             {links.map((link) =>
               link.children ? (
-                <div key={link.label} className="flex flex-col">
+                <div key={link.label} className="border-b border-hairline">
                   <button
                     type="button"
                     onClick={() => setMobileServicesOpen((v) => !v)}
                     aria-expanded={mobileServicesOpen}
-                    className={buttonVariants({
-                      variant: "ghost",
-                      className: "justify-between",
-                    })}
+                    className="flex w-full items-center justify-between py-5 text-[22px] font-extrabold tracking-tight text-ink"
                   >
                     <span>{link.label}</span>
                     <svg
-                      width="16"
-                      height="16"
+                      width="20"
+                      height="20"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -286,7 +330,7 @@ export function Header() {
                       strokeLinejoin="round"
                       aria-hidden
                       className={cn(
-                        "transition-transform",
+                        "transition-transform text-ink/50",
                         mobileServicesOpen && "rotate-180",
                       )}
                     >
@@ -294,18 +338,18 @@ export function Header() {
                     </svg>
                   </button>
                   {mobileServicesOpen && (
-                    <div className="mt-1 ml-3 flex flex-col gap-1 border-l border-border pl-3">
+                    <div className="flex flex-col pb-4 -mt-1">
                       {link.children.map((sub) => (
                         <a
                           key={sub.href}
                           href={sub.href}
                           onClick={() => setOpen(false)}
-                          className={buttonVariants({
-                            variant: "ghost",
-                            className: "justify-start",
-                          })}
+                          className="flex items-center justify-between py-2.5 pl-3 text-[15px] font-medium text-ink/75 hover:text-ink"
                         >
-                          {sub.label}
+                          <span>{sub.label}</span>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="text-ink/35">
+                            <path d="M9 6l6 6-6 6" />
+                          </svg>
                         </a>
                       ))}
                     </div>
@@ -314,20 +358,40 @@ export function Header() {
               ) : (
                 <a
                   key={link.label}
-                  className={buttonVariants({
-                    variant: "ghost",
-                    className: "justify-start",
-                  })}
+                  className="flex items-center justify-between py-5 text-[22px] font-extrabold tracking-tight text-ink border-b border-hairline"
                   href={link.href}
                   onClick={() => setOpen(false)}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="text-ink/35">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
                 </a>
               ),
             )}
-          </div>
-          <div className="flex flex-col gap-2">
-            <Button asChild className="w-full">
+          </nav>
+
+          <div className="mt-auto px-6 pb-6 pt-8 bg-bg">
+            <div className="grid grid-cols-1 gap-3 mb-5">
+              {agencies.map((a) => (
+                <a
+                  key={a.tel}
+                  href={`tel:${a.tel}`}
+                  className="flex items-center gap-3 p-4 rounded-[14px] bg-white ring-1 ring-inset ring-hairline hover:ring-ink/30 transition-colors"
+                >
+                  <span className="inline-flex w-10 h-10 rounded-full bg-accent/10 items-center justify-center text-accent shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z" />
+                    </svg>
+                  </span>
+                  <div className="min-w-0">
+                    <div className="text-[10px] tracking-[.2em] uppercase text-muted font-bold">{a.city}</div>
+                    <div className="text-[15px] font-bold text-ink">{a.phone}</div>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <Button asChild className="w-full h-12 text-[13px] tracking-[.15em] uppercase">
               <a href="#estimation" onClick={() => setOpen(false)}>
                 Estimer mon bien
               </a>

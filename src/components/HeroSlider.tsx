@@ -4,9 +4,9 @@ import { useState } from "react";
 import { HeroDarkVariantA, HeroDarkVariantE, HeroDarkVariantF } from "./HeroDarkPreview";
 
 const slides = [
-  { id: "variant-1", label: "Variante 1", render: () => <HeroDarkVariantA /> },
+  { id: "variant-1", label: "Variante 1", render: () => <HeroDarkVariantF /> },
   { id: "variant-2", label: "Variante 2", render: () => <HeroDarkVariantE /> },
-  { id: "variant-3", label: "Variante 3", render: () => <HeroDarkVariantF /> },
+  { id: "variant-3", label: "Variante 3", render: () => <HeroDarkVariantA /> },
 ];
 
 export function HeroSlider() {
@@ -41,20 +41,6 @@ export function HeroSlider() {
         </svg>
       </button>
 
-      <div className="absolute bottom-5 lg:bottom-8 left-1/2 -translate-x-1/2 z-10 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/15">
-        {slides.map((s, i) => (
-          <button
-            key={s.id}
-            type="button"
-            onClick={() => setIndex(i)}
-            aria-label={`Aller à ${s.label}`}
-            aria-current={i === index}
-            className={`h-2 rounded-full transition-all ${
-              i === index ? "w-8 bg-accent" : "w-2 bg-white/40 hover:bg-white/70"
-            }`}
-          />
-        ))}
-      </div>
     </div>
   );
 }

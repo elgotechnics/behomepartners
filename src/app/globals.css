@@ -2,7 +2,10 @@
 
 :root {
   --color-ink: #1a2845;
+  --color-ink-deep: #0f1a3d;
+  --color-ink-darker: #0a1530;
   --color-accent: #8b1538;
+  --color-accent-deep: #6f1029;
   --color-paper: #ffffff;
   --color-cream: #fafaf7;
   --color-bg: #f5f5f2;
@@ -27,7 +30,10 @@
 
 @theme inline {
   --color-ink: var(--color-ink);
+  --color-ink-deep: var(--color-ink-deep);
+  --color-ink-darker: var(--color-ink-darker);
   --color-accent: var(--color-accent);
+  --color-accent-deep: var(--color-accent-deep);
   --color-paper: var(--color-paper);
   --color-cream: var(--color-cream);
   --color-bg: var(--color-bg);

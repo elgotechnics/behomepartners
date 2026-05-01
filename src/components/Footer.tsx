@@ -52,7 +52,7 @@ export function Footer() {
                 Recevez en avant-première nos nouvelles annonces, off-market et
                 tendances du Brabant wallon.
               </p>
-              <form className="relative flex w-full max-w-[460px] rounded-[10px] overflow-hidden bg-white border border-white/30 shadow-sm">
+              <form className="relative flex w-full max-w-[460px] rounded-[12px] overflow-hidden bg-white border border-white/30 shadow-sm">
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email
                 </label>
@@ -133,7 +133,7 @@ export function Footer() {
                 {agencies.map((a) => (
                   <div
                     key={a.city}
-                    className="border border-white/10 rounded-[8px] p-5"
+                    className="border border-white/10 rounded-md p-5"
                   >
                     <div className="text-sm font-extrabold tracking-tight mb-1.5">
                       {a.city}

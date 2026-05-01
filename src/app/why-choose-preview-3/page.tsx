@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { Header } from "@/components/ui/header-2";
+import { Footer } from "@/components/Footer";
 
 type Engagement = {
   title: string;
@@ -85,29 +89,60 @@ const engagements: Engagement[] = [
 
 const PATRON_IMAGE = "/assets/images/patron.webp";
 
-export function WhyChoose() {
+export default function WhyChoosePreview3() {
   return (
-    <section id="about" className="bg-white relative z-10">
+    <>
+      <Header />
+      <main className="flex-1 bg-white">
+        <VariantSticky />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+function CenteredHead() {
+  return (
+    <div className="max-w-[720px] mx-auto text-center mb-12 lg:mb-14">
+      <div className="text-[11px] tracking-[.2em] uppercase text-accent font-bold mb-3">
+        Notre engagement
+      </div>
+      <h2 className="text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.05] mb-5 text-ink">
+        Pourquoi nous confier votre bien
+      </h2>
+      <p className="text-base text-ink/70 leading-relaxed">
+        Depuis plus de 15 ans, nous accompagnons vendeurs et acquéreurs dans
+        le Brabant wallon. Discrétion, confiance et savoir-faire, avec un
+        taux de vente sur portefeuille proche de 90%.
+      </p>
+    </div>
+  );
+}
+
+function CtaButton() {
+  return (
+    <div className="text-center mt-12 lg:mt-14">
+      <button
+        type="button"
+        className="inline-block bg-accent text-white text-xs font-bold tracking-wider uppercase rounded-[14px] px-6 py-3 hover:opacity-90 transition-opacity"
+      >
+        Découvrir l&apos;agence
+      </button>
+    </div>
+  );
+}
+
+function VariantSticky() {
+  return (
+    <section className="bg-white">
       <div className="max-w-[1480px] mx-auto px-6 lg:px-10 pt-16 pb-20 lg:pb-24">
-        <div className="max-w-[720px] mx-auto text-center mb-12 lg:mb-14">
-          <div className="text-[11px] tracking-[.2em] uppercase text-accent font-bold mb-3">
-            Notre engagement
-          </div>
-          <h2 className="text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.05] mb-5 text-ink">
-            Pourquoi nous confier votre bien
-          </h2>
-          <p className="text-base text-ink/70 leading-relaxed">
-            Depuis plus de 15 ans, nous accompagnons vendeurs et acquéreurs
-            dans le Brabant wallon. Discrétion, confiance et savoir-faire,
-            avec un taux de vente sur portefeuille proche de 90%.
-          </p>
-        </div>
+        <CenteredHead />
 
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,420px)_1fr] xl:grid-cols-[minmax(0,480px)_1fr] gap-10 lg:gap-12 xl:gap-14 items-stretch">
           <div className="relative aspect-[4/5] lg:aspect-auto overflow-hidden rounded-[20px] bg-ink">
             <Image
               src={PATRON_IMAGE}
-              alt="Guillaume — fondateur Be Home Partners"
+              alt="Guillaume — fondateur"
               fill
               sizes="(max-width: 1024px) 100vw, 480px"
               className="object-cover object-[40%_center]"
@@ -136,14 +171,7 @@ export function WhyChoose() {
           </div>
         </div>
 
-        <div className="text-center mt-12 lg:mt-14">
-          <button
-            type="button"
-            className="inline-block bg-accent text-white text-xs font-bold tracking-wider uppercase rounded-[14px] px-6 py-3 hover:opacity-90 transition-opacity"
-          >
-            Découvrir l&apos;agence
-          </button>
-        </div>
+        <CtaButton />
       </div>
     </section>
   );

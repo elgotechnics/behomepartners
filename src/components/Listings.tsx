@@ -81,7 +81,7 @@ export function Listings() {
             </p>
           </div>
 
-          <div className="relative inline-flex justify-self-start p-1.5 rounded-full bg-ink/5 ring-1 ring-inset ring-ink/10">
+          <div className="relative inline-flex justify-self-center lg:justify-self-start p-1.5 rounded-full bg-ink/5 ring-1 ring-inset ring-ink/10">
             {(["vente", "location"] as const).map((t) => (
               <button
                 key={t}
@@ -104,17 +104,21 @@ export function Listings() {
             type="button"
             onClick={() => scroll("left")}
             aria-label="Précédent"
-            className="flex absolute left-2 lg:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 lg:w-12 lg:h-12 rounded-[14px] bg-white border border-hairline items-center justify-center font-bold text-muted shadow-md z-10 hover:text-ink transition-colors"
+            className="flex absolute left-3 lg:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full lg:rounded-[14px] bg-ink/85 lg:bg-white backdrop-blur-md ring-1 ring-inset ring-white/15 lg:ring-0 lg:border lg:border-hairline items-center justify-center text-white lg:text-muted shadow-lg lg:shadow-md z-10 hover:bg-ink lg:hover:bg-white lg:hover:text-ink transition-colors"
           >
-            ←
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
           </button>
           <button
             type="button"
             onClick={() => scroll("right")}
             aria-label="Suivant"
-            className="flex absolute right-2 lg:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 lg:w-12 lg:h-12 rounded-[14px] bg-ink text-white items-center justify-center font-bold shadow-lg z-10 hover:opacity-90 transition-opacity"
+            className="flex absolute right-3 lg:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full lg:rounded-[14px] bg-ink/85 lg:bg-ink backdrop-blur-md ring-1 ring-inset ring-white/15 lg:ring-0 items-center justify-center text-white shadow-lg z-10 hover:bg-ink hover:opacity-100 lg:hover:opacity-90 transition-all"
           >
-            →
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M9 6l6 6-6 6" />
+            </svg>
           </button>
 
           <div
@@ -127,33 +131,29 @@ export function Listings() {
           </div>
         </div>
 
-        <div
-          className="flex gap-2 justify-center items-center mt-8"
-          role="tablist"
-          aria-label="Pagination des biens"
-        >
-          {Array.from({ length: pageCount }).map((_, i) => {
-            const active = i === page;
-            return (
-              <button
-                key={i}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                aria-label={`Aller à la page ${i + 1}`}
-                onClick={() => goToPage(i)}
-                className={`group relative h-1.5 rounded-full transition-all duration-500 ease-out ${
-                  active
-                    ? "w-10 bg-accent"
-                    : "w-1.5 bg-ink/15 hover:w-3 hover:bg-ink/35"
-                }`}
-              >
-                {active && (
-                  <span className="absolute inset-0 rounded-full bg-accent/30 blur-md -z-10" />
-                )}
-              </button>
-            );
-          })}
+        <div className="flex justify-center mt-8">
+          <div
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-ink/5 ring-1 ring-inset ring-ink/10"
+            role="tablist"
+            aria-label="Pagination des biens"
+          >
+            {Array.from({ length: pageCount }).map((_, i) => {
+              const active = i === page;
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  aria-label={`Aller à la page ${i + 1}`}
+                  onClick={() => goToPage(i)}
+                  className={`h-2 rounded-full transition-all duration-300 ease-out ${
+                    active ? "w-8 bg-accent" : "w-2 bg-ink/20 hover:bg-ink/40"
+                  }`}
+                ></button>
+              );
+            })}
+          </div>
         </div>
 
         <div className="mt-8 px-12 pt-10 pb-9 text-center relative overflow-hidden">
@@ -207,7 +207,7 @@ function ListingCard({
   return (
     <article
       data-card
-      className="group relative snap-start flex-shrink-0 w-[calc((100%-48px)/3)] xl:w-[calc((100%-72px)/4)] min-w-[280px] bg-gradient-to-b from-white to-paper border border-hairline rounded-[14px] overflow-hidden ring-1 ring-inset ring-white/80 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_18px_40px_-20px_rgba(15,23,42,0.25)] hover:border-ink/15 cursor-pointer"
+      className="group relative snap-start flex-shrink-0 w-[calc(100vw-3rem)] sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] xl:w-[calc((100%-72px)/4)] min-w-[280px] max-w-[420px] sm:max-w-none bg-gradient-to-b from-white to-paper border border-hairline rounded-[14px] overflow-hidden ring-1 ring-inset ring-white/80 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_18px_40px_-20px_rgba(15,23,42,0.25)] hover:border-ink/15 cursor-pointer"
     >
       <div className="relative aspect-[4/3]">
         <Image

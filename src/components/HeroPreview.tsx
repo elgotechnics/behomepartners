@@ -61,7 +61,7 @@ function ModeToggle({
           key={m}
           type="button"
           onClick={() => setMode(m)}
-          className={`px-5 py-2 text-[11px] font-bold tracking-[.18em] uppercase rounded-full transition-colors ${
+          className={`px-5 py-2 text-[11px] font-bold tracking-[.15em] uppercase rounded-full transition-colors ${
             mode === m ? "bg-accent text-white" : inactive
           }`}
         >
@@ -114,7 +114,7 @@ export function HeroVariantA() {
         </div>
 
         <div className="relative">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] border border-hairline">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[14px] border border-hairline">
             <Image
               src="/assets/images/agence-interior.webp"
               alt="Intérieur de l'agence"
@@ -136,7 +136,7 @@ export function HeroVariantA() {
 
       {/* Search bar horizontal pleine largeur, sticky look */}
       <div className="max-w-[1280px] mx-auto px-6 pb-14">
-        <div className="bg-white border border-hairline rounded-[18px] p-2 lg:p-3 shadow-[0_18px_50px_-22px_rgba(26,40,69,0.18)]">
+        <div className="bg-white border border-hairline rounded-[14px] p-2 lg:p-3 shadow-[0_18px_50px_-22px_rgba(26,40,69,0.18)]">
           <div className="flex items-center gap-2 mb-2 px-2 pt-1">
             <ModeToggle mode={mode} setMode={setMode} />
             <div className="ml-auto text-xs text-muted hidden sm:block">
@@ -189,7 +189,7 @@ export function HeroVariantA() {
             </select>
             <button
               type="submit"
-              className="bg-accent text-white px-6 py-3.5 font-bold text-sm tracking-[.1em] uppercase rounded-[12px] hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+              className="bg-accent text-white px-6 py-3.5 font-bold text-sm tracking-[.15em] uppercase rounded-[12px] hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
             >
               {SearchIcon}
               <span>Rechercher</span>
@@ -303,7 +303,7 @@ export function HeroVariantB() {
             </label>
             <button
               type="submit"
-              className="bg-accent text-white px-7 py-4 font-bold text-sm tracking-[.1em] uppercase rounded-[14px] hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+              className="bg-accent text-white px-7 py-4 font-bold text-sm tracking-[.15em] uppercase rounded-[14px] hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
             >
               {SearchIcon}
               <span>Chercher</span>
@@ -328,7 +328,7 @@ export function HeroVariantC() {
       <div className="max-w-[1320px] mx-auto px-6 pt-12 lg:pt-16 pb-10">
         {/* Top bar : tag + meta */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-hairline">
-          <span className="text-[11px] tracking-[.25em] uppercase text-ink font-bold">
+          <span className="text-[11px] tracking-[.2em] uppercase text-ink font-bold">
             Be Home Partners — N°{" "}1 sur la région
           </span>
           <div className="flex items-center gap-6 text-xs text-ink/70">
@@ -425,7 +425,7 @@ export function HeroVariantC() {
               </select>
               <button
                 type="submit"
-                className="bg-accent text-white px-6 py-3 font-bold text-sm tracking-[.1em] uppercase rounded-[12px] hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                className="bg-accent text-white px-6 py-3 font-bold text-sm tracking-[.15em] uppercase rounded-[12px] hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
               >
                 {SearchIcon}
                 <span>Rechercher</span>

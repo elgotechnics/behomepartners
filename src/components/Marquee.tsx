@@ -75,7 +75,7 @@ export function Marquee() {
                   suffix={s.suffix}
                 />
               </div>
-              <div className="mt-2 text-[11px] tracking-[.22em] uppercase text-white/85 font-semibold">
+              <div className="mt-2 text-[11px] tracking-[.2em] uppercase text-white/85 font-semibold">
                 {s.label}
               </div>
             </div>

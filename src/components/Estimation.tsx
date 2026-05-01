@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Estimation() {
   return (
-    <section id="estimation" className="relative bg-gradient-to-b from-[#1a2845] to-[#0f1b34]">
+    <section id="estimation" className="relative bg-gradient-to-b from-ink to-ink-deep">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-20 lg:py-28">
         <div className="group relative">
           <div className="grid grid-cols-1 lg:grid-cols-[1.45fr_1fr] gap-10 lg:gap-12 items-center">
@@ -11,7 +11,7 @@ export function Estimation() {
                 Obtenir une estimation
               </div>
               <h2 className="text-4xl lg:text-[48px] font-extrabold tracking-tight leading-[1.02] text-white mb-5">
-                Estimez votre bien<span className="text-white">.</span>
+                Estimez votre bien<span className="text-accent">.</span>
               </h2>
               <p className="text-[15px] text-white/70 leading-relaxed mb-8 max-w-[480px]">
                 Vous souhaitez connaître la juste valeur de votre bien ? Deux
@@ -22,9 +22,9 @@ export function Estimation() {
                 </span>
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-4">
                 {/* Card 1 — Estimation en ligne */}
-                <div className="relative flex flex-col bg-[#243558] rounded-[16px] p-7 ring-1 ring-inset ring-white/20 hover:ring-white/50 transition-all duration-300 hover:-translate-y-0.5">
+                <div className="relative flex flex-col bg-ink-deep rounded-[14px] p-7 ring-1 ring-inset ring-white/20 hover:ring-white/50 transition-all duration-300 hover:-translate-y-0.5">
                   <svg
                     width="32"
                     height="32"
@@ -41,7 +41,7 @@ export function Estimation() {
                     <path d="M14 21H16M14 21C13.1716 21 12.5 20.3284 12.5 19.5V17L12 17M14 21H10M10 21H8M10 21C10.8284 21 11.5 20.3284 11.5 19.5V17L12 17M12 17V21" />
                     <circle cx="19" cy="6" r="3" />
                   </svg>
-                  <h3 className="text-[15px] tracking-[.18em] uppercase font-extrabold text-white mb-5">
+                  <h3 className="text-[15px] tracking-[.15em] uppercase font-extrabold text-white mb-5">
                     Estimation en ligne
                   </h3>
                   <ul className="text-[13.5px] text-white/80 space-y-3 mb-7 flex-1">
@@ -72,7 +72,7 @@ export function Estimation() {
                 </div>
 
                 {/* Card 2 — Estimation par agent (recommandé) */}
-                <div className="relative flex flex-col bg-white rounded-[16px] p-7 ring-2 ring-accent shadow-[0_18px_40px_-10px_rgba(237,25,46,0.28)] hover:shadow-[0_24px_50px_-10px_rgba(237,25,46,0.4)] transition-all duration-300 hover:-translate-y-0.5">
+                <div className="relative flex flex-col bg-ink-deep rounded-[14px] p-7 ring-2 ring-accent shadow-[0_18px_40px_-10px_rgba(139,21,56,0.45)] hover:shadow-[0_24px_50px_-10px_rgba(139,21,56,0.6)] transition-all duration-300 hover:-translate-y-0.5">
                   <div className="absolute -top-3 left-6 bg-accent text-white text-[10px] tracking-[.2em] uppercase font-bold px-3 py-1 rounded-full">
                     Recommandé
                   </div>
@@ -93,17 +93,17 @@ export function Estimation() {
                     <path d="M15 21C15 17.6863 12.3137 15 9 15C5.68629 15 3 17.6863 3 21" />
                     <path d="M21 17C21 13.6863 18.3137 11 15 11" />
                   </svg>
-                  <h3 className="text-[15px] tracking-[.18em] uppercase font-extrabold text-ink mb-5">
+                  <h3 className="text-[15px] tracking-[.15em] uppercase font-extrabold text-white mb-5">
                     Estimation par agent
                   </h3>
-                  <ul className="text-[13.5px] text-ink/75 space-y-3 mb-7 flex-1">
+                  <ul className="text-[13.5px] text-white/80 space-y-3 mb-7 flex-1">
                     <li>Expertise personnalisée</li>
                     <li>Analyse approfondie</li>
                     <li>Conseils sur mesure</li>
                   </ul>
                   <button
                     type="button"
-                    className="w-full inline-flex whitespace-nowrap items-center justify-center gap-2.5 bg-accent text-white rounded-[12px] px-5 py-3.5 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-[#6f1029] transition-colors"
+                    className="w-full inline-flex whitespace-nowrap items-center justify-center gap-2.5 bg-accent text-white rounded-[12px] px-5 py-3.5 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-accent-deep transition-colors"
                   >
                     Prendre rendez-vous
                     <svg

@@ -24,10 +24,10 @@ export function MarqueeOptionEditorial() {
               key={it.label}
               className="px-6 py-8 lg:py-4 first:pl-0 last:pr-0 text-center lg:text-left"
             >
-              <div className="text-[44px] lg:text-[56px] leading-none font-extrabold tracking-tight">
+              <div className="text-[42px] lg:text-[56px] leading-none font-extrabold tracking-tight">
                 {it.stat}
               </div>
-              <div className="mt-3 text-[11px] tracking-[.22em] uppercase text-white/60 font-medium">
+              <div className="mt-3 text-[11px] tracking-[.2em] uppercase text-white/60 font-medium">
                 {it.label}
               </div>
             </div>
@@ -120,7 +120,7 @@ function Counter({
         <CountUp target={target} prefix={prefix} suffix={suffix} />
       </div>
       <div className="mt-3 mx-auto h-px w-10 bg-white/40" />
-      <div className="mt-3 text-[11px] tracking-[.22em] uppercase text-white/70 font-medium">
+      <div className="mt-3 text-[11px] tracking-[.2em] uppercase text-white/70 font-medium">
         {label}
       </div>
     </div>
@@ -143,7 +143,7 @@ export function MarqueeOptionLightPremium() {
               <div className="text-[48px] lg:text-[60px] leading-none font-extrabold tracking-tight text-accent">
                 {it.stat}
               </div>
-              <div className="mt-4 text-[11px] tracking-[.22em] uppercase text-ink/60 font-semibold">
+              <div className="mt-4 text-[11px] tracking-[.2em] uppercase text-ink/60 font-semibold">
                 {it.label}
               </div>
             </div>
@@ -170,11 +170,11 @@ export function MarqueeOptionBordeauxBand() {
               }`}
             >
               <div className="flex items-baseline gap-3 justify-center lg:justify-start">
-                <span className="text-[40px] lg:text-[48px] leading-none font-extrabold tracking-tight">
+                <span className="text-[38px] lg:text-[48px] leading-none font-extrabold tracking-tight">
                   {it.stat}
                 </span>
               </div>
-              <div className="mt-2 text-[11px] tracking-[.22em] uppercase text-white/85 font-semibold">
+              <div className="mt-2 text-[11px] tracking-[.2em] uppercase text-white/85 font-semibold">
                 {it.label}
               </div>
             </div>
@@ -194,10 +194,10 @@ export function MarqueeOptionAsymmetric() {
       <div className="max-w-[1480px] mx-auto px-3 sm:px-4 py-16 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end">
           <div className="lg:col-span-4">
-            <div className="text-[11px] tracking-[.22em] uppercase text-accent font-bold mb-3">
+            <div className="text-[11px] tracking-[.2em] uppercase text-accent font-bold mb-3">
               Be Home Partners en chiffres
             </div>
-            <h2 className="text-3xl lg:text-[40px] leading-[1.1] tracking-tight font-extrabold">
+            <h2 className="text-3xl lg:text-[38px] leading-[1.1] tracking-tight font-extrabold">
               Une expertise <span className="text-accent">éprouvée</span> par
               plus d'une décennie d'engagement.
             </h2>
@@ -205,10 +205,10 @@ export function MarqueeOptionAsymmetric() {
           <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-0 divide-x divide-hairline">
             {items.map((it) => (
               <div key={it.label} className="px-5 first:pl-0">
-                <div className="text-[40px] lg:text-[48px] leading-none font-extrabold tracking-tight">
+                <div className="text-[38px] lg:text-[48px] leading-none font-extrabold tracking-tight">
                   {it.stat}
                 </div>
-                <div className="mt-2 text-[11px] tracking-[.22em] uppercase text-ink/60 font-semibold">
+                <div className="mt-2 text-[11px] tracking-[.2em] uppercase text-ink/60 font-semibold">
                   {it.label}
                 </div>
               </div>
@@ -237,7 +237,7 @@ export function MarqueeOptionSlowTicker() {
             className="flex items-baseline gap-4 px-10"
           >
             <span className="text-3xl font-extrabold tracking-tight">{it.stat}</span>
-            <span className="text-[11px] tracking-[.22em] uppercase text-white/70 font-semibold">
+            <span className="text-[11px] tracking-[.2em] uppercase text-white/70 font-semibold">
               {it.label}
             </span>
             <span className="ml-6 text-white/30">—</span>

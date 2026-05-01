@@ -1,4 +1,6 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type Service = {
   title: string;
@@ -159,6 +161,34 @@ const services: Service[] = [
 ];
 
 export function Services() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const update = () => {
+      setAtStart(track.scrollLeft <= 8);
+      setAtEnd(track.scrollLeft + track.clientWidth >= track.scrollWidth - 8);
+    };
+    update();
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      track.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const scroll = (dir: "left" | "right") => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.querySelector<HTMLElement>("[data-card]");
+    const step = card ? card.offsetWidth + 24 : 320;
+    track.scrollBy({ left: dir === "left" ? -step : step, behavior: "smooth" });
+  };
+
   return (
     <section id="services" className="bg-ink">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-20 lg:pt-28 pb-20 lg:pb-28">
@@ -176,31 +206,64 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {services.map((s) => (
-            <article
-              key={s.title}
-              className="group relative flex flex-col p-6 sm:p-8 bg-gradient-to-b from-white/[0.09] to-white/[0.02] border border-white/20 rounded-[20px] ring-1 ring-inset ring-white/10 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/40 hover:ring-white/20 hover:from-white/[0.14] hover:to-white/[0.05] cursor-pointer"
-            >
-              <div className="flex flex-col flex-1">
-                <div className="w-14 h-14 bg-accent text-white flex items-center justify-center mb-6 rounded-[12px] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                  {s.icon}
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => scroll("left")}
+            aria-label="Précédent"
+            disabled={atStart}
+            aria-hidden={atStart}
+            tabIndex={atStart ? -1 : 0}
+            className={`absolute left-3 lg:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/20 items-center justify-center text-white shadow-lg z-10 hover:bg-white/20 transition-opacity ${atStart ? "hidden" : "flex"}`}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            aria-label="Suivant"
+            disabled={atEnd}
+            aria-hidden={atEnd}
+            tabIndex={atEnd ? -1 : 0}
+            className={`absolute right-3 lg:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/20 items-center justify-center text-white shadow-lg z-10 hover:bg-white/20 transition-opacity ${atEnd ? "hidden" : "flex"}`}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+
+          <div
+            ref={trackRef}
+            className="flex gap-6 overflow-x-auto pt-3 pb-4 -my-1 px-1 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {services.map((s) => (
+              <article
+                key={s.title}
+                data-card
+                className="group relative snap-start flex-shrink-0 w-[calc(100vw-3rem)] sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] min-w-[280px] max-w-[420px] sm:max-w-none flex flex-col p-6 sm:p-8 bg-gradient-to-b from-white/[0.09] to-white/[0.02] border border-white/20 rounded-[20px] ring-1 ring-inset ring-white/10 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/40 hover:ring-white/20 hover:from-white/[0.14] hover:to-white/[0.05] cursor-pointer"
+              >
+                <div className="flex flex-col flex-1">
+                  <div className="w-14 h-14 bg-accent text-white flex items-center justify-center mb-6 rounded-[12px] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    {s.icon}
+                  </div>
+                  <h3 className="font-extrabold text-xl text-white mb-3">
+                    {s.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/65 flex-1">
+                    {s.description}
+                  </p>
+                  <div className="flex items-center gap-2 mt-6 text-[12px] font-bold tracking-[.15em] uppercase text-white/90 group-hover:text-white transition-colors duration-500">
+                    {s.cta}
+                    <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </div>
                 </div>
-                <h3 className="font-extrabold text-xl text-white mb-3">
-                  {s.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-white/65 flex-1">
-                  {s.description}
-                </p>
-                <div className="flex items-center gap-2 mt-6 text-[12px] font-bold tracking-[.12em] uppercase text-white/90 group-hover:text-white transition-colors duration-500">
-                  {s.cta}
-                  <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">
-                    →
-                  </span>
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

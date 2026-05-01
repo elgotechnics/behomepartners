@@ -104,7 +104,7 @@ export function Testimonials() {
               className="block"
             />
           </div>
-          <span className="text-accent font-bold tracking-[.1em]">★★★★★</span>
+          <span className="text-accent font-bold tracking-[.15em]">★★★★★</span>
           <strong className="text-ink">4,6/5</strong>
           <span>· 579 avis cumulés sur Google, Facebook et RealAdvice</span>
         </div>

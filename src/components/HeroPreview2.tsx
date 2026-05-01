@@ -77,7 +77,7 @@ export function HeroRolixy() {
       </div>
 
       <div className="relative max-w-[1280px] mx-auto px-6 pt-20 lg:pt-28 pb-44 flex flex-col items-center text-center">
-        <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/30 text-white text-[11px] font-bold tracking-[.22em] uppercase px-4 py-1.5 mb-6 rounded-full">
+        <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/30 text-white text-[11px] font-bold tracking-[.2em] uppercase px-4 py-1.5 mb-6 rounded-full">
           <span className="w-1.5 h-1.5 rounded-full bg-white" />
           Be Home Partners
         </span>
@@ -93,7 +93,7 @@ export function HeroRolixy() {
         </p>
 
         <div className="inline-flex items-center gap-2.5 text-white">
-          <span className="text-white text-base tracking-[.1em]">★★★★★</span>
+          <span className="text-white text-base tracking-[.15em]">★★★★★</span>
           <span className="text-sm font-extrabold">4,6/5</span>
           <span className="text-sm text-white/75">Basé sur 579 avis</span>
         </div>
@@ -156,7 +156,7 @@ export function HeroRolixy() {
 
           <button
             type="submit"
-            className="bg-accent text-white px-6 lg:px-8 py-3.5 font-bold text-sm tracking-[.1em] uppercase rounded-full hover:opacity-90 transition-opacity flex items-center gap-2"
+            className="bg-accent text-white px-6 lg:px-8 py-3.5 font-bold text-sm tracking-[.15em] uppercase rounded-full hover:opacity-90 transition-opacity flex items-center gap-2"
           >
             {SearchIcon}
             <span className="hidden sm:inline">Rechercher</span>
@@ -183,7 +183,7 @@ export function HeroEasyWay() {
   return (
     <section className="bg-paper">
       <div className="max-w-[1280px] mx-auto px-6 py-16 lg:py-20">
-        <div className="bg-cream rounded-[28px] overflow-hidden border border-hairline relative">
+        <div className="bg-cream rounded-[20px] overflow-hidden border border-hairline relative">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] items-stretch">
             {/* Texte */}
             <div className="px-8 lg:px-14 py-12 lg:py-16">
@@ -200,7 +200,7 @@ export function HeroEasyWay() {
               </p>
 
               <div className="inline-flex items-center gap-2.5 mb-2">
-                <span className="text-accent text-base tracking-[.1em]">★★★★★</span>
+                <span className="text-accent text-base tracking-[.15em]">★★★★★</span>
                 <span className="text-sm font-extrabold text-ink">4,6/5</span>
                 <span className="text-sm text-muted">Basé sur 579 avis</span>
               </div>
@@ -228,7 +228,7 @@ export function HeroEasyWay() {
                     key={t.id}
                     type="button"
                     onClick={() => setMode(t.id)}
-                    className={`relative pb-2 text-[11px] font-bold tracking-[.22em] uppercase transition-colors ${
+                    className={`relative pb-2 text-[11px] font-bold tracking-[.2em] uppercase transition-colors ${
                       mode === t.id ? "text-ink" : "text-muted hover:text-ink"
                     }`}
                   >
@@ -321,7 +321,7 @@ export function HeroEastute() {
         <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-12 items-center">
           {/* Col gauche */}
           <div>
-            <span className="inline-block text-[11px] tracking-[.22em] uppercase text-ink/70 font-bold mb-6">
+            <span className="inline-block text-[11px] tracking-[.2em] uppercase text-ink/70 font-bold mb-6">
               Be Home Partners
             </span>
 
@@ -361,7 +361,7 @@ export function HeroEastute() {
             {/* Search row inputs + bouton carré sombre */}
             <form className="bg-white border border-hairline rounded-[14px] grid grid-cols-1 sm:grid-cols-[1.4fr_1fr_1fr_auto] items-stretch overflow-hidden">
               <label className="flex flex-col px-5 py-3 sm:border-r sm:border-hairline">
-                <span className="text-[11px] tracking-[.18em] uppercase font-bold text-muted mb-1">
+                <span className="text-[11px] tracking-[.15em] uppercase font-bold text-muted mb-1">
                   Localisation
                 </span>
                 <input
@@ -371,7 +371,7 @@ export function HeroEastute() {
                 />
               </label>
               <label className="flex flex-col px-5 py-3 sm:border-r sm:border-hairline">
-                <span className="text-[11px] tracking-[.18em] uppercase font-bold text-muted mb-1">
+                <span className="text-[11px] tracking-[.15em] uppercase font-bold text-muted mb-1">
                   Type
                 </span>
                 <select
@@ -385,7 +385,7 @@ export function HeroEastute() {
                 </select>
               </label>
               <label className="flex flex-col px-5 py-3 sm:border-r sm:border-hairline">
-                <span className="text-[11px] tracking-[.18em] uppercase font-bold text-muted mb-1">
+                <span className="text-[11px] tracking-[.15em] uppercase font-bold text-muted mb-1">
                   Budget
                 </span>
                 <select
@@ -411,7 +411,7 @@ export function HeroEastute() {
             {/* Stats trio */}
             <div className="grid grid-cols-3 gap-6 mt-12">
               <div>
-                <div className="text-3xl lg:text-[40px] font-extrabold text-ink leading-none mb-2">
+                <div className="text-3xl lg:text-[38px] font-extrabold text-ink leading-none mb-2">
                   2010
                 </div>
                 <div className="text-xs text-ink/65 leading-tight">
@@ -421,7 +421,7 @@ export function HeroEastute() {
                 </div>
               </div>
               <div>
-                <div className="text-3xl lg:text-[40px] font-extrabold text-ink leading-none mb-2">
+                <div className="text-3xl lg:text-[38px] font-extrabold text-ink leading-none mb-2">
                   4,6/5
                 </div>
                 <div className="text-xs text-ink/65 leading-tight">
@@ -431,7 +431,7 @@ export function HeroEastute() {
                 </div>
               </div>
               <div>
-                <div className="text-3xl lg:text-[40px] font-extrabold text-ink leading-none mb-2">
+                <div className="text-3xl lg:text-[38px] font-extrabold text-ink leading-none mb-2">
                   579
                 </div>
                 <div className="text-xs text-ink/65 leading-tight">

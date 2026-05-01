@@ -7,7 +7,7 @@ export function Hero() {
         <div>
           <div className="inline-flex items-center gap-3 mb-5 xl:mb-7">
             <span className="inline-flex items-center gap-2 bg-accent text-white px-3 py-1.5 xl:px-4 xl:py-2 rounded-sm">
-              <span className="relative inline-block text-base xl:text-lg tracking-[.1em] leading-none">
+              <span className="relative inline-block text-base xl:text-lg tracking-[.15em] leading-none">
                 <span className="text-white/30">★★★★★</span>
                 <span
                   className="absolute inset-0 overflow-hidden text-white"

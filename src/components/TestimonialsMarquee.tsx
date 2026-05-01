@@ -186,7 +186,7 @@ function FractionalStars({ rating, size = 16 }: { rating: number; size?: number 
 
 function Card({ t }: { t: Testimonial }) {
   return (
-    <article className="w-[340px] sm:w-[380px] flex-shrink-0 bg-white rounded-[16px] p-6 shadow-[0_1px_2px_rgba(46,49,142,0.04)] hover:shadow-[0_8px_20px_-6px_rgba(46,49,142,0.15)] transition-shadow">
+    <article className="w-[340px] sm:w-[380px] flex-shrink-0 bg-white rounded-[14px] p-6 shadow-[0_1px_2px_rgba(46,49,142,0.04)] hover:shadow-[0_8px_20px_-6px_rgba(46,49,142,0.15)] transition-shadow">
       <Stars rating={t.rating} />
       <p className="mt-4 text-[14px] text-ink/85 leading-relaxed min-h-[6.5rem]">
         “{t.text}”
@@ -233,6 +233,12 @@ function Row({
 
 export function TestimonialsMarquee() {
   const [paused, setPaused] = useState(false);
+  const allReviews = [...reviewsRow1, ...reviewsRow2];
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const total = allReviews.length;
+  const prevMobile = () => setMobileIndex((i) => (i - 1 + total) % total);
+  const nextMobile = () => setMobileIndex((i) => (i + 1) % total);
+
   return (
     <section className="bg-bg overflow-hidden">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
@@ -240,18 +246,84 @@ export function TestimonialsMarquee() {
           <div className="text-[11px] tracking-[.2em] uppercase text-accent font-bold mb-3">
             Ils nous font confiance
           </div>
-          <h2 className="text-3xl lg:text-[42px] font-extrabold tracking-tight leading-[1.1]">
+          <h2 className="text-3xl lg:text-[38px] font-extrabold tracking-tight leading-[1.1]">
             Ce que nos clients disent de nous
           </h2>
         </div>
 
-        {/* Fade overlays + double row — uses CSS mask for clean edge fade */}
+        {/* Mobile : slider 1 carte avec flèches */}
+        <div className="lg:hidden relative max-w-[400px] mx-auto px-2">
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${mobileIndex * 100}%)` }}
+            >
+              {allReviews.map((t, i) => (
+                <div key={`${t.name}-${i}`} className="w-full flex-shrink-0 px-1">
+                  <article className="w-full bg-white rounded-[14px] p-6 shadow-[0_1px_2px_rgba(46,49,142,0.04)]">
+                    <Stars rating={t.rating} />
+                    <p className="mt-4 text-[14px] text-ink/85 leading-relaxed min-h-[6.5rem]">
+                      “{t.text}”
+                    </p>
+                    <div className="mt-5 pt-4 border-t border-hairline">
+                      <div className="text-[14px] font-extrabold text-ink">{t.name}</div>
+                      {t.source && (
+                        <div className="mt-0.5 text-[11px] text-muted tracking-wider uppercase">
+                          Avis publié sur {t.source}
+                        </div>
+                      )}
+                    </div>
+                  </article>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={prevMobile}
+            aria-label="Avis précédent"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-ink/85 backdrop-blur-md ring-1 ring-inset ring-white/15 text-white shadow-lg hover:bg-ink transition-colors"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={nextMobile}
+            aria-label="Avis suivant"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-ink/85 backdrop-blur-md ring-1 ring-inset ring-white/15 text-white shadow-lg hover:bg-ink transition-colors"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+
+          <div className="flex justify-center mt-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-ink/5 ring-1 ring-inset ring-ink/10">
+              {allReviews.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setMobileIndex(i)}
+                  aria-label={`Aller à l'avis ${i + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    i === mobileIndex ? "w-6 bg-accent" : "w-2 bg-ink/20 hover:bg-ink/40"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop : marquee défilante */}
         <div
-          className="relative [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+          className="hidden lg:block relative [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <Row items={[...reviewsRow1, ...reviewsRow2]} paused={paused} />
+          <Row items={allReviews} paused={paused} />
         </div>
 
         <div className="flex justify-center items-center gap-4 mt-10 flex-wrap text-xs text-muted tracking-wider">
