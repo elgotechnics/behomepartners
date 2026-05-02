@@ -1,5 +1,41 @@
+"use client";
+
 import Image from "next/image";
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
+
+function AnimatedCounter({ to, duration = 1600 }: { to: number; duration?: number }) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !started.current) {
+            started.current = true;
+            const start = performance.now();
+            const tick = (now: number) => {
+              const t = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - t, 3);
+              setValue(Math.round(to * eased));
+              if (t < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [to, duration]);
+
+  return <span ref={ref}>{value}</span>;
+}
 
 type Engagement = {
   title: string;
@@ -53,32 +89,27 @@ const ShieldIcon = (
 const engagements: Engagement[] = [
   {
     title: "Agence de proximité",
-    body: "Une parfaite connaissance du marché à Braine-l'Alleud, Waterloo, Nivelles, Genappe, Ittre, Seneffe et alentours avec des estimations basées sur les prix réellement pratiqués.",
+    body: "Connaissance fine du Brabant wallon et estimations basées sur les prix réels du marché.",
     icon: PinIcon,
   },
   {
     title: "Suivi mensuel structuré",
-    body: "Un point chaque mois pour analyser les visites, les retours des acquéreurs et ajuster la stratégie si nécessaire afin que vous sachiez toujours où vous en êtes.",
+    body: "Un point chaque mois sur les visites, les retours et la stratégie.",
     icon: CalendarIcon,
   },
   {
     title: "Reportage photo professionnel",
-    body: "Un photographe professionnel pour valoriser votre bien et capter immédiatement l'attention en ligne afin de générer plus de visites qualifiées.",
+    body: "Un photographe dédié pour valoriser votre bien et capter l'attention en ligne.",
     icon: CameraIcon,
   },
   {
-    title: "Accompagnement administratif complet",
-    body: "Nous prenons en charge l'ensemble des démarches jusqu'à la signature de l'acte afin de garantir un suivi rigoureux tout au long du processus.",
+    title: "Accompagnement administratif",
+    body: "Toutes les démarches gérées de A à Z jusqu'à la signature de l'acte.",
     icon: FileIcon,
   },
   {
-    title: "Marketing 360°",
-    body: "Au-delà des photos : prises de vue par drone, visites virtuelles, plans 2D/3D et home staging pour valoriser votre bien sous tous les angles.",
-    icon: VideoIcon,
-  },
-  {
     title: "Discrétion garantie",
-    body: "Vente off-market possible, sans diffusion publique sur les portails, dans un cercle restreint d'acquéreurs ciblés et qualifiés.",
+    body: "Vente off-market possible, dans un cercle restreint d'acquéreurs qualifiés.",
     icon: ShieldIcon,
   },
 ];
@@ -87,30 +118,31 @@ const PATRON_IMAGE = "/assets/images/patron.webp";
 
 export function WhyChoose() {
   return (
-    <section id="about" className="bg-white relative z-10">
+    <section id="about" className="bg-cream relative z-10">
       <div className="max-w-[1480px] mx-auto px-6 lg:px-10 pt-16 pb-20 lg:pb-24">
         <div className="max-w-[720px] mx-auto text-center mb-12 lg:mb-14">
-          <div className="text-[11px] tracking-[.2em] uppercase text-accent font-bold mb-3">
-            Notre engagement
+          <div className="flex justify-center mb-4">
+            <SectionEyebrow index="03" tone="light">
+              Ce qui nous différencie
+            </SectionEyebrow>
           </div>
           <h2 className="text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.05] mb-5 text-ink">
             Pourquoi nous confier votre bien
           </h2>
           <p className="text-base text-ink/70 leading-relaxed">
             Depuis plus de 15 ans, nous accompagnons vendeurs et acquéreurs
-            dans le Brabant wallon. Discrétion, confiance et savoir-faire,
-            avec un taux de vente sur portefeuille proche de 90%.
+            dans le Brabant wallon.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,420px)_1fr] xl:grid-cols-[minmax(0,480px)_1fr] gap-10 lg:gap-12 xl:gap-14 items-stretch">
-          <div className="relative aspect-[4/5] lg:aspect-auto overflow-hidden rounded-[20px] bg-ink">
+          <div className="relative aspect-[16/10] lg:aspect-auto overflow-hidden rounded-[20px] bg-ink">
             <Image
               src={PATRON_IMAGE}
               alt="Guillaume — fondateur Be Home Partners"
               fill
               sizes="(max-width: 1024px) 100vw, 480px"
-              className="object-cover object-[40%_center]"
+              className="object-cover object-[40%_30%] lg:object-[40%_center]"
             />
           </div>
 
@@ -118,32 +150,43 @@ export function WhyChoose() {
             {engagements.map((eng) => (
               <div
                 key={eng.title}
-                className="relative rounded-[16px] p-5 lg:p-6 bg-cream border border-hairline hover:bg-white hover:border-accent/30 hover:shadow-[0_18px_50px_-22px_rgba(26,40,69,0.18)] transition-all duration-300 flex flex-col"
+                className="group relative bg-white rounded-[16px] p-7 lg:p-8 ring-1 ring-inset ring-hairline transition-all duration-300 hover:ring-ink/20 hover:shadow-[0_18px_50px_-22px_rgba(26,40,69,0.18)]"
               >
-                <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-9 h-9 rounded-[9px] flex items-center justify-center flex-shrink-0 bg-accent text-white">
-                    {eng.icon}
-                  </div>
-                  <h3 className="text-[15px] font-extrabold text-ink tracking-tight leading-tight">
-                    {eng.title}
-                  </h3>
-                </div>
-                <p className="text-[13px] text-ink/70 leading-relaxed">
+                <span className="inline-flex items-center justify-center text-ink/55 mb-5 group-hover:text-accent transition-colors duration-300">
+                  {eng.icon}
+                </span>
+                <h3 className="text-[17px] lg:text-[18px] font-extrabold text-ink tracking-tight leading-[1.2] mb-2.5">
+                  {eng.title}
+                </h3>
+                <p className="text-[13.5px] text-ink/60 leading-relaxed">
                   {eng.body}
                 </p>
               </div>
             ))}
+            <div className="relative bg-accent text-white rounded-[16px] p-7 lg:p-8 overflow-hidden">
+              <div
+                aria-hidden
+                className="absolute -top-16 -right-16 w-56 h-56 rounded-full border border-white/10 pointer-events-none"
+              />
+              <div
+                aria-hidden
+                className="absolute -top-8 -right-8 w-40 h-40 rounded-full border border-white/15 pointer-events-none"
+              />
+              <div className="relative">
+                <div className="text-[64px] lg:text-[72px] font-extrabold tabular-nums leading-[0.9] tracking-tight mb-3">
+                  <AnimatedCounter to={90} />%
+                </div>
+                <div className="text-[10px] tracking-[.25em] uppercase font-bold text-white/55 mb-3">
+                  Taux de vente sur portefeuille
+                </div>
+                <p className="text-[13.5px] text-white/80 leading-relaxed">
+                  Nos mandats trouvent preneur, vite et au bon prix.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="text-center mt-12 lg:mt-14">
-          <button
-            type="button"
-            className="inline-block bg-accent text-white text-xs font-bold tracking-wider uppercase rounded-[14px] px-6 py-3 hover:opacity-90 transition-opacity"
-          >
-            Découvrir l&apos;agence
-          </button>
-        </div>
       </div>
     </section>
   );

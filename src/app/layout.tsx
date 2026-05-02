@@ -10,7 +10,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Be Home Partners — Agence immobilière en Brabant wallon",
+  title: "Be Home Partners | Agence immobilière en Brabant wallon",
   description:
     "Vente, location, estimation et gestion locative en Brabant wallon. Discrétion, confiance et savoir-faire depuis plus de 15 ans.",
 };

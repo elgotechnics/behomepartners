@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 
 type Service = {
   title: string;
@@ -190,59 +191,66 @@ export function Services() {
   };
 
   return (
-    <section id="services" className="bg-ink">
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-20 lg:pt-28 pb-20 lg:pb-28">
-        <div className="mb-12 lg:mb-16">
-          <div className="text-[11px] tracking-[.2em] uppercase text-white font-bold mb-2 opacity-80">
-            Nos services
+    <section id="services" className="bg-ink overflow-hidden">
+      <div className="pt-20 lg:pt-28 pb-20 lg:pb-28">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 mb-12 lg:mb-16">
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <SectionEyebrow index="02" tone="dark" className="mb-3">
+                Nos services
+              </SectionEyebrow>
+              <h2 className="text-3xl lg:text-[38px] font-extrabold leading-[1.1] tracking-tight mb-3 text-white">
+                Un accompagnement complet
+              </h2>
+              <p className="text-sm text-white/65 max-w-[600px]">
+                De l&apos;estimation à la signature, nos experts vous accompagnent à
+                chaque étape avec une approche professionnelle, humaine et tournée
+                vers la qualité.
+              </p>
+            </div>
+
+            <div className="hidden sm:flex items-center gap-3 shrink-0">
+              <button
+                type="button"
+                onClick={() => scroll("left")}
+                aria-label="Précédent"
+                disabled={atStart}
+                className="w-11 h-11 lg:w-12 lg:h-12 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/20 flex items-center justify-center text-white shadow-lg hover:bg-white/20 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={() => scroll("right")}
+                aria-label="Suivant"
+                disabled={atEnd}
+                className="w-11 h-11 lg:w-12 lg:h-12 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/20 flex items-center justify-center text-white shadow-lg hover:bg-white/20 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
           </div>
-          <h2 className="text-3xl lg:text-[38px] font-extrabold leading-[1.1] tracking-tight mb-3 text-white">
-            Un accompagnement complet
-          </h2>
-          <p className="text-sm text-white/65 max-w-[600px]">
-            De l&apos;estimation à la signature, nos experts vous accompagnent à
-            chaque étape avec une approche professionnelle, humaine et tournée
-            vers la qualité.
-          </p>
         </div>
 
         <div className="relative">
-          <button
-            type="button"
-            onClick={() => scroll("left")}
-            aria-label="Précédent"
-            disabled={atStart}
-            aria-hidden={atStart}
-            tabIndex={atStart ? -1 : 0}
-            className={`absolute left-3 lg:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/20 items-center justify-center text-white shadow-lg z-10 hover:bg-white/20 transition-opacity ${atStart ? "hidden" : "flex"}`}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={() => scroll("right")}
-            aria-label="Suivant"
-            disabled={atEnd}
-            aria-hidden={atEnd}
-            tabIndex={atEnd ? -1 : 0}
-            className={`absolute right-3 lg:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/20 items-center justify-center text-white shadow-lg z-10 hover:bg-white/20 transition-opacity ${atEnd ? "hidden" : "flex"}`}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="M9 6l6 6-6 6" />
-            </svg>
-          </button>
-
           <div
             ref={trackRef}
-            className="flex gap-6 overflow-x-auto pt-3 pb-4 -my-1 px-1 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            style={{
+              paddingLeft: "max(1.5rem, calc((100vw - 1280px) / 2 + 2rem))",
+              paddingRight: "1.5rem",
+              scrollPaddingLeft: "max(1.5rem, calc((100vw - 1280px) / 2 + 2rem))",
+            }}
+            className="flex gap-6 overflow-x-auto pt-3 pb-4 -my-1 snap-x scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {services.map((s) => (
               <article
                 key={s.title}
                 data-card
-                className="group relative snap-start flex-shrink-0 w-[calc(100vw-3rem)] sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] min-w-[280px] max-w-[420px] sm:max-w-none flex flex-col p-6 sm:p-8 bg-gradient-to-b from-white/[0.09] to-white/[0.02] border border-white/20 rounded-[20px] ring-1 ring-inset ring-white/10 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/40 hover:ring-white/20 hover:from-white/[0.14] hover:to-white/[0.05] cursor-pointer"
+                className="group relative snap-start flex-shrink-0 w-[calc(100vw-3rem)] sm:w-[44vw] lg:w-[340px] xl:w-[368px] min-w-[280px] flex flex-col p-6 sm:p-8 bg-gradient-to-b from-white/[0.09] to-white/[0.02] border border-white/20 rounded-[20px] ring-1 ring-inset ring-white/10 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/40 hover:ring-white/20 hover:from-white/[0.14] hover:to-white/[0.05] cursor-pointer"
               >
                 <div className="flex flex-col flex-1">
                   <div className="w-14 h-14 bg-accent text-white flex items-center justify-center mb-6 rounded-[12px] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
@@ -263,6 +271,31 @@ export function Services() {
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="sm:hidden flex items-center justify-center gap-3 mt-8 px-6">
+            <button
+              type="button"
+              onClick={() => scroll("left")}
+              aria-label="Précédent"
+              disabled={atStart}
+              className="w-11 h-11 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/20 flex items-center justify-center text-white shadow-lg hover:bg-white/20 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => scroll("right")}
+              aria-label="Suivant"
+              disabled={atEnd}
+              className="w-11 h-11 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/20 flex items-center justify-center text-white shadow-lg hover:bg-white/20 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

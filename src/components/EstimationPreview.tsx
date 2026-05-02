@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { CTAButton } from "@/components/ui/cta-button";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 
 const ArrowRight = () => (
   <svg
@@ -62,15 +64,12 @@ type SplitTheme = "bordeaux" | "blue";
 function EstimationSplitCard({ theme }: { theme: SplitTheme }) {
   const isBordeaux = theme === "bordeaux";
   const cardBg = isBordeaux ? "bg-accent" : "bg-ink";
-  const eyebrowAccent = isBordeaux ? "text-accent" : "text-ink";
-  const recommendedBadgeBg = isBordeaux ? "bg-ink" : "bg-accent";
-  const iconAccent = isBordeaux ? "text-accent" : "text-ink";
-  const ctaBg = isBordeaux ? "bg-accent hover:bg-accent-deep" : "bg-ink hover:bg-ink-deep";
-  const onlineHoverText = isBordeaux ? "hover:text-accent" : "hover:text-ink";
+  const recommendedBadgeBg = "bg-accent";
+  const iconAccent = "text-accent";
 
   return (
     <section className="bg-bg">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div className="max-w-[1480px] mx-auto px-6 lg:px-10 py-12 lg:py-16">
         <div className="grid lg:grid-cols-12 gap-4 lg:gap-5 items-stretch">
           {/* Left: card with 2 options */}
           <div className={`lg:col-span-7 ${cardBg} text-white rounded-[14px] px-7 py-12 lg:px-12 lg:py-14 relative overflow-hidden order-2 lg:order-1`}>
@@ -84,41 +83,37 @@ function EstimationSplitCard({ theme }: { theme: SplitTheme }) {
             />
 
             <div className="relative">
-              <div className="text-[11px] tracking-[.2em] uppercase font-bold opacity-85 mb-3">
+              <SectionEyebrow index="04" tone="dark" className="mb-4">
                 Obtenir une estimation
-              </div>
+              </SectionEyebrow>
               <h2 className="text-3xl lg:text-[42px] font-extrabold tracking-tight leading-[1.05] mb-4">
                 Estimez votre bien<span className="opacity-60">.</span>
               </h2>
               <p className="text-base leading-relaxed opacity-85 mb-9 max-w-[520px]">
-                Deux approches pour connaître la valeur juste de votre bien —
+                Deux approches pour connaître la valeur juste de votre bien,
                 gratuit et sans engagement.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Option 1 — Online (transparent / glass) */}
-                <div className="rounded-[14px] bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/25 p-6 flex flex-col">
+                <div className="rounded-[14px] bg-white/[0.07] backdrop-blur-md ring-1 ring-inset ring-white/20 p-6 flex flex-col hover:bg-white/[0.10] hover:ring-white/30 transition-colors">
                   <OnlineIcon className="text-white mb-4" />
                   <h3 className="text-[14px] tracking-[.15em] uppercase font-extrabold mb-3">
                     Estimation en ligne
                   </h3>
-                  <ul className="text-[13px] opacity-80 space-y-2 mb-6 flex-1">
+                  <ul className="text-[13px] text-white/80 space-y-2 mb-6 flex-1">
                     <li>· Résultat instantané</li>
                     <li>· Simple et rapide</li>
-                    <li>· Première fourchette</li>
+                    <li>· Sans rendez-vous</li>
                   </ul>
-                  <button
-                    type="button"
-                    className={`w-full inline-flex items-center justify-center gap-2 bg-transparent text-white ring-1 ring-inset ring-white/40 rounded-[12px] px-4 py-3 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-white ${onlineHoverText} transition-colors`}
-                  >
+                  <CTAButton variant="ghost" size="sm" className="w-full">
                     Commencer
-                    <ArrowRight />
-                  </button>
+                  </CTAButton>
                 </div>
 
                 {/* Option 2 — Agent (white solid, recommended) */}
-                <div className="relative rounded-[14px] bg-white text-ink p-6 flex flex-col shadow-[0_18px_40px_-12px_rgba(0,0,0,0.35)]">
-                  <div className={`absolute -top-3 left-5 ${recommendedBadgeBg} text-white text-[10px] tracking-[.2em] uppercase font-bold px-3 py-1 rounded-full`}>
+                <div className="relative rounded-[14px] bg-white text-ink p-6 flex flex-col border border-accent/25 ring-1 ring-inset ring-white/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_14px_36px_-14px_rgba(139,21,56,0.30)]">
+                  <div className="absolute -top-3 left-5 bg-accent text-white text-[10px] tracking-[.2em] uppercase font-bold px-3 py-1 rounded-full">
                     Recommandé
                   </div>
                   <AgentIcon className={`${iconAccent} mb-4`} />
@@ -130,13 +125,9 @@ function EstimationSplitCard({ theme }: { theme: SplitTheme }) {
                     <li>· Analyse approfondie</li>
                     <li>· Conseils sur mesure</li>
                   </ul>
-                  <button
-                    type="button"
-                    className={`w-full inline-flex items-center justify-center gap-2 ${ctaBg} text-white rounded-[12px] px-4 py-3 text-[11px] font-bold tracking-[.15em] uppercase transition-colors`}
-                  >
+                  <CTAButton variant="primary" size="sm" className="w-full">
                     Prendre RDV
-                    <ArrowRight />
-                  </button>
+                  </CTAButton>
                 </div>
               </div>
             </div>

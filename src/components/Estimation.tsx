@@ -1,9 +1,10 @@
 import Image from "next/image";
+import { CTAButton } from "@/components/ui/cta-button";
 
 export function Estimation() {
   return (
     <section id="estimation" className="relative bg-gradient-to-b from-ink to-ink-deep">
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-20 lg:py-28">
+      <div className="max-w-[1480px] mx-auto px-6 lg:px-10 py-20 lg:py-28">
         <div className="group relative">
           <div className="grid grid-cols-1 lg:grid-cols-[1.45fr_1fr] gap-10 lg:gap-12 items-center">
             <div>
@@ -49,26 +50,9 @@ export function Estimation() {
                     <li>Simple et rapide</li>
                     <li>Première fourchette de prix</li>
                   </ul>
-                  <button
-                    type="button"
-                    className="w-full inline-flex whitespace-nowrap items-center justify-center gap-2.5 bg-transparent text-white ring-1 ring-inset ring-white/40 rounded-[12px] px-5 py-3.5 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-white hover:text-ink transition-colors"
-                  >
+                  <CTAButton variant="ghost" size="sm" className="w-full">
                     Commencer
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden
-                    >
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                  </button>
+                  </CTAButton>
                 </div>
 
                 {/* Card 2 — Estimation par agent (recommandé) */}
@@ -101,26 +85,9 @@ export function Estimation() {
                     <li>Analyse approfondie</li>
                     <li>Conseils sur mesure</li>
                   </ul>
-                  <button
-                    type="button"
-                    className="w-full inline-flex whitespace-nowrap items-center justify-center gap-2.5 bg-accent text-white rounded-[12px] px-5 py-3.5 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-accent-deep transition-colors"
-                  >
+                  <CTAButton variant="primary" size="sm" className="w-full">
                     Prendre rendez-vous
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden
-                    >
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                  </button>
+                  </CTAButton>
                 </div>
               </div>
 

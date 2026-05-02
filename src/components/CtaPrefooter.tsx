@@ -1,7 +1,10 @@
+import { CTAButton } from "@/components/ui/cta-button";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
+
 export function CtaPrefooter() {
   return (
     <section id="contact" className="bg-bg">
-      <div className="w-full px-4 sm:px-6 lg:px-8 pt-4 lg:pt-6 pb-4">
+      <div className="max-w-[1480px] xl:max-w-[1680px] 2xl:max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 pt-4 lg:pt-6 pb-4">
         <div className="grid lg:grid-cols-12 gap-4 lg:gap-5 items-stretch">
           {/* Left: photo (format natif 4:5) */}
           <div className="lg:col-span-4 relative rounded-[14px] overflow-hidden aspect-[954/1194]">
@@ -34,39 +37,20 @@ export function CtaPrefooter() {
             />
 
             <div className="relative lg:max-w-[60%]">
-              <div className="text-[11px] tracking-[.2em] uppercase font-bold opacity-85 mb-4">
+              <SectionEyebrow index="07" tone="onAccent" className="mb-5">
                 Contactez-nous
-              </div>
+              </SectionEyebrow>
               <h2 className="text-4xl lg:text-[48px] font-extrabold tracking-tight leading-[1.05] mb-5">
                 Confiez-nous votre projet.
               </h2>
               <p className="text-base leading-relaxed opacity-85 mb-8 max-w-[520px]">
-                Vendre, acheter, louer ou simplement vous renseigner — on est à
+                Vendre, acheter, louer ou simplement vous renseigner : on est à
                 un appel ou un message. La première conversation est toujours
                 la plus utile.
               </p>
 
               <div className="flex mb-10">
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-3 bg-white text-accent rounded-[14px] px-8 py-4 text-[13px] font-bold tracking-wider uppercase hover:opacity-90 transition-opacity"
-                >
-                  Prendre rendez-vous
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </button>
+                <CTAButton variant="inverted">Prendre rendez-vous</CTAButton>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-x-10 gap-y-6">

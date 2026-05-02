@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 
 type Testimonial = {
   rating: number;
@@ -110,7 +111,15 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
-function FractionalStars({ rating, size = 16 }: { rating: number; size?: number }) {
+function FractionalStars({
+  rating,
+  size = 16,
+  colorClass = "text-accent",
+}: {
+  rating: number;
+  size?: number;
+  colorClass?: string;
+}) {
   const fullStars = Math.floor(rating);
   const partial = rating - fullStars;
   const partialPct = Math.round(partial * 100);
@@ -118,7 +127,7 @@ function FractionalStars({ rating, size = 16 }: { rating: number; size?: number 
 
   return (
     <div
-      className="flex gap-1 text-accent"
+      className={`flex gap-1 ${colorClass}`}
       aria-label={`${rating} sur 5 étoiles`}
     >
       {[1, 2, 3, 4, 5].map((i) => {
@@ -243,8 +252,10 @@ export function TestimonialsMarquee() {
     <section className="bg-bg overflow-hidden">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="text-center max-w-[680px] mx-auto mb-12">
-          <div className="text-[11px] tracking-[.2em] uppercase text-accent font-bold mb-3">
-            Ils nous font confiance
+          <div className="flex justify-center mb-4">
+            <SectionEyebrow index="05" tone="light">
+              Témoignages
+            </SectionEyebrow>
           </div>
           <h2 className="text-3xl lg:text-[38px] font-extrabold tracking-tight leading-[1.1]">
             Ce que nos clients disent de nous
@@ -300,21 +311,6 @@ export function TestimonialsMarquee() {
             </svg>
           </button>
 
-          <div className="flex justify-center mt-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-ink/5 ring-1 ring-inset ring-ink/10">
-              {allReviews.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setMobileIndex(i)}
-                  aria-label={`Aller à l'avis ${i + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    i === mobileIndex ? "w-6 bg-accent" : "w-2 bg-ink/20 hover:bg-ink/40"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Desktop : marquee défilante */}
@@ -326,34 +322,38 @@ export function TestimonialsMarquee() {
           <Row items={allReviews} paused={paused} />
         </div>
 
-        <div className="flex justify-center items-center gap-4 mt-10 flex-wrap text-xs text-muted tracking-wider">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/assets/icons/google.svg"
-              alt="Google"
-              width={20}
-              height={20}
-              className="block"
-            />
-            <Image
-              src="/assets/icons/facebook.svg"
-              alt="Facebook"
-              width={20}
-              height={20}
-              className="block"
-            />
-            <Image
-              src="/assets/icons/realadvice.png"
-              alt="RealAdvice"
-              width={20}
-              height={20}
-              className="block"
-              style={{ width: "auto", height: 20 }}
-            />
+        <div className="mt-10 flex justify-center">
+          <div className="inline-flex items-center gap-3 text-[12px] text-ink/60 rounded-full ring-1 ring-inset ring-ink/12 bg-white/60 px-5 py-2">
+            <FractionalStars rating={4.6} size={13} />
+            <span className="font-semibold text-ink/80 tabular-nums">4,6/5</span>
+            <span aria-hidden className="h-3 w-px bg-ink/15" />
+            <span>579 avis</span>
+            <span aria-hidden className="h-3 w-px bg-ink/15" />
+            <div className="hidden sm:inline-flex items-center gap-2 opacity-80">
+              <Image
+                src="/assets/icons/google.svg"
+                alt="Google"
+                width={14}
+                height={14}
+                className="block"
+              />
+              <Image
+                src="/assets/icons/facebook.svg"
+                alt="Facebook"
+                width={14}
+                height={14}
+                className="block"
+              />
+              <Image
+                src="/assets/icons/realadvice.png"
+                alt="RealAdvice"
+                width={14}
+                height={14}
+                className="block"
+                style={{ width: "auto", height: 14 }}
+              />
+            </div>
           </div>
-          <FractionalStars rating={4.6} size={18} />
-          <strong className="text-ink">4,6/5</strong>
-          <span>· 579 avis cumulés sur Google, Facebook et RealAdvice</span>
         </div>
       </div>
     </section>

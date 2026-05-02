@@ -1,17 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HeroDarkVariantA, HeroDarkVariantE, HeroDarkVariantF } from "./HeroDarkPreview";
 
 const slides = [
-  { id: "variant-1", label: "Variante 1", render: () => <HeroDarkVariantF /> },
-  { id: "variant-2", label: "Variante 2", render: () => <HeroDarkVariantE /> },
-  { id: "variant-3", label: "Variante 3", render: () => <HeroDarkVariantA /> },
+  { id: "variant-1", label: "Variante 1", render: () => <HeroDarkVariantA /> },
+  { id: "variant-2", label: "Variante 2", render: () => <HeroDarkVariantF /> },
+  { id: "variant-3", label: "Variante 3", render: () => <HeroDarkVariantE /> },
 ];
 
 export function HeroSlider() {
   const [index, setIndex] = useState(0);
   const total = slides.length;
+
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("hero-variant", { detail: { index } }));
+  }, [index]);
 
   const prev = () => setIndex((i) => (i - 1 + total) % total);
   const next = () => setIndex((i) => (i + 1) % total);

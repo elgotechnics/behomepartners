@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { listings, formatPrice, pebColors, type Listing } from "@/data/listings";
+import { CTAButton } from "@/components/ui/cta-button";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 
 type Tab = "vente" | "location";
 
@@ -69,9 +71,9 @@ export function Listings() {
       <div className="max-w-[1280px] xl:max-w-[1480px] mx-auto px-6 py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-end mb-8">
           <div>
-            <div className="text-[11px] tracking-[.2em] uppercase text-accent font-bold mb-2">
+            <SectionEyebrow index="01" tone="light" className="mb-3">
               Notre sélection
-            </div>
+            </SectionEyebrow>
             <h2 className="text-3xl lg:text-[38px] font-extrabold leading-[1.1] tracking-tight mb-3">
               Nos biens du moment
             </h2>
@@ -81,19 +83,19 @@ export function Listings() {
             </p>
           </div>
 
-          <div className="relative inline-flex justify-self-center lg:justify-self-start p-1.5 rounded-full bg-ink/5 ring-1 ring-inset ring-ink/10">
+          <div className="relative inline-flex justify-self-center lg:justify-self-start p-1.5 rounded-[14px] bg-black/[0.07] ring-1 ring-inset ring-black/10">
             {(["vente", "location"] as const).map((t) => (
               <button
                 key={t}
                 type="button"
                 onClick={() => setTab(t)}
-                className={`relative px-7 py-2.5 text-[13px] font-bold tracking-[.2em] uppercase rounded-full transition-all duration-300 ${
+                className={`relative px-7 py-2.5 text-[13px] font-bold tracking-[.2em] uppercase rounded-[12px] transition-all duration-300 ${
                   tab === t
-                    ? "bg-ink text-white ring-1 ring-inset ring-white/10 shadow-[0_6px_18px_-4px_rgba(15,23,42,0.45)]"
-                    : "text-ink/50 hover:text-ink/85"
+                    ? "bg-white text-ink shadow-[0_4px_16px_-4px_rgba(13,15,42,0.12)]"
+                    : "text-ink/55 hover:text-ink"
                 }`}
               >
-                {t === "vente" ? "À vendre" : "À louer"}
+                {t === "vente" ? "Acheter" : "Louer"}
               </button>
             ))}
           </div>
@@ -131,52 +133,19 @@ export function Listings() {
           </div>
         </div>
 
-        <div className="flex justify-center mt-8">
-          <div
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-ink/5 ring-1 ring-inset ring-ink/10"
-            role="tablist"
-            aria-label="Pagination des biens"
-          >
-            {Array.from({ length: pageCount }).map((_, i) => {
-              const active = i === page;
-              return (
-                <button
-                  key={i}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  aria-label={`Aller à la page ${i + 1}`}
-                  onClick={() => goToPage(i)}
-                  className={`h-2 rounded-full transition-all duration-300 ease-out ${
-                    active ? "w-8 bg-accent" : "w-2 bg-ink/20 hover:bg-ink/40"
-                  }`}
-                ></button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="mt-8 px-12 pt-10 pb-9 text-center relative overflow-hidden">
+        <div className="px-6 md:px-12 pt-2 md:pt-6 pb-9 text-center relative overflow-hidden">
           <p className="text-[17px] text-ink max-w-[620px] mx-auto mb-6 leading-relaxed">
-            Découvrez l&apos;ensemble de nos biens disponibles à la vente et à
-            la location partout en Belgique.
+            Découvrez tous nos biens à vendre et à louer en Brabant wallon et
+            ses environs.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap relative">
-            <a
-              href="#listings"
-              className="bg-accent text-white px-8 py-4 inline-flex items-center gap-3.5 font-semibold text-xs tracking-[.2em] uppercase rounded-[14px] hover:opacity-90 transition-opacity"
-            >
-              <span>Biens à vendre</span>
-              <span className="text-base">→</span>
-            </a>
-            <a
-              href="#listings"
-              className="bg-transparent text-accent border border-accent px-8 py-[15px] inline-flex items-center gap-3.5 font-semibold text-xs tracking-[.2em] uppercase rounded-[14px] hover:bg-accent hover:text-white transition-colors"
-            >
-              <span>Biens à louer</span>
-              <span className="text-base">→</span>
-            </a>
+            <CTAButton href="#listings" variant="primary">
+              Biens à vendre
+            </CTAButton>
+            <CTAButton href="#listings" variant="outline">
+              Biens à louer
+            </CTAButton>
           </div>
         </div>
       </div>
@@ -220,6 +189,7 @@ function ListingCard({
         <span className="absolute top-3 left-3 bg-accent text-white px-3 py-1.5 font-bold text-[11px] tracking-[.15em] uppercase rounded-sm">
           {listing.type}
         </span>
+        <FavoriteButton id={listing.id} />
       </div>
 
       <div className="p-4">
@@ -361,6 +331,39 @@ function FeatureIcon({ name }: { name: string }) {
   if (n.includes("terrasse") || n.includes("balcon")) return <TerraceIcon />;
   if (n.includes("bureau")) return <OfficeIcon />;
   return <DotIcon />;
+}
+
+function FavoriteButton({ id }: { id: string }) {
+  const [active, setActive] = useState(false);
+  return (
+    <button
+      type="button"
+      aria-label={active ? "Retirer des favoris" : "Ajouter aux favoris"}
+      aria-pressed={active}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setActive((v) => !v);
+      }}
+      data-listing-id={id}
+      className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-[0_4px_12px_-2px_rgba(15,23,42,0.25)] hover:bg-white transition-colors"
+    >
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill={active ? "currentColor" : "none"}
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={active ? "text-accent" : "text-ink"}
+        aria-hidden
+      >
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+      </svg>
+    </button>
+  );
 }
 
 function PebBadge({ rating }: { rating: keyof typeof pebColors }) {

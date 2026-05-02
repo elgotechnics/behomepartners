@@ -34,7 +34,7 @@ const agencies = [
 export function Footer() {
   return (
     <footer className="bg-bg">
-      <div className="w-full px-4 sm:px-6 lg:px-8 pb-2">
+      <div className="max-w-[1480px] xl:max-w-[1680px] 2xl:max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 pb-2">
         <div className="bg-ink text-white rounded-[14px] overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 px-8 lg:px-14 pt-14 pb-10 items-end border-b border-white/10">
             <div>
@@ -168,7 +168,7 @@ export function Footer() {
 
           <div className="px-8 lg:px-14 py-6 border-t border-white/10 text-[11px] leading-relaxed text-white/55 text-center">
             Agent immobilier intermédiaire en Belgique agréé IPI sous le numéro
-            503.617 — N° entreprise : BE 0830.645.048.
+            503.617. N° entreprise : BE 0830.645.048.
             <br />
             Instance de contrôle : IPI/BIV, rue du Luxembourg 16B, 1000
             Bruxelles. Soumis au code déontologique de l&apos;IPI :{" "}
@@ -185,7 +185,7 @@ export function Footer() {
 
           <div className="px-8 lg:px-14 py-5 bg-black/25 flex flex-wrap justify-between items-center gap-4 text-xs">
             <div className="opacity-55">
-              © 2026 Be Home Partners — Tous droits réservés.
+              © 2026 Be Home Partners. Tous droits réservés.
             </div>
             <div className="flex gap-6 opacity-70 flex-wrap">
               {[

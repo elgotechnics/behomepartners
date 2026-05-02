@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { SearchBar } from "./SearchBar";
 
 const StarRating = () => (
   <span className="inline-flex items-center gap-2 bg-accent text-white px-3 py-1.5 rounded-sm">
@@ -75,7 +73,7 @@ function MiniSearchBar({ variant = "light" }: { variant?: "light" | "glass" | "i
 /* ─────────── Variante 1 · Cinematic Vignette ─────────── */
 export function HeroDarkVariantA() {
   return (
-    <section className="relative bg-ink overflow-hidden min-h-[calc(100dvh-4rem)] md:min-h-[calc(100dvh-5rem)] 2xl:min-h-[calc(100dvh-6rem)] max-h-[1080px] flex items-center">
+    <section className="relative bg-ink overflow-hidden min-h-[calc(100dvh-16rem)] md:min-h-[calc(100dvh-17rem)] lg:min-h-[calc(100dvh-13rem)] 2xl:min-h-[calc(100dvh-14rem)] max-h-[1080px] flex items-center">
       <div className="hidden lg:block absolute inset-0">
         <Image
           src="/assets/images/hero-building.png"
@@ -89,7 +87,7 @@ export function HeroDarkVariantA() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#070d22] via-transparent to-[#070d22]/40" />
       </div>
 
-      <div className="relative w-full px-6 lg:px-10 xl:px-20 2xl:px-28 py-8 lg:py-10 xl:py-16 2xl:py-20">
+      <div className="relative w-full max-w-[1280px] xl:max-w-[1560px] 2xl:max-w-[1720px] mx-auto px-4 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-24 pb-8 lg:pt-28 lg:pb-10 xl:pt-32 xl:pb-16 2xl:pt-40 2xl:pb-20">
         <div className="max-w-[720px] xl:max-w-[900px] 2xl:max-w-[1040px]">
           <div className="inline-flex items-center gap-3 mb-4 xl:mb-6">
             <StarRating />
@@ -113,100 +111,21 @@ export function HeroDarkVariantA() {
             immobiliers avec une approche humaine, transparente et sur-mesure.
           </p>
 
-          <SearchBar />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────── Variante 3 · Bento Showcase (premium éditorial) ─────────── */
-export function HeroDarkVariantE() {
-  const [mode, setMode] = useState<"acheter" | "louer">("acheter");
-  return (
-    <section className="relative bg-ink-darker overflow-hidden min-h-[calc(100dvh-4rem)] md:min-h-[calc(100dvh-5rem)] 2xl:min-h-[calc(100dvh-6rem)] max-h-[1080px] flex items-center">
-      <div
-        className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
-
-      <span className="hidden lg:block absolute left-6 top-1/2 -translate-y-1/2 origin-left -rotate-90 text-[10px] tracking-[.5em] uppercase text-white/40 font-semibold pointer-events-none">
-        Be Home Partners · Est. 2010
-      </span>
-
-      {/* ── Villa en arrière-plan, côté droit ── */}
-      <div className="hidden lg:block absolute inset-y-0 right-0 w-full lg:w-[70%] pointer-events-none">
-        <Image
-          src="/assets/images/hero-villa-transparent.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-right-bottom opacity-95"
-          sizes="(max-width: 1024px) 100vw, 70vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-darker via-ink-darker/40 to-transparent" />
-      </div>
-
-      <div className="relative w-full px-6 lg:px-10 xl:px-20 2xl:px-28 py-8 lg:py-10 xl:py-16 2xl:py-20">
-        <div className="max-w-[720px] xl:max-w-[880px] 2xl:max-w-[1040px]">
-          <div className="inline-flex items-center gap-2.5 mb-4 px-3.5 py-1.5 rounded-full bg-white/5 ring-1 ring-inset ring-white/10 backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-75 animate-ping" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-            </span>
-            <span className="text-[11px] font-semibold tracking-wide text-white/90">
-              12 nouveaux biens cette semaine
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 mb-5">
-            <StarRating />
-            <span className="text-sm text-white/75">Basé sur 579 avis</span>
-          </div>
-
-          <h1 className="text-3xl lg:text-[40px] xl:text-[56px] 2xl:text-[72px] font-extrabold leading-[1.05] tracking-tight text-white mb-4 xl:mb-6">
-            Votre partenaire de référence en immobilier.
-          </h1>
-
-          <p className="text-[15px] lg:text-base xl:text-xl 2xl:text-[22px] text-white/70 max-w-[500px] xl:max-w-[600px] 2xl:max-w-[680px] mb-6 lg:mb-7 xl:mb-9 leading-relaxed">
-            Depuis 2010, Be Home Partners vous accompagne dans tous vos
-            projets immobiliers avec une approche humaine, transparente et
-            sur-mesure.
-          </p>
-
-          <div className="max-w-[720px] xl:max-w-[880px] 2xl:max-w-[1040px]">
-            <div className="relative inline-flex p-1 xl:p-1.5 mb-3 xl:mb-4 rounded-[14px] bg-white/[0.06] backdrop-blur-xl ring-1 ring-inset ring-white/10">
-              {(["acheter", "louer"] as const).map((m) => (
-                <button
-                  key={m}
-                  type="button"
-                  onClick={() => setMode(m)}
-                  className={`relative px-5 py-2 xl:px-7 xl:py-2.5 2xl:px-8 2xl:py-3 text-[12px] xl:text-[13px] 2xl:text-[14px] font-bold tracking-[.15em] uppercase rounded-[12px] transition-all duration-300 ${
-                    mode === m
-                      ? "bg-white text-ink shadow-[0_4px_16px_-4px_rgba(0,0,0,0.4)]"
-                      : "text-white/70 hover:text-white"
-                  }`}
-                >
-                  {m}
-                </button>
-              ))}
+          <div className="max-w-[440px] xl:max-w-[500px]">
+            <div className="inline-flex items-center gap-1 mb-3 p-1 rounded-[12px] bg-white/[0.04] ring-1 ring-inset ring-white/10">
+              <button type="button" className="px-4 py-1.5 rounded-[10px] text-[11px] font-bold tracking-[.15em] uppercase bg-white text-ink">Acheter</button>
+              <button type="button" className="px-4 py-1.5 rounded-[10px] text-[11px] font-bold tracking-[.15em] uppercase text-white/70 hover:text-white transition-colors">Louer</button>
             </div>
-
-            <div className="bg-white/[0.04] backdrop-blur-xl ring-1 ring-inset ring-white/10 rounded-[14px] xl:rounded-[16px] p-1.5 xl:p-2 2xl:p-2.5 flex flex-col lg:flex-row items-stretch gap-1.5 xl:gap-2">
-              <div className="relative flex-1 min-w-[140px]">
+            <div className="bg-white/[0.04] backdrop-blur-xl ring-1 ring-inset ring-white/10 rounded-[14px] xl:rounded-[16px] p-1.5 xl:p-2 2xl:p-2.5 grid grid-cols-1 lg:grid-cols-2 gap-1.5 xl:gap-2">
+              <div className="relative">
                 <input
                   type="text"
                   placeholder="Localisation"
-                  className="w-full px-3 py-2.5 xl:px-4 xl:py-3.5 2xl:px-5 2xl:py-4 bg-transparent rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white placeholder:text-white focus:outline-none focus:bg-white/[0.06] transition"
+                  className="w-full px-3 py-2.5 xl:px-4 xl:py-3.5 2xl:px-5 2xl:py-4 bg-white/[0.05] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white placeholder:text-white focus:outline-none focus:bg-white/[0.09] hover:bg-white/[0.09] transition"
                 />
               </div>
-              <span className="hidden lg:block w-px bg-white/10" />
-              <div className="relative flex-1 min-w-[100px]">
-                <select defaultValue="" className="w-full appearance-none pl-3 pr-7 py-2.5 xl:pl-4 xl:pr-9 xl:py-3.5 2xl:pl-5 2xl:pr-10 2xl:py-4 bg-transparent hover:bg-white/[0.06] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white focus:outline-none cursor-pointer transition">
+              <div className="relative">
+                <select defaultValue="" className="w-full appearance-none pl-3 pr-7 py-2.5 xl:pl-4 xl:pr-9 xl:py-3.5 2xl:pl-5 2xl:pr-10 2xl:py-4 bg-white/[0.05] hover:bg-white/[0.09] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white focus:outline-none cursor-pointer transition">
                   <option value="" disabled className="bg-ink-deep">Type</option>
                   <option className="bg-ink-deep">Maison</option>
                   <option className="bg-ink-deep">Appartement</option>
@@ -218,9 +137,8 @@ export function HeroDarkVariantE() {
                   </svg>
                 </span>
               </div>
-              <span className="hidden lg:block w-px bg-white/10" />
-              <div className="relative flex-1 min-w-[100px]">
-                <select defaultValue="" className="w-full appearance-none pl-3 pr-7 py-2.5 xl:pl-4 xl:pr-9 xl:py-3.5 2xl:pl-5 2xl:pr-10 2xl:py-4 bg-transparent hover:bg-white/[0.06] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white focus:outline-none cursor-pointer transition">
+              <div className="relative">
+                <select defaultValue="" className="w-full appearance-none pl-3 pr-7 py-2.5 xl:pl-4 xl:pr-9 xl:py-3.5 2xl:pl-5 2xl:pr-10 2xl:py-4 bg-white/[0.05] hover:bg-white/[0.09] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white focus:outline-none cursor-pointer transition">
                   <option value="" disabled className="bg-ink-deep">Chambres</option>
                   <option className="bg-ink-deep">1</option>
                   <option className="bg-ink-deep">2</option>
@@ -234,9 +152,8 @@ export function HeroDarkVariantE() {
                   </svg>
                 </span>
               </div>
-              <span className="hidden lg:block w-px bg-white/10" />
-              <div className="relative flex-1 min-w-[100px]">
-                <select defaultValue="" className="w-full appearance-none pl-3 pr-7 py-2.5 xl:pl-4 xl:pr-9 xl:py-3.5 2xl:pl-5 2xl:pr-10 2xl:py-4 bg-transparent hover:bg-white/[0.06] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white focus:outline-none cursor-pointer transition">
+              <div className="relative">
+                <select defaultValue="" className="w-full appearance-none pl-3 pr-7 py-2.5 xl:pl-4 xl:pr-9 xl:py-3.5 2xl:pl-5 2xl:pr-10 2xl:py-4 bg-white/[0.05] hover:bg-white/[0.09] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white focus:outline-none cursor-pointer transition">
                   <option value="" disabled className="bg-ink-deep">Budget</option>
                   <option className="bg-ink-deep">≤ 200 000 €</option>
                   <option className="bg-ink-deep">≤ 400 000 €</option>
@@ -252,13 +169,130 @@ export function HeroDarkVariantE() {
               <button
                 type="button"
                 aria-label="Rechercher"
-                className="inline-flex items-center justify-center gap-2 xl:gap-2.5 bg-accent hover:bg-accent-deep text-white px-4 py-2.5 xl:px-6 xl:py-3.5 2xl:px-7 2xl:py-4 rounded-[12px] text-[11px] xl:text-[13px] 2xl:text-[14px] font-bold tracking-[.15em] uppercase transition-colors whitespace-nowrap w-full lg:w-auto"
+                className="col-span-1 lg:col-span-2 mt-0.5 inline-flex items-center justify-center gap-2 xl:gap-2.5 bg-accent hover:bg-accent-deep text-white px-4 py-3 xl:px-6 xl:py-3.5 2xl:px-7 2xl:py-4 rounded-[12px] text-[11px] xl:text-[13px] 2xl:text-[14px] font-bold tracking-[.15em] uppercase transition-colors whitespace-nowrap w-full"
               >
                 <svg className="w-3.5 h-3.5 xl:w-[18px] xl:h-[18px] 2xl:w-5 2xl:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                   <circle cx="11" cy="11" r="7" />
                   <path d="M21 21l-4.3-4.3" />
                 </svg>
-                <span className="lg:hidden xl:inline">Rechercher</span>
+                Rechercher
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────── Variante 3 · Bento Showcase (premium éditorial) ─────────── */
+export function HeroDarkVariantE() {
+  return (
+    <section className="relative bg-ink-darker overflow-hidden min-h-[calc(100dvh-16rem)] md:min-h-[calc(100dvh-17rem)] lg:min-h-[calc(100dvh-13rem)] 2xl:min-h-[calc(100dvh-14rem)] max-h-[1080px] flex items-center mt-16 md:mt-20">
+      <div
+        className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
+
+      {/* ── Villa en arrière-plan, côté droit ── */}
+      <div className="hidden lg:block absolute inset-y-0 right-0 w-full lg:w-[70%] pointer-events-none">
+        <Image
+          src="/assets/images/hero-villa-transparent.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-right-bottom opacity-95"
+          sizes="(max-width: 1024px) 100vw, 70vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-darker via-ink-darker/40 to-transparent" />
+      </div>
+
+      <div className="relative w-full max-w-[1280px] xl:max-w-[1560px] 2xl:max-w-[1720px] mx-auto px-4 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-24 pb-8 lg:pt-28 lg:pb-10 xl:pt-32 xl:pb-14 2xl:pt-40 2xl:pb-20">
+        <div className="max-w-[720px] xl:max-w-[900px] 2xl:max-w-[1040px]">
+          <div className="flex items-center gap-4 mb-5">
+            <StarRating />
+            <span className="text-sm text-white/75">Basé sur 579 avis</span>
+          </div>
+
+          <h1 className="text-3xl lg:text-[34px] xl:text-[44px] 2xl:text-[68px] font-extrabold leading-[1.08] tracking-tight text-white mb-4 xl:mb-5 max-w-[560px] xl:max-w-[680px] 2xl:max-w-[920px]">
+            Votre partenaire de référence en immobilier.
+          </h1>
+
+          <p className="text-[15px] lg:text-[15px] xl:text-base 2xl:text-[20px] text-white/70 max-w-[460px] xl:max-w-[520px] 2xl:max-w-[640px] mb-5 lg:mb-6 xl:mb-7 leading-relaxed">
+            Depuis 2010, Be Home Partners vous accompagne dans tous vos
+            projets immobiliers avec une approche humaine, transparente et
+            sur-mesure.
+          </p>
+
+          <div className="max-w-[640px] xl:max-w-[680px] 2xl:max-w-[1040px]">
+            <div className="inline-flex items-center gap-1 mb-3 p-1 rounded-[12px] bg-white/[0.04] ring-1 ring-inset ring-white/10">
+              <button type="button" className="px-4 py-1.5 rounded-[10px] text-[11px] font-bold tracking-[.15em] uppercase bg-white text-ink">Acheter</button>
+              <button type="button" className="px-4 py-1.5 rounded-[10px] text-[11px] font-bold tracking-[.15em] uppercase text-white/70 hover:text-white transition-colors">Louer</button>
+            </div>
+            <div className="max-w-[440px] xl:max-w-[500px] bg-white/[0.04] backdrop-blur-xl ring-1 ring-inset ring-white/10 rounded-[14px] xl:rounded-[16px] p-1.5 xl:p-2 2xl:p-2.5 grid grid-cols-1 lg:grid-cols-2 gap-1.5 xl:gap-2">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Localisation"
+                  className="w-full px-3 py-2.5 xl:px-4 xl:py-3.5 2xl:px-5 2xl:py-4 bg-white/[0.05] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white placeholder:text-white focus:outline-none focus:bg-white/[0.09] hover:bg-white/[0.09] transition"
+                />
+              </div>
+              <div className="relative">
+                <select defaultValue="" className="w-full appearance-none pl-3 pr-7 py-2.5 xl:pl-4 xl:pr-9 xl:py-3.5 2xl:pl-5 2xl:pr-10 2xl:py-4 bg-white/[0.05] hover:bg-white/[0.09] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white focus:outline-none cursor-pointer transition">
+                  <option value="" disabled className="bg-ink-deep">Type</option>
+                  <option className="bg-ink-deep">Maison</option>
+                  <option className="bg-ink-deep">Appartement</option>
+                  <option className="bg-ink-deep">Terrain</option>
+                </select>
+                <span className="pointer-events-none absolute right-2 xl:right-3 top-1/2 -translate-y-1/2 text-white/45">
+                  <svg className="w-[11px] h-[11px] xl:w-3.5 xl:h-3.5 2xl:w-4 2xl:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </span>
+              </div>
+              <div className="relative">
+                <select defaultValue="" className="w-full appearance-none pl-3 pr-7 py-2.5 xl:pl-4 xl:pr-9 xl:py-3.5 2xl:pl-5 2xl:pr-10 2xl:py-4 bg-white/[0.05] hover:bg-white/[0.09] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white focus:outline-none cursor-pointer transition">
+                  <option value="" disabled className="bg-ink-deep">Chambres</option>
+                  <option className="bg-ink-deep">1</option>
+                  <option className="bg-ink-deep">2</option>
+                  <option className="bg-ink-deep">3</option>
+                  <option className="bg-ink-deep">4</option>
+                  <option className="bg-ink-deep">5+</option>
+                </select>
+                <span className="pointer-events-none absolute right-2 xl:right-3 top-1/2 -translate-y-1/2 text-white/45">
+                  <svg className="w-[11px] h-[11px] xl:w-3.5 xl:h-3.5 2xl:w-4 2xl:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </span>
+              </div>
+              <div className="relative">
+                <select defaultValue="" className="w-full appearance-none pl-3 pr-7 py-2.5 xl:pl-4 xl:pr-9 xl:py-3.5 2xl:pl-5 2xl:pr-10 2xl:py-4 bg-white/[0.05] hover:bg-white/[0.09] rounded-[12px] text-[12.5px] xl:text-[14px] 2xl:text-[15px] text-white focus:outline-none cursor-pointer transition">
+                  <option value="" disabled className="bg-ink-deep">Budget</option>
+                  <option className="bg-ink-deep">≤ 200 000 €</option>
+                  <option className="bg-ink-deep">≤ 400 000 €</option>
+                  <option className="bg-ink-deep">≤ 600 000 €</option>
+                  <option className="bg-ink-deep">≤ 1 000 000 €</option>
+                </select>
+                <span className="pointer-events-none absolute right-2 xl:right-3 top-1/2 -translate-y-1/2 text-white/45">
+                  <svg className="w-[11px] h-[11px] xl:w-3.5 xl:h-3.5 2xl:w-4 2xl:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </span>
+              </div>
+              <button
+                type="button"
+                aria-label="Rechercher"
+                className="col-span-1 lg:col-span-2 mt-0.5 inline-flex items-center justify-center gap-2 xl:gap-2.5 bg-accent hover:bg-accent-deep text-white px-4 py-3 xl:px-6 xl:py-3.5 2xl:px-7 2xl:py-4 rounded-[12px] text-[11px] xl:text-[13px] 2xl:text-[14px] font-bold tracking-[.15em] uppercase transition-colors whitespace-nowrap w-full"
+              >
+                <svg className="w-3.5 h-3.5 xl:w-[18px] xl:h-[18px] 2xl:w-5 2xl:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M21 21l-4.3-4.3" />
+                </svg>
+                Rechercher
               </button>
             </div>
           </div>
@@ -270,9 +304,8 @@ export function HeroDarkVariantE() {
 
 /* ─────────── Variante 3 · Immersive centered (villa + voile bleu) ─────────── */
 export function HeroDarkVariantF() {
-  const [mode, setMode] = useState<"acheter" | "louer">("acheter");
   return (
-    <section className="relative bg-ink-darker overflow-hidden min-h-[calc(100dvh-4rem)] md:min-h-[calc(100dvh-5rem)] 2xl:min-h-[calc(100dvh-6rem)] max-h-[1080px] flex items-center">
+    <section className="relative bg-ink-darker overflow-hidden min-h-[calc(100dvh-65px)] md:min-h-[calc(100dvh-81px)] max-h-[1080px] flex items-center mt-[65px] md:mt-[81px]">
       <div className="hidden lg:block absolute inset-0">
         <Image
           src="/assets/images/hero-villa-pool.jpg"
@@ -286,7 +319,7 @@ export function HeroDarkVariantF() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#070d22]/60 via-ink-darker/40 to-[#070d22]/85" />
       </div>
 
-      <div className="relative w-full px-6 lg:px-10 xl:px-20 2xl:px-28 py-8 lg:py-10 xl:py-14 2xl:py-20 flex flex-col items-center text-center">
+      <div className="relative w-full px-6 lg:px-10 xl:px-20 2xl:px-28 pt-24 pb-8 lg:pt-28 lg:pb-10 xl:pt-32 xl:pb-14 2xl:pt-40 2xl:pb-20 flex flex-col items-center text-center">
         <div className="inline-flex items-center gap-3 mb-4">
           <StarRating />
           <span className="text-sm xl:text-base text-white/80">Basé sur 579 avis</span>
@@ -310,36 +343,16 @@ export function HeroDarkVariantF() {
         </p>
 
         <div className="w-full max-w-[1080px] mt-auto">
-          <div className="flex justify-center mb-3 lg:mb-4">
-            <div className="relative inline-flex p-1.5 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-inset ring-white/20">
-              {(["acheter", "louer"] as const).map((m) => (
-                <button
-                  key={m}
-                  type="button"
-                  onClick={() => setMode(m)}
-                  className={`relative px-7 py-2 2xl:px-9 2xl:py-2.5 text-[12px] 2xl:text-[13px] font-bold tracking-[.2em] uppercase rounded-full transition-all duration-300 ${
-                    mode === m
-                      ? "bg-white text-ink ring-1 ring-inset ring-ink/10 shadow-[0_6px_18px_-4px_rgba(0,0,0,0.45)]"
-                      : "text-white/50 hover:text-white/85"
-                  }`}
-                >
-                  {m}
-                </button>
-              ))}
-            </div>
-          </div>
-
           <div className="bg-white ring-1 ring-inset ring-black/5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.45)] rounded-[14px] p-2.5 2xl:p-3 flex flex-col lg:flex-row items-stretch gap-2 lg:gap-2.5 text-left">
             <div className="relative flex-1 min-w-[180px]">
               <input
                 type="text"
                 placeholder="Localisation"
-                className="w-full px-4 py-3 2xl:px-5 2xl:py-4 bg-transparent rounded-[12px] text-[13.5px] 2xl:text-[15px] text-ink placeholder:text-ink/70 focus:outline-none focus:bg-ink/[0.04] transition"
+                className="w-full px-4 py-3 2xl:px-5 2xl:py-4 bg-ink/[0.04] hover:bg-ink/[0.07] rounded-[12px] text-[13.5px] 2xl:text-[15px] text-ink placeholder:text-ink/70 focus:outline-none focus:bg-ink/[0.07] transition"
               />
             </div>
-            <span className="hidden lg:block w-px bg-ink/10" />
             <div className="relative flex-1 min-w-[140px]">
-              <select defaultValue="" className="w-full appearance-none pl-4 pr-10 py-3 2xl:pl-5 2xl:py-4 bg-transparent hover:bg-ink/[0.04] rounded-[12px] text-[13.5px] 2xl:text-[15px] text-ink focus:outline-none cursor-pointer transition">
+              <select defaultValue="" className="w-full appearance-none pl-4 pr-10 py-3 2xl:pl-5 2xl:py-4 bg-ink/[0.04] hover:bg-ink/[0.07] rounded-[12px] text-[13.5px] 2xl:text-[15px] text-ink focus:outline-none cursor-pointer transition">
                 <option value="" disabled>Type</option>
                 <option>Maison</option>
                 <option>Appartement</option>
@@ -351,9 +364,8 @@ export function HeroDarkVariantF() {
                 </svg>
               </span>
             </div>
-            <span className="hidden lg:block w-px bg-ink/10" />
             <div className="relative flex-1 min-w-[140px]">
-              <select defaultValue="" className="w-full appearance-none pl-4 pr-10 py-3 2xl:pl-5 2xl:py-4 bg-transparent hover:bg-ink/[0.04] rounded-[12px] text-[13.5px] 2xl:text-[15px] text-ink focus:outline-none cursor-pointer transition">
+              <select defaultValue="" className="w-full appearance-none pl-4 pr-10 py-3 2xl:pl-5 2xl:py-4 bg-ink/[0.04] hover:bg-ink/[0.07] rounded-[12px] text-[13.5px] 2xl:text-[15px] text-ink focus:outline-none cursor-pointer transition">
                 <option value="" disabled>Chambres</option>
                 <option>1</option>
                 <option>2</option>
@@ -367,9 +379,8 @@ export function HeroDarkVariantF() {
                 </svg>
               </span>
             </div>
-            <span className="hidden lg:block w-px bg-ink/10" />
             <div className="relative flex-1 min-w-[140px]">
-              <select defaultValue="" className="w-full appearance-none pl-4 pr-10 py-3 2xl:pl-5 2xl:py-4 bg-transparent hover:bg-ink/[0.04] rounded-[12px] text-[13.5px] 2xl:text-[15px] text-ink focus:outline-none cursor-pointer transition">
+              <select defaultValue="" className="w-full appearance-none pl-4 pr-10 py-3 2xl:pl-5 2xl:py-4 bg-ink/[0.04] hover:bg-ink/[0.07] rounded-[12px] text-[13.5px] 2xl:text-[15px] text-ink focus:outline-none cursor-pointer transition">
                 <option value="" disabled>Budget</option>
                 <option>≤ 200 000 €</option>
                 <option>≤ 400 000 €</option>
