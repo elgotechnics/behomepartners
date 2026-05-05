@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 
@@ -296,6 +297,16 @@ export function Services() {
                 <path d="M9 6l6 6-6 6" />
               </svg>
             </button>
+          </div>
+
+          <div className="flex justify-center mt-10">
+            <Link
+              href="/services"
+              className="group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[12px] font-bold tracking-[.15em] uppercase text-white ring-1 ring-inset ring-white/30 hover:bg-white hover:text-ink hover:ring-white transition-colors"
+            >
+              Voir tous nos services
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </Link>
           </div>
         </div>
       </div>

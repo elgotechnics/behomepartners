@@ -80,8 +80,9 @@ export function HeroDarkVariantA() {
           alt=""
           fill
           priority
+          fetchPriority="high"
           className="object-cover object-center opacity-70"
-          sizes="100vw"
+          sizes="(max-width: 1023px) 0px, 100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ink-darker via-ink-darker/80 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#070d22] via-transparent to-[#070d22]/40" />
@@ -343,6 +344,10 @@ export function HeroDarkVariantF() {
         </p>
 
         <div className="w-full max-w-[1080px] mt-auto">
+          <div className="inline-flex items-center gap-1 mb-3 p-1 rounded-[12px] bg-white/[0.04] ring-1 ring-inset ring-white/10">
+            <button type="button" className="px-4 py-1.5 rounded-[10px] text-[11px] font-bold tracking-[.15em] uppercase bg-white text-ink">Acheter</button>
+            <button type="button" className="px-4 py-1.5 rounded-[10px] text-[11px] font-bold tracking-[.15em] uppercase text-white/70 hover:text-white transition-colors">Louer</button>
+          </div>
           <div className="bg-white ring-1 ring-inset ring-black/5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.45)] rounded-[14px] p-2.5 2xl:p-3 flex flex-col lg:flex-row items-stretch gap-2 lg:gap-2.5 text-left">
             <div className="relative flex-1 min-w-[180px]">
               <input

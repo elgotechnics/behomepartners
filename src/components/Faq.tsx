@@ -75,40 +75,42 @@ export function Faq() {
               const open = openIdx === i;
               return (
                 <div key={item.q} className="border-b border-hairline">
-                  <button
-                    type="button"
-                    onClick={() => setOpenIdx(open ? -1 : i)}
-                    className="w-full text-left px-1 py-6 flex items-center gap-5 cursor-pointer"
-                    aria-expanded={open}
-                  >
-                    <span className="text-lg font-extrabold text-accent tracking-tight">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="text-[19px] font-extrabold text-ink tracking-tight flex-1">
-                      {item.q}
-                    </h3>
-                    <span
-                      className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-200 ${
-                        open
-                          ? "bg-accent border border-accent text-white rotate-180"
-                          : "border border-hairline text-ink"
-                      }`}
+                  <h3 className="m-0">
+                    <button
+                      type="button"
+                      onClick={() => setOpenIdx(open ? -1 : i)}
+                      className="w-full text-left px-1 py-6 flex items-center gap-5 cursor-pointer"
+                      aria-expanded={open}
                     >
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.4"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-hidden
+                      <span className="text-lg font-extrabold text-accent tracking-tight">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-[19px] font-extrabold text-ink tracking-tight flex-1">
+                        {item.q}
+                      </span>
+                      <span
+                        className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-200 ${
+                          open
+                            ? "bg-accent border border-accent text-white rotate-180"
+                            : "border border-hairline text-ink"
+                        }`}
                       >
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
-                    </span>
-                  </button>
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.4"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden
+                        >
+                          <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                      </span>
+                    </button>
+                  </h3>
                   <div
                     className={`grid transition-all duration-300 ${
                       open

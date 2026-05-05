@@ -94,7 +94,7 @@ function EstimationSplitCard({ theme }: { theme: SplitTheme }) {
                 gratuit et sans engagement.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-4">
                 {/* Option 1 — Online (transparent / glass) */}
                 <div className="rounded-[14px] bg-white/[0.07] backdrop-blur-md ring-1 ring-inset ring-white/20 p-6 flex flex-col hover:bg-white/[0.10] hover:ring-white/30 transition-colors">
                   <OnlineIcon className="text-white mb-4" />

@@ -193,22 +193,25 @@ function ListingCard({
       </div>
 
       <div className="p-4">
+        <h3 className="sr-only">
+          {listing.type} à {listing.city} — {formatPrice(price)}
+        </h3>
         <div className="flex items-center justify-between gap-2.5 mb-1">
-          <h3 className="text-xl font-extrabold tracking-tight text-ink">
+          <p className="text-xl font-extrabold tracking-tight text-ink">
             {formatPrice(price)}
             {mode === "location" && (
               <span className="text-[13px] font-semibold text-muted ml-1">
                 /mois
               </span>
             )}
-          </h3>
+          </p>
           <PebBadge rating={listing.peb} />
         </div>
         <div className="text-[13px] text-muted mb-3">
           {listing.city}
           {listing.postalCode && ` · ${listing.postalCode}`}
         </div>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-t border-grid pt-3 text-[13px] font-medium text-ink/80">
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 border-t border-grid pt-3 text-[13px] font-medium text-ink/80">
           {coreFeatures.map((f, i) => (
             <span key={i} className="flex items-center gap-1.5">
               <span className="text-accent">{f.icon}</span>

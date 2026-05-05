@@ -91,7 +91,7 @@ const reviewsRow2: Testimonial[] = [
 
 function Stars({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-1 text-accent" aria-label={`${rating} sur 5 étoiles`}>
+    <div className="flex gap-1 text-accent" role="img" aria-label={`${rating} sur 5 étoiles`}>
       {[1, 2, 3, 4, 5].map((i) => (
         <svg
           key={i}
@@ -128,6 +128,7 @@ function FractionalStars({
   return (
     <div
       className={`flex gap-1 ${colorClass}`}
+      role="img"
       aria-label={`${rating} sur 5 étoiles`}
     >
       {[1, 2, 3, 4, 5].map((i) => {
@@ -201,7 +202,7 @@ function Card({ t }: { t: Testimonial }) {
         “{t.text}”
       </p>
       <div className="mt-5 pt-4 border-t border-hairline">
-        <div className="text-[14px] font-extrabold text-ink">{t.name}</div>
+        <h3 className="text-[14px] font-extrabold text-ink m-0">{t.name}</h3>
         {t.source && (
           <div className="mt-0.5 text-[11px] text-muted tracking-wider uppercase">
             Avis publié sur {t.source}
@@ -277,7 +278,7 @@ export function TestimonialsMarquee() {
                       “{t.text}”
                     </p>
                     <div className="mt-5 pt-4 border-t border-hairline">
-                      <div className="text-[14px] font-extrabold text-ink">{t.name}</div>
+                      <h3 className="text-[14px] font-extrabold text-ink m-0">{t.name}</h3>
                       {t.source && (
                         <div className="mt-0.5 text-[11px] text-muted tracking-wider uppercase">
                           Avis publié sur {t.source}

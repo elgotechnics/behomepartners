@@ -59,6 +59,7 @@ const stats = [
 export function Marquee() {
   return (
     <section className="bg-ink text-white">
+      <h2 className="sr-only">Be Home Partners en chiffres</h2>
       <div className="max-w-[1480px] mx-auto px-3 sm:px-4 py-7 lg:py-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6">
           {stats.map((s, i) => (

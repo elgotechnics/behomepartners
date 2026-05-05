@@ -327,7 +327,7 @@ export function Header() {
               )}
             </div>
 
-            <div className="relative inline-flex rounded-[14px] bg-accent text-white shadow-[0_8px_24px_-8px_rgba(159,30,67,0.6)] hover:shadow-[0_12px_32px_-8px_rgba(159,30,67,0.7)] transition-shadow" ref={estimateRef}>
+            <div className="relative inline-flex rounded-[14px] bg-accent text-white shadow-[0_8px_24px_-8px_rgba(159,30,67,0.6)] hover:brightness-110 transition-[filter]" ref={estimateRef}>
               <a
                 href="/estimation"
                 className="inline-flex items-center h-11 pl-5 pr-3 text-[13px] font-bold tracking-wide rounded-l-[14px]"

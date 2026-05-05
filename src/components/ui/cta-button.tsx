@@ -13,7 +13,7 @@ const ctaButtonVariants = cva(
       variant: {
         primary: "bg-accent text-white hover:bg-accent-deep",
         outline:
-          "bg-transparent text-accent ring-1 ring-inset ring-accent hover:bg-accent hover:text-white",
+          "bg-transparent text-accent ring-2 ring-inset ring-accent hover:bg-accent hover:text-white",
         inverted: "bg-white text-accent hover:bg-white",
         ghost:
           "bg-transparent text-white ring-1 ring-inset ring-white/40 hover:bg-white hover:text-accent",
