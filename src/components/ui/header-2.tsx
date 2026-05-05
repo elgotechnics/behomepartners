@@ -215,7 +215,7 @@ export function Header() {
     >
       <div
         className={cn(
-          "relative w-full transition-all duration-300",
+          "relative w-full max-w-[1480px] mx-auto transition-all duration-300",
           barMode
             ? "bg-white/90 backdrop-blur-2xl border-b border-black/[0.06] shadow-[0_4px_24px_-12px_rgba(13,15,42,0.12)] px-4 md:px-10 lg:px-16 xl:px-24 2xl:px-32"
             : open

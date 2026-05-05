@@ -88,7 +88,7 @@ export function HeroDarkVariantA() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#070d22] via-transparent to-[#070d22]/40" />
       </div>
 
-      <div className="relative w-full max-w-[1280px] xl:max-w-[1560px] 2xl:max-w-[1720px] mx-auto px-4 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-24 pb-8 lg:pt-28 lg:pb-10 xl:pt-32 xl:pb-16 2xl:pt-40 2xl:pb-20">
+      <div className="relative w-full max-w-[1480px] mx-auto px-6 lg:px-10 pt-24 pb-8 lg:pt-28 lg:pb-10 xl:pt-32 xl:pb-16 2xl:pt-40 2xl:pb-20">
         <div className="max-w-[720px] xl:max-w-[900px] 2xl:max-w-[1040px]">
           <div className="inline-flex items-center gap-3 mb-4 xl:mb-6">
             <StarRating />
@@ -240,7 +240,7 @@ export function HeroDarkVariantE() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink-deep via-ink-deep/40 to-transparent" />
       </div>
 
-      <div className="relative w-full max-w-[1280px] xl:max-w-[1560px] 2xl:max-w-[1720px] mx-auto px-4 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-24 pb-8 lg:pt-28 lg:pb-10 xl:pt-32 xl:pb-14 2xl:pt-40 2xl:pb-20">
+      <div className="relative w-full max-w-[1480px] mx-auto px-6 lg:px-10 pt-24 pb-8 lg:pt-28 lg:pb-10 xl:pt-32 xl:pb-14 2xl:pt-40 2xl:pb-20">
         <div className="max-w-[720px] xl:max-w-[900px] 2xl:max-w-[1040px]">
           <div className="flex items-center gap-4 mb-5">
             <StarRating />
