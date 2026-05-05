@@ -217,7 +217,7 @@ export function HeroDarkVariantA() {
 /* ─────────── Variante 3 · Bento Showcase (premium éditorial) ─────────── */
 export function HeroDarkVariantE() {
   return (
-    <section className="relative bg-ink-deep overflow-hidden min-h-[calc(100dvh-16rem)] md:min-h-[calc(100dvh-17rem)] lg:min-h-[calc(100dvh-13rem)] 2xl:min-h-[calc(100dvh-14rem)] max-h-[1080px] flex items-center mt-16 md:mt-20">
+    <section className="relative bg-ink-deep overflow-hidden min-h-[calc(100dvh-16rem)] md:min-h-[calc(100dvh-17rem)] lg:min-h-[calc(100dvh-13rem)] 2xl:min-h-[calc(100dvh-14rem)] max-h-[1080px] flex items-center">
       <div
         className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay"
         style={{
