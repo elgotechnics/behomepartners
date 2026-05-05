@@ -251,13 +251,13 @@ export function Services() {
               <article
                 key={s.title}
                 data-card
-                className="group relative snap-start flex-shrink-0 w-[calc(100vw-3rem)] sm:w-[44vw] lg:w-[340px] xl:w-[368px] min-w-[280px] flex flex-col p-6 sm:p-8 bg-gradient-to-b from-white/[0.09] to-white/[0.02] border border-white/20 rounded-[20px] ring-1 ring-inset ring-white/10 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/40 hover:ring-white/20 hover:from-white/[0.14] hover:to-white/[0.05] cursor-pointer"
+                className="group relative snap-start flex-shrink-0 w-[calc(100vw-3rem)] sm:w-[44vw] lg:w-[340px] xl:w-[368px] min-w-[280px] flex flex-col p-6 sm:p-8 bg-gradient-to-b from-white/[0.09] to-white/[0.02] border border-white/20 rounded-[14px] ring-1 ring-inset ring-white/10 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/40 hover:ring-white/20 hover:from-white/[0.14] hover:to-white/[0.05] cursor-pointer"
               >
                 <div className="flex flex-col flex-1">
                   <div className="w-14 h-14 bg-accent text-white flex items-center justify-center mb-6 rounded-[12px] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                     {s.icon}
                   </div>
-                  <h3 className="font-extrabold text-xl text-white mb-3">
+                  <h3 className="font-bold text-xl text-white mb-3">
                     {s.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-white/65 flex-1">
@@ -302,7 +302,7 @@ export function Services() {
           <div className="flex justify-center mt-10">
             <Link
               href="/services"
-              className="group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[12px] font-bold tracking-[.15em] uppercase text-white ring-1 ring-inset ring-white/30 hover:bg-white hover:text-ink hover:ring-white transition-colors"
+              className="group inline-flex items-center gap-2 rounded-[14px] h-11 px-7 text-[11px] font-bold tracking-[.15em] uppercase text-white ring-2 ring-inset ring-white/40 hover:bg-white hover:text-accent hover:ring-white transition-colors"
             >
               Voir tous nos services
               <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>

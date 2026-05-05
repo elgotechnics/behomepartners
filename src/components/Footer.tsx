@@ -135,7 +135,7 @@ export function Footer() {
                     key={a.city}
                     className="border border-white/10 rounded-md p-5"
                   >
-                    <div className="text-sm font-extrabold tracking-tight mb-1.5">
+                    <div className="text-sm font-bold tracking-tight mb-1.5">
                       {a.city}
                     </div>
                     <div className="text-xs opacity-65 leading-relaxed mb-2.5">

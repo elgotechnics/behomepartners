@@ -118,7 +118,7 @@ const PATRON_IMAGE = "/assets/images/patron.webp";
 
 export function WhyChoose() {
   return (
-    <section id="about" className="bg-cream relative z-10">
+    <section id="about" className="bg-bg relative z-10">
       <div className="max-w-[1480px] mx-auto px-6 lg:px-10 pt-16 pb-20 lg:pb-24">
         <div className="max-w-[720px] mx-auto text-center mb-12 lg:mb-14">
           <div className="flex justify-center mb-4">
@@ -136,7 +136,7 @@ export function WhyChoose() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,420px)_1fr] xl:grid-cols-[minmax(0,480px)_1fr] gap-10 lg:gap-12 xl:gap-14 items-stretch">
-          <div className="relative aspect-[16/10] lg:aspect-auto overflow-hidden rounded-[20px] bg-ink">
+          <div className="relative aspect-[16/10] lg:aspect-auto overflow-hidden rounded-[14px] bg-ink">
             <Image
               src={PATRON_IMAGE}
               alt="Guillaume — fondateur Be Home Partners"
@@ -150,12 +150,12 @@ export function WhyChoose() {
             {engagements.map((eng) => (
               <div
                 key={eng.title}
-                className="group relative bg-white rounded-[16px] p-7 lg:p-8 ring-1 ring-inset ring-hairline transition-all duration-300 hover:ring-ink/20 hover:shadow-[0_18px_50px_-22px_rgba(26,40,69,0.18)]"
+                className="group relative bg-white rounded-[14px] p-7 lg:p-8 ring-1 ring-inset ring-hairline transition-all duration-300 hover:ring-ink/20 hover:shadow-[0_18px_50px_-22px_rgba(26,40,69,0.18)]"
               >
                 <span className="inline-flex items-center justify-center text-ink/55 mb-5 group-hover:text-accent transition-colors duration-300">
                   {eng.icon}
                 </span>
-                <h3 className="text-[17px] lg:text-[18px] font-extrabold text-ink tracking-tight leading-[1.2] mb-2.5">
+                <h3 className="text-[17px] lg:text-[18px] font-bold text-ink tracking-tight leading-[1.2] mb-2.5">
                   {eng.title}
                 </h3>
                 <p className="text-[13.5px] text-ink/60 leading-relaxed">
@@ -163,7 +163,7 @@ export function WhyChoose() {
                 </p>
               </div>
             ))}
-            <div className="relative bg-accent text-white rounded-[16px] p-7 lg:p-8 overflow-hidden">
+            <div className="relative bg-accent text-white rounded-[14px] p-7 lg:p-8 overflow-hidden">
               <div
                 aria-hidden
                 className="absolute -top-16 -right-16 w-56 h-56 rounded-full border border-white/10 pointer-events-none"

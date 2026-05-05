@@ -68,7 +68,7 @@ function EstimationSplitCard({ theme }: { theme: SplitTheme }) {
   const iconAccent = "text-accent";
 
   return (
-    <section className="bg-bg">
+    <section className="bg-white">
       <div className="max-w-[1480px] mx-auto px-6 lg:px-10 py-12 lg:py-16">
         <div className="grid lg:grid-cols-12 gap-4 lg:gap-5 items-stretch">
           {/* Left: card with 2 options */}
@@ -98,7 +98,7 @@ function EstimationSplitCard({ theme }: { theme: SplitTheme }) {
                 {/* Option 1 — Online (transparent / glass) */}
                 <div className="rounded-[14px] bg-white/[0.07] backdrop-blur-md ring-1 ring-inset ring-white/20 p-6 flex flex-col hover:bg-white/[0.10] hover:ring-white/30 transition-colors">
                   <OnlineIcon className="text-white mb-4" />
-                  <h3 className="text-[14px] tracking-[.15em] uppercase font-extrabold mb-3">
+                  <h3 className="text-[14px] tracking-[.15em] uppercase font-bold mb-3">
                     Estimation en ligne
                   </h3>
                   <ul className="text-[13px] text-white/80 space-y-2 mb-6 flex-1">
@@ -117,7 +117,7 @@ function EstimationSplitCard({ theme }: { theme: SplitTheme }) {
                     Recommandé
                   </div>
                   <AgentIcon className={`${iconAccent} mb-4`} />
-                  <h3 className="text-[14px] tracking-[.15em] uppercase font-extrabold mb-3">
+                  <h3 className="text-[14px] tracking-[.15em] uppercase font-bold mb-3">
                     Estimation par agent
                   </h3>
                   <ul className="text-[13px] text-ink/75 space-y-2 mb-6 flex-1">
@@ -216,7 +216,7 @@ export function EstimationVariantB() {
                 </p>
                 <button
                   type="button"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-transparent text-white ring-1 ring-inset ring-white/40 rounded-[12px] px-4 py-3 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-white hover:text-accent transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-transparent text-white ring-2 ring-inset ring-white/40 rounded-[14px] h-11 px-5 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-white hover:text-accent transition-colors"
                 >
                   Commencer
                   <ArrowRight />
@@ -243,7 +243,7 @@ export function EstimationVariantB() {
                 </p>
                 <button
                   type="button"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-white text-accent rounded-[12px] px-4 py-3 text-[11px] font-bold tracking-[.15em] uppercase hover:opacity-90 transition-opacity"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-white text-accent rounded-[14px] h-11 px-5 text-[11px] font-bold tracking-[.15em] uppercase hover:opacity-90 transition-opacity"
                 >
                   Prendre RDV
                   <ArrowRight />
@@ -326,7 +326,7 @@ export function EstimationVariantC() {
                 </ul>
                 <button
                   type="button"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-transparent text-white ring-1 ring-inset ring-white/40 rounded-[12px] px-4 py-3 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-white hover:text-ink transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-transparent text-white ring-2 ring-inset ring-white/40 rounded-[14px] h-11 px-5 text-[11px] font-bold tracking-[.15em] uppercase hover:bg-white hover:text-ink transition-colors"
                 >
                   Commencer
                   <ArrowRight />
@@ -349,7 +349,7 @@ export function EstimationVariantC() {
                 </ul>
                 <button
                   type="button"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-white text-accent rounded-[12px] px-4 py-3 text-[11px] font-bold tracking-[.15em] uppercase hover:opacity-90 transition-opacity"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-white text-accent rounded-[14px] h-11 px-5 text-[11px] font-bold tracking-[.15em] uppercase hover:opacity-90 transition-opacity"
                 >
                   Prendre RDV
                   <ArrowRight />

@@ -202,7 +202,7 @@ function Card({ t }: { t: Testimonial }) {
         “{t.text}”
       </p>
       <div className="mt-5 pt-4 border-t border-hairline">
-        <h3 className="text-[14px] font-extrabold text-ink m-0">{t.name}</h3>
+        <h3 className="text-[14px] font-bold text-ink m-0">{t.name}</h3>
         {t.source && (
           <div className="mt-0.5 text-[11px] text-muted tracking-wider uppercase">
             Avis publié sur {t.source}
@@ -278,7 +278,7 @@ export function TestimonialsMarquee() {
                       “{t.text}”
                     </p>
                     <div className="mt-5 pt-4 border-t border-hairline">
-                      <h3 className="text-[14px] font-extrabold text-ink m-0">{t.name}</h3>
+                      <h3 className="text-[14px] font-bold text-ink m-0">{t.name}</h3>
                       {t.source && (
                         <div className="mt-0.5 text-[11px] text-muted tracking-wider uppercase">
                           Avis publié sur {t.source}
@@ -295,7 +295,7 @@ export function TestimonialsMarquee() {
             type="button"
             onClick={prevMobile}
             aria-label="Avis précédent"
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-ink/85 backdrop-blur-md ring-1 ring-inset ring-white/15 text-white shadow-lg hover:bg-ink transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white ring-1 ring-ink/12 text-ink/80 shadow-sm hover:bg-ink hover:text-white hover:ring-ink transition-colors"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M15 18l-6-6 6-6" />
@@ -305,7 +305,7 @@ export function TestimonialsMarquee() {
             type="button"
             onClick={nextMobile}
             aria-label="Avis suivant"
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-ink/85 backdrop-blur-md ring-1 ring-inset ring-white/15 text-white shadow-lg hover:bg-ink transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white ring-1 ring-ink/12 text-ink/80 shadow-sm hover:bg-ink hover:text-white hover:ring-ink transition-colors"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M9 6l6 6-6 6" />
@@ -330,7 +330,7 @@ export function TestimonialsMarquee() {
             <span aria-hidden className="h-3 w-px bg-ink/15" />
             <span>579 avis</span>
             <span aria-hidden className="h-3 w-px bg-ink/15" />
-            <div className="hidden sm:inline-flex items-center gap-2 opacity-80">
+            <div className="inline-flex items-center gap-2 opacity-80">
               <Image
                 src="/assets/icons/google.svg"
                 alt="Google"

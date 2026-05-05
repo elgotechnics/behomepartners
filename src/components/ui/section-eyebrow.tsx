@@ -47,7 +47,7 @@ export function SectionEyebrow({
       <span className={cn("block w-2.5 h-2.5 rounded-[3px]", t.dot)} aria-hidden />
       <span
         className={cn(
-          "text-[10.5px] tracking-[.22em] uppercase font-extrabold leading-none",
+          "text-[10.5px] tracking-[.22em] uppercase font-semibold leading-none",
           t.label,
         )}
       >
