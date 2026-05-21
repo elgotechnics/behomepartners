@@ -43,7 +43,7 @@ export function QuickRefineBar({
   );
 
   return (
-    <div className="bg-gradient-to-b from-bg via-bg to-bg/40">
+    <div className="bg-white border-b border-hairline">
       <div className="max-w-[1480px] mx-auto px-6 lg:px-10 py-4 flex items-center gap-4">
         <div className="flex-1 min-w-0 flex items-center gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {items.map(({ chip, active, count }) => {
@@ -59,12 +59,12 @@ export function QuickRefineBar({
                   )
                 }
                 aria-pressed={active}
-                className={`shrink-0 group inline-flex items-center gap-2 h-10 pl-3 pr-2.5 rounded-full text-[13px] font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 ${
+                className={`shrink-0 group inline-flex items-center gap-2 h-10 lg:h-11 pl-3 pr-3 lg:pl-3.5 lg:pr-3.5 rounded-full text-[13px] lg:text-[14px] font-semibold transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg ${
                   active
                     ? "bg-ink text-white shadow-[0_8px_20px_-8px_rgba(15,23,42,0.45)]"
                     : disabled
-                      ? "bg-white/50 text-ink/30 ring-1 ring-inset ring-hairline/50 cursor-not-allowed"
-                      : "bg-white text-ink ring-1 ring-inset ring-hairline hover:ring-ink/30"
+                      ? "bg-bg text-ink/30 cursor-not-allowed"
+                      : "bg-bg text-ink hover:bg-ink hover:text-white"
                 }`}
               >
                 <span
@@ -73,8 +73,8 @@ export function QuickRefineBar({
                     active
                       ? "text-white"
                       : disabled
-                        ? "text-ink/30"
-                        : "text-accent/85 group-hover:text-accent"
+                        ? "text-ink/25"
+                        : "text-accent/85 group-hover:text-white"
                   }`}
                 >
                   {chip.icon}
@@ -82,10 +82,10 @@ export function QuickRefineBar({
                 <span className="whitespace-nowrap">{chip.label}</span>
                 {!active && (
                   <span
-                    className={`inline-flex items-center justify-center min-w-[22px] h-[22px] px-1.5 rounded-full text-[11px] font-bold tabular-nums ${
+                    className={`inline-flex items-center justify-center min-w-[20px] h-[20px] lg:min-w-[22px] lg:h-[22px] px-1.5 rounded-full text-[10.5px] lg:text-[11.5px] font-bold tabular-nums transition-colors ${
                       disabled
-                        ? "bg-ink/[0.04] text-ink/30"
-                        : "bg-ink/[0.08] text-ink"
+                        ? "bg-white/60 text-ink/30"
+                        : "bg-white text-ink/70 ring-1 ring-inset ring-hairline group-hover:bg-white/20 group-hover:text-white group-hover:ring-transparent"
                     }`}
                   >
                     {count}
@@ -118,7 +118,7 @@ export function QuickRefineBar({
         <div className="shrink-0 hidden md:flex items-center gap-4">
           <span
             aria-live="polite"
-            className="text-[12.5px] font-semibold text-ink/70 tabular-nums whitespace-nowrap"
+            className="text-[12.5px] lg:text-[13.5px] font-semibold text-ink/70 tabular-nums whitespace-nowrap"
           >
             {resultCount === 0
               ? "Aucun bien"
@@ -157,7 +157,7 @@ function SortDropdown({
         onClick={() => setOpen((v) => !v)}
         aria-label={`Tri : ${SORT_LABELS[value]}`}
         aria-expanded={open}
-        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-full text-[12.5px] font-semibold bg-white text-ink ring-1 ring-inset ring-hairline hover:ring-ink/30 transition-all"
+        className="inline-flex items-center gap-1.5 h-9 lg:h-10 px-3 lg:px-3.5 rounded-full text-[12.5px] lg:text-[13.5px] font-semibold bg-white text-ink ring-1 ring-inset ring-hairline hover:ring-ink/30 transition-all"
       >
         <SortIcon />
         <span className="text-ink/55">Tri</span>

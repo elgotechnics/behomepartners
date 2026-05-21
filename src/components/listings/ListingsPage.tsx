@@ -142,11 +142,25 @@ export function ListingsPage({
   return (
     <>
       <Header />
-      <main className="flex-1 bg-bg pt-16 md:pt-20">
-        <section className="bg-bg">
-          <div className="max-w-[1480px] mx-auto px-6 lg:px-10 pt-10 lg:pt-14 pb-6 lg:pb-8">
-            <nav aria-label="Fil d'Ariane" className="mb-4">
-              <ol className="flex flex-wrap items-center gap-1.5 text-[12.5px] text-ink/55">
+      <main className="flex-1 bg-bg">
+        <section className="relative bg-ink-deep text-white overflow-hidden">
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-b from-ink via-ink-deep to-ink-darker pointer-events-none"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-[0.06] pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+
+          <div className="relative max-w-[1480px] mx-auto px-6 lg:px-10 pt-[96px] md:pt-[120px] lg:pt-[132px] pb-8 lg:pb-12">
+            <nav aria-label="Fil d'Ariane" className="mb-5">
+              <ol className="flex flex-wrap items-center gap-1.5 text-[12.5px] text-white/55">
                 {breadcrumb.map((b, i) => {
                   const isLast = i === breadcrumb.length - 1;
                   return (
@@ -162,7 +176,7 @@ export function ListingsPage({
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           aria-hidden
-                          className="text-ink/30"
+                          className="text-white/35"
                         >
                           <path d="M9 6l6 6-6 6" />
                         </svg>
@@ -170,12 +184,12 @@ export function ListingsPage({
                       {b.href && !isLast ? (
                         <a
                           href={b.href}
-                          className="hover:text-ink transition-colors"
+                          className="hover:text-white transition-colors"
                         >
                           {b.label}
                         </a>
                       ) : (
-                        <span className={isLast ? "text-ink font-semibold" : ""}>
+                        <span className={isLast ? "text-white font-semibold" : ""}>
                           {b.label}
                         </span>
                       )}
@@ -186,12 +200,12 @@ export function ListingsPage({
             </nav>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
               <div>
-                <h1 className="text-3xl lg:text-[42px] font-extrabold tracking-tight leading-[1.05] text-ink text-balance">
+                <h1 className="text-3xl lg:text-[44px] font-extrabold tracking-tight leading-[1.05] text-white text-balance">
                   {h1}
                   <span className="text-accent">.</span>
                 </h1>
                 {showSeoText && (
-                  <p className="mt-3 text-base text-ink/65 leading-relaxed max-w-[640px]">
+                  <p className="mt-3 text-base text-white/70 leading-relaxed max-w-[640px]">
                     {subtitle}
                   </p>
                 )}

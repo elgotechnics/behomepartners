@@ -875,7 +875,7 @@ function Stepper({
             <li
               key={label}
               className={cn(
-                "flex items-center min-w-0",
+                "flex items-start sm:items-center min-w-0",
                 isLast ? "shrink-0" : "flex-1",
               )}
             >
@@ -885,7 +885,7 @@ function Stepper({
                 onClick={() => clickable && onJump(stepNum)}
                 aria-current={isActive ? "step" : undefined}
                 className={cn(
-                  "group flex items-center gap-2.5 min-w-0 outline-none",
+                  "group flex flex-col sm:flex-row items-center sm:items-center gap-1.5 sm:gap-2.5 min-w-0 outline-none",
                   clickable && "cursor-pointer",
                   !clickable && !isActive && "cursor-default",
                 )}
@@ -910,8 +910,8 @@ function Stepper({
                 </span>
                 <span
                   className={cn(
-                    "hidden sm:block text-[12.5px] tracking-tight whitespace-nowrap transition-all duration-300",
-                    isActive && "text-ink font-extrabold",
+                    "text-[10.5px] sm:text-[12.5px] tracking-tight whitespace-nowrap transition-all duration-300 uppercase sm:normal-case tracking-[.12em] sm:tracking-tight",
+                    isActive && "text-accent sm:text-ink font-extrabold",
                     isDone && "text-ink/65 font-semibold group-hover:text-ink",
                     !isActive && !isDone && "text-ink/35 font-semibold",
                   )}
@@ -922,7 +922,7 @@ function Stepper({
               {!isLast ? (
                 <span
                   aria-hidden
-                  className="flex-1 mx-3 sm:mx-4 h-px relative overflow-hidden"
+                  className="flex-1 mx-2 sm:mx-4 mt-[13px] sm:mt-0 h-px relative overflow-hidden"
                 >
                   <span className="absolute inset-0 bg-ink/10" />
                   <span
@@ -937,14 +937,6 @@ function Stepper({
           );
         })}
       </ol>
-      <div className="sm:hidden mt-3 flex items-center justify-between">
-        <span className="text-[11px] font-bold tracking-[.18em] uppercase text-accent">
-          {STEP_LABELS[currentStep - 1]}
-        </span>
-        <span className="text-[11px] font-semibold tabular-nums text-ink/45">
-          {currentStep}/{STEP_LABELS.length}
-        </span>
-      </div>
     </div>
   );
 }

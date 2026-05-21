@@ -49,7 +49,7 @@ export function Services() {
               </h2>
               <p className="text-sm text-white/65 max-w-[600px]">
                 De l&apos;estimation à la signature, nos experts vous accompagnent à
-                chaque étape avec une approche professionnelle, humaine et tournée
+                chaque étape avec un suivi personnalisé, exigeant et tourné
                 vers la qualité.
               </p>
             </div>

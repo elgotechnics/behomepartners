@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { useScroll } from "@/components/ui/use-scroll";
 import { useFavorites } from "@/components/listings/useFavorites";
 
-type MegaKey = "vente" | "location" | "services";
+type MegaKey = "vente" | "location" | "services" | "agences";
 
 type NavLink = {
   label: string;
@@ -16,9 +16,9 @@ const navLinks: NavLink[] = [
   { label: "À vendre", href: "/a-vendre", mega: "vente" },
   { label: "À louer", href: "/a-louer", mega: "location" },
   { label: "Services", href: "/services", mega: "services" },
-  { label: "Agences", href: "/agences" },
-  { label: "Réalisations", href: "/references" },
-  { label: "Jobs", href: "/jobs" },
+  { label: "Agences", href: "/agences", mega: "agences" },
+  { label: "Réalisations", href: "/realisations" },
+  { label: "Carrières", href: "/carrieres" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -191,6 +191,33 @@ const agencies = [
   { city: "Braine-l'Alleud", address: "Chaussée de Tubize 11 · 1420", phone: "+32 2 385 12 84", tel: "+3223851284" },
 ];
 
+const AgencyOfficeIcon = (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+    <path d="M10 6h4" />
+    <path d="M10 10h4" />
+    <path d="M10 14h4" />
+    <path d="M10 18h4" />
+  </svg>
+);
+
+const UsersIcon = (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>
+);
+
+const agencyLinks: { label: string; href: string; icon: React.ReactNode }[] = [
+  { label: "Agence de Nivelles", href: "/agences/nivelles", icon: AgencyOfficeIcon },
+  { label: "Agence de Braine-l'Alleud", href: "/agences/braine-l-alleud", icon: AgencyOfficeIcon },
+  { label: "Notre équipe", href: "/agence/equipe", icon: UsersIcon },
+];
+
 const estimationOptions = [
   {
     title: "Estimation en ligne",
@@ -348,19 +375,29 @@ export function Header() {
                     ? propertyTypesRent.map((t) => ({ label: t.label, href: `/a-louer/${t.slug}`, icon: t.icon }))
                     : l.mega === "services"
                       ? services.map((s) => ({ label: s.title, href: s.href, icon: s.icon }))
-                      : null;
+                      : l.mega === "agences"
+                        ? agencyLinks
+                        : null;
               const eyebrowLabel =
                 l.mega === "vente"
                   ? "Biens à vendre"
                   : l.mega === "location"
                     ? "Biens à louer"
-                    : "Nos services";
+                    : l.mega === "agences"
+                      ? "Nos agences"
+                      : "Nos services";
               const footerLabel =
                 l.mega === "services"
                   ? "Voir tous nos services"
-                  : "Voir toute la sélection";
+                  : l.mega === "agences"
+                    ? "Voir toutes nos agences"
+                    : "Voir toute la sélection";
               const footerHref =
-                l.mega === "services" ? "/services" : l.href;
+                l.mega === "services"
+                  ? "/services"
+                  : l.mega === "agences"
+                    ? "/agences"
+                    : l.href;
               return (
                 <div
                   key={l.label}
@@ -441,28 +478,6 @@ export function Header() {
                               </svg>
                             </a>
                           ))}
-                        </div>
-                        <div className="border-t border-hairline">
-                          <a
-                            href={footerHref}
-                            className="group flex items-center justify-between px-4 py-3 text-[12.5px] font-bold tracking-[.06em] text-accent hover:bg-accent/[0.04] transition-colors"
-                          >
-                            <span>{footerLabel}</span>
-                            <svg
-                              width="14"
-                              height="14"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              aria-hidden
-                              className="transition-transform group-hover:translate-x-0.5"
-                            >
-                              <path d="M9 6l6 6-6 6" />
-                            </svg>
-                          </a>
                         </div>
                       </div>
                     </div>
@@ -696,32 +711,42 @@ export function Header() {
               const base = link.mega === "vente" ? "/a-vendre" : link.mega === "location" ? "/a-louer" : null;
               return (
                 <div key={link.label} className="border-b border-hairline">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setMobileMegaOpen((cur) =>
-                        cur === link.mega ? null : (link.mega as MegaKey),
-                      )
-                    }
-                    aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between py-5 text-[22px] font-extrabold tracking-tight text-ink"
-                  >
-                    <span>{link.label}</span>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden
-                      className={cn("transition-transform text-ink/50", isOpen && "rotate-180")}
+                  {/* Row split : label = lien vers hub, chevron = toggle */}
+                  <div className="flex items-stretch">
+                    <a
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="flex-1 py-5 text-[22px] font-extrabold tracking-tight text-ink"
                     >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </button>
+                      {link.label}
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setMobileMegaOpen((cur) =>
+                          cur === link.mega ? null : (link.mega as MegaKey),
+                        )
+                      }
+                      aria-expanded={isOpen}
+                      aria-label={isOpen ? `Replier ${link.label}` : `Déplier ${link.label}`}
+                      className="grid place-items-center w-14 -mr-2"
+                    >
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden
+                        className={cn("transition-transform text-ink/50", isOpen && "rotate-180")}
+                      >
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </button>
+                  </div>
                   {isOpen && link.mega === "services" && (
                     <div className="flex flex-col pb-4 -mt-1">
                       {services.map((s) => (
@@ -732,6 +757,24 @@ export function Header() {
                           className="flex items-center justify-between py-2.5 pl-3 text-[15px] font-medium text-ink/75 hover:text-ink"
                         >
                           <span>{s.title}</span>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="text-ink/35">
+                            <path d="M9 6l6 6-6 6" />
+                          </svg>
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                  {isOpen && link.mega === "agences" && (
+                    <div className="flex flex-col pb-4 -mt-1">
+                      {agencyLinks.map((a) => (
+                        <a
+                          key={a.href}
+                          href={a.href}
+                          onClick={() => setOpen(false)}
+                          className="flex items-center gap-3 py-2.5 pl-3 text-[15px] font-medium text-ink/75 hover:text-ink"
+                        >
+                          <span className="text-ink/55">{a.icon}</span>
+                          <span className="flex-1">{a.label}</span>
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="text-ink/35">
                             <path d="M9 6l6 6-6 6" />
                           </svg>
@@ -760,24 +803,6 @@ export function Header() {
                 </div>
               );
             })}
-
-            <a
-              href="/favoris"
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-between py-5 text-[22px] font-extrabold tracking-tight text-ink border-b border-hairline"
-            >
-              <span className="flex items-center gap-3">
-                Favoris
-                {favoritesCount > 0 && (
-                  <span className="inline-flex items-center justify-center min-w-[24px] h-[24px] px-1.5 rounded-full bg-accent text-white text-[12px] font-bold leading-none tabular-nums">
-                    {favoritesCount > 99 ? "99+" : favoritesCount}
-                  </span>
-                )}
-              </span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="text-ink/35">
-                <path d="M9 6l6 6-6 6" />
-              </svg>
-            </a>
 
             <div className="border-b border-hairline">
               <button

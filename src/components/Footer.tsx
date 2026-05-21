@@ -1,20 +1,18 @@
-const navLinks = [
-  "À vendre",
-  "À louer",
-  "Estimer mon bien",
-  "Nos agences",
-  "Références",
-  "Blog",
-  "Nous rejoindre",
+const navLinks: { label: string; href: string }[] = [
+  { label: "À vendre", href: "/a-vendre" },
+  { label: "À louer", href: "/a-louer" },
+  { label: "Agences", href: "/agences" },
+  { label: "Réalisations", href: "/realisations" },
+  { label: "Carrières", href: "/carrieres" },
+  { label: "Contact", href: "/contact" },
 ];
 
-const serviceLinks = [
-  "Vente",
-  "Location",
-  "Estimation",
-  "Gestion locative",
-  "Investir",
-  "Marketing immobilier",
+const serviceLinks: { label: string; href: string }[] = [
+  { label: "Vente", href: "/services/vente" },
+  { label: "Location", href: "/services/location" },
+  { label: "Gestion locative", href: "/services/gestion-locative" },
+  { label: "Investir", href: "/services/investissement" },
+  { label: "Promotion immobilière", href: "/services/promotion-immobiliere" },
 ];
 
 const agencies = [
@@ -212,16 +210,22 @@ export function Footer() {
   );
 }
 
-function FooterColumn({ title, links }: { title: string; links: string[] }) {
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+}) {
   return (
     <div>
       <div className="text-[11px] tracking-[.2em] uppercase font-bold opacity-70 mb-5">
         {title}
       </div>
       <ul className="flex flex-col gap-2.5 text-sm">
-        {links.map((label) => (
+        {links.map(({ label, href }) => (
           <li key={label}>
-            <a href="#" className="text-white opacity-80 hover:opacity-100">
+            <a href={href} className="text-white opacity-80 hover:opacity-100">
               {label}
             </a>
           </li>

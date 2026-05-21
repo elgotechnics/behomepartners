@@ -36,7 +36,7 @@ export function ServiceHero({ hero }: Props) {
       />
 
       <div className="relative max-w-[1480px] mx-auto px-6 lg:px-10 pt-32 pb-16 lg:pt-40 lg:pb-20 text-center">
-        <h1 className="mx-auto max-w-[980px] text-[40px] sm:text-[56px] lg:text-[72px] font-extrabold tracking-tight leading-[1.02] text-white text-balance">
+        <h1 className="mx-auto max-w-[920px] text-[40px] sm:text-[52px] lg:text-[64px] font-extrabold tracking-tight leading-[1.04] text-white text-balance">
           {hero.h1}
           <span className="text-accent">.</span>
         </h1>

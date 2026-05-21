@@ -32,7 +32,7 @@ const reviewsRow1: Testimonial[] = [
   },
   {
     rating: 5,
-    text: "Estimation précise et fidèle au marché actuel. Visite organisée avec beaucoup de sérieux. Une équipe humaine qui prend le temps d'expliquer chaque étape.",
+    text: "Estimation précise et fidèle au marché actuel. Visite organisée avec beaucoup de sérieux. Une équipe à l'écoute qui prend le temps d'expliquer chaque étape.",
     name: "Jean-Pierre L.",
     source: "Facebook",
   },
@@ -71,7 +71,7 @@ const reviewsRow2: Testimonial[] = [
   },
   {
     rating: 5,
-    text: "Une approche humaine qui change tout dans ce métier. On se sent accompagnés, jamais bousculés. L'estimation s'est révélée parfaitement juste au final.",
+    text: "Une vraie proximité qui change tout dans ce métier. On se sent accompagnés, jamais bousculés. L'estimation s'est révélée parfaitement juste au final.",
     name: "Isabelle G.",
     source: "Facebook",
   },

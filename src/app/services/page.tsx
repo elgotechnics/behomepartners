@@ -359,7 +359,7 @@ function Approach() {
         <div className="max-w-[760px] mx-auto text-center mb-12 lg:mb-16">
           <SectionEyebrow tone="light">Notre approche</SectionEyebrow>
           <h2 className="mt-5 text-3xl lg:text-[40px] font-extrabold tracking-tight leading-[1.1] text-ink text-balance">
-            Un accompagnement clair, humain et structuré
+            Un accompagnement clair, attentif et structuré
             <span className="text-accent">.</span>
           </h2>
           <p className="mt-5 text-base lg:text-[17px] text-ink/70 leading-relaxed">

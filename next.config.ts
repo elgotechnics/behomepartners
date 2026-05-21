@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         destination: "/references",
         permanent: true,
       },
+      {
+        source: "/equipe",
+        destination: "/agence/equipe",
+        permanent: true,
+      },
     ];
   },
 };

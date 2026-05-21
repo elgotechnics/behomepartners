@@ -20,6 +20,7 @@ import {
   Sofa,
   Sun,
   TreePine,
+  Umbrella,
   Truck,
   Waves,
   Wind,
@@ -74,7 +75,7 @@ const CHIPS = {
     "terrasse",
     "Terrasse",
     "Terrasse",
-    <Sun size={ICON_SIZE} />,
+    <Umbrella size={ICON_SIZE} />,
   ),
   parking: featureChip(
     "parking",

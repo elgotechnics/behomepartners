@@ -44,7 +44,7 @@ function HeroEditorial() {
             L&apos;immobilier qui vous ressemble<span className="text-accent">.</span>
           </h1>
           <p className="mt-6 text-[16px] lg:text-[17px] text-white/70 leading-relaxed max-w-[560px]">
-            Vente, location, gestion. Un accompagnement humain dans le Brabant wallon et les communes environnantes.
+            Vente, location, gestion. Un accompagnement personnalisé dans le Brabant wallon et les communes environnantes.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
             <Link
@@ -93,7 +93,7 @@ function HeroSplitData() {
               Votre projet immobilier, pris en main<span className="text-accent">.</span>
             </h1>
             <p className="mt-5 text-[16px] lg:text-[17px] text-white/70 leading-relaxed max-w-[520px]">
-              Une équipe à taille humaine pour vous accompagner dans le Brabant wallon et les communes environnantes.
+              Une agence de proximité pour vous accompagner dans le Brabant wallon et les communes environnantes.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 max-w-[460px]">
               <Link
@@ -149,7 +149,7 @@ function HeroCenteredChip() {
           <span className="text-white">.</span>
         </h1>
         <p className="mt-6 text-[16px] lg:text-lg text-white/65 leading-relaxed max-w-[560px] mx-auto">
-          Une équipe à taille humaine pour votre projet immobilier dans le Brabant wallon et les communes environnantes.
+          Une agence de proximité pour votre projet immobilier dans le Brabant wallon et les communes environnantes.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center max-w-[460px] mx-auto">
           <Link

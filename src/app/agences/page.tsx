@@ -569,7 +569,7 @@ function Team() {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <CTAButton href="/notre-equipe" variant="primary">
+          <CTAButton href="/agence/equipe" variant="primary">
             Voir toute l&apos;équipe
           </CTAButton>
         </div>

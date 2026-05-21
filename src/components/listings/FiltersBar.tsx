@@ -100,11 +100,11 @@ export function FiltersBar({
   );
 
   return (
-    <div className="sticky top-16 md:top-20 z-20 bg-bg/85 backdrop-blur-xl border-b border-hairline">
+    <div className="relative z-30 bg-ink-darker border-b border-white/[0.06]">
       <div className="max-w-[1480px] mx-auto px-6 lg:px-10 py-3.5 md:py-4">
         <div className="flex items-center gap-3">
-          {/* DESKTOP: unified capsule */}
-          <div className="hidden md:flex items-stretch bg-white rounded-full ring-1 ring-inset ring-hairline shadow-[0_4px_24px_-14px_rgba(15,23,42,0.12)] hover:shadow-[0_8px_32px_-14px_rgba(15,23,42,0.18)] transition-shadow">
+          {/* DESKTOP: unified capsule (glass-style matching hero search) */}
+          <div className="hidden md:flex items-stretch bg-white/[0.05] backdrop-blur-xl rounded-full ring-1 ring-inset ring-white/15 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.4)] hover:ring-white/25 transition-all">
             <TypeCellSingle
               value={filters.types[0] ?? null}
               onChange={(t) =>
@@ -136,41 +136,48 @@ export function FiltersBar({
             {mainExtraCell()}
           </div>
 
-          {/* MOBILE: scrollable pills */}
-          <div className="md:hidden flex items-center gap-2 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <TypeCellSingle
-              value={filters.types[0] ?? null}
-              onChange={(t) =>
-                onFiltersChange({ ...filters, types: t ? [t] : [] })
-              }
-              summary={typeSummary}
-              mode={mode}
-              compact
+          {/* MOBILE: scrollable pills with fade hint on right edge */}
+          <div className="md:hidden relative flex-1 min-w-0">
+            <div className="flex items-center gap-2 overflow-x-auto pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <TypeCellSingle
+                value={filters.types[0] ?? null}
+                onChange={(t) =>
+                  onFiltersChange({ ...filters, types: t ? [t] : [] })
+                }
+                summary={typeSummary}
+                mode={mode}
+                compact
+              />
+              <CityCell
+                localities={localities}
+                value={filters.cities}
+                onChange={(cities) => onFiltersChange({ ...filters, cities })}
+                summary={citySummary}
+                compact
+              />
+              <BudgetCell
+                min={filters.priceMin}
+                max={filters.priceMax}
+                bounds={priceBounds}
+                onChange={(priceMin, priceMax) =>
+                  onFiltersChange({ ...filters, priceMin, priceMax })
+                }
+                active={budgetActive}
+                summary={budgetSummary}
+                label={priceLabel(mode)}
+                compact
+              />
+              {mainExtraCell(true)}
+            </div>
+            {/* Right edge fade to hint horizontal scroll */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute top-0 right-0 h-full w-8 bg-gradient-to-l from-bg/95 to-transparent"
             />
-            <CityCell
-              localities={localities}
-              value={filters.cities}
-              onChange={(cities) => onFiltersChange({ ...filters, cities })}
-              summary={citySummary}
-              compact
-            />
-            <BudgetCell
-              min={filters.priceMin}
-              max={filters.priceMax}
-              bounds={priceBounds}
-              onChange={(priceMin, priceMax) =>
-                onFiltersChange({ ...filters, priceMin, priceMax })
-              }
-              active={budgetActive}
-              summary={budgetSummary}
-              label={priceLabel(mode)}
-              compact
-            />
-            {mainExtraCell(true)}
           </div>
 
-          {/* Right: advanced filters trigger (standalone pill) */}
-          <div className="flex items-center gap-3 shrink-0 ml-auto">
+          {/* Right: advanced filters trigger — icon-only on mobile */}
+          <div className="flex items-center gap-3 shrink-0 ml-2 md:ml-3">
             <AdvancedTrigger
               count={advancedCount}
               onClick={() => setAdvancedOpen(true)}
@@ -210,13 +217,18 @@ function AdvancedTrigger({
       <button
         type="button"
         onClick={onClick}
-        aria-label="Filtres avancés"
-        className="shrink-0 inline-flex items-center gap-2 h-10 pl-3.5 pr-3.5 rounded-full text-[13px] font-semibold transition-all bg-ink text-white hover:bg-ink-deep shadow-[0_8px_18px_-10px_rgba(15,23,42,0.4)]"
+        aria-label={active ? `Filtres avancés (${count} actifs)` : "Filtres avancés"}
+        className="relative shrink-0 inline-flex items-center justify-center gap-2 h-10 lg:h-12 w-10 sm:w-auto sm:pl-3.5 sm:pr-3.5 lg:pl-5 lg:pr-5 rounded-full text-[13px] lg:text-[14.5px] font-semibold transition-all bg-accent text-white hover:bg-accent-deep shadow-[0_10px_24px_-10px_rgba(184,31,58,0.6)]"
       >
         <SlidersIcon />
-        <span>Filtres avancés</span>
+        <span className="hidden sm:inline">Filtres avancés</span>
         {active && (
-          <span className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-white text-ink text-[10.5px] font-extrabold tabular-nums">
+          <span className="hidden sm:inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-white text-ink text-[10.5px] font-extrabold tabular-nums">
+            {count}
+          </span>
+        )}
+        {active && (
+          <span className="sm:hidden absolute -top-1 -right-1 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-accent text-white text-[10.5px] font-extrabold tabular-nums ring-2 ring-bg">
             {count}
           </span>
         )}
@@ -272,7 +284,7 @@ function SlidersIcon() {
 /* ─────────────── CELL PRIMITIVE ─────────────── */
 
 function CellDivider() {
-  return <span aria-hidden className="my-2 w-px bg-hairline" />;
+  return <span aria-hidden className="my-2 w-px bg-white/15" />;
 }
 
 function Cell({
@@ -306,7 +318,7 @@ function Cell({
           type="button"
           onClick={onToggle}
           aria-expanded={open}
-          className={`inline-flex items-center gap-2 h-10 pl-3 pr-3.5 rounded-full text-[13px] font-semibold transition-all ${
+          className={`inline-flex items-center gap-2 h-10 pl-3 pr-3.5 rounded-full text-[13px] font-semibold transition-all outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-deep ${
             active
               ? "bg-ink text-white"
               : "bg-white text-ink ring-1 ring-inset ring-hairline hover:ring-ink/30"
@@ -332,32 +344,32 @@ function Cell({
   }
 
   return (
-    <div className={`relative flex-1 min-w-0 ${minWidthClass ?? "md:min-w-[210px]"}`}>
+    <div className={`relative flex-1 min-w-0 ${minWidthClass ?? "md:min-w-[210px] lg:min-w-[240px]"}`}>
       <button
         ref={cellRef}
         type="button"
         onClick={onToggle}
         aria-expanded={open}
-        className={`group w-full text-left h-full flex items-center gap-2.5 pl-3 pr-5 py-2.5 rounded-full transition-colors ${
-          open ? "bg-bg/70" : "hover:bg-bg/50"
+        className={`group w-full text-left h-full flex items-center gap-2.5 lg:gap-3 pl-3 pr-5 py-2.5 lg:pl-4 lg:pr-6 lg:py-3 rounded-full transition-colors outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-deep ${
+          open ? "bg-white/10" : "hover:bg-white/[0.06]"
         }`}
       >
         <span
-          className={`shrink-0 grid place-items-center w-9 h-9 rounded-full transition-colors ${
+          className={`shrink-0 grid place-items-center w-9 h-9 lg:w-10 lg:h-10 rounded-full transition-colors ${
             active
-              ? "bg-accent/10 text-accent"
-              : "bg-bg text-ink/70 group-hover:bg-white"
+              ? "bg-accent text-white"
+              : "bg-white/10 text-white/85 group-hover:bg-white/15"
           }`}
         >
           {icon}
         </span>
         <span className="min-w-0">
-          <span className="block text-[10.5px] font-bold tracking-[.2em] uppercase text-ink/50 leading-none">
+          <span className="block text-[10.5px] lg:text-[12px] font-bold tracking-[.2em] uppercase text-white/55 leading-none">
             {label}
           </span>
           <span
-            className={`block mt-1.5 text-[13.5px] font-semibold leading-tight truncate ${
-              active ? "text-ink" : "text-ink/60"
+            className={`block mt-1.5 text-[13.5px] lg:text-[15px] font-semibold leading-tight truncate ${
+              active ? "text-white" : "text-white/80"
             }`}
           >
             {value}
@@ -426,7 +438,7 @@ function CityCell({
       }}
       cellRef={cellRef}
       compact={compact}
-      minWidthClass="md:min-w-[260px]"
+      minWidthClass="md:min-w-[260px] lg:min-w-[290px]"
     >
       <Popover
         open={open}
@@ -583,7 +595,7 @@ function BudgetCell({
       onToggle={() => setOpen((v) => !v)}
       cellRef={cellRef}
       compact={compact}
-      minWidthClass="md:min-w-[260px]"
+      minWidthClass="md:min-w-[260px] lg:min-w-[290px]"
     >
       <Popover
         open={open}

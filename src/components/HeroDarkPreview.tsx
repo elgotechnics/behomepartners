@@ -76,7 +76,7 @@ export function HeroDarkVariantA() {
     <section className="relative bg-ink overflow-hidden min-h-[calc(100dvh-16rem)] md:min-h-[calc(100dvh-17rem)] lg:min-h-[calc(100dvh-13rem)] 2xl:min-h-[calc(100dvh-14rem)] max-h-[1080px] flex items-center">
       <div className="hidden md:block absolute inset-0">
         <Image
-          src="/assets/images/agence-bureaux.webp"
+          src="/assets/images/hero-bureaux.png"
           alt=""
           fill
           priority
@@ -102,7 +102,7 @@ export function HeroDarkVariantA() {
 
           <p className="text-[15px] lg:text-base xl:text-xl 2xl:text-[22px] text-white/85 max-w-[500px] xl:max-w-[640px] 2xl:max-w-[720px] mb-6 lg:mb-7 xl:mb-9 leading-relaxed">
             Depuis 2010, Be Home Partners vous accompagne dans tous vos projets
-            immobiliers avec une approche humaine, transparente et sur-mesure.
+            immobiliers avec une approche personnalisée, transparente et sur-mesure.
           </p>
 
           <div className="max-w-[440px] xl:max-w-[500px]">

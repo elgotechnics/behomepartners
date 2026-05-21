@@ -5,6 +5,13 @@ import type { ServiceConfig } from "@/data/services";
 
 type Props = {
   cta: ServiceConfig["cta"];
+  background?: "bg" | "white" | "cream";
+};
+
+const BG_CLASS: Record<NonNullable<Props["background"]>, string> = {
+  bg: "bg-bg",
+  white: "bg-white",
+  cream: "bg-cream",
 };
 
 const DEFAULT_IMAGE = {
@@ -27,12 +34,12 @@ const AGENCIES = [
   },
 ] as const;
 
-export function ServiceCTA({ cta }: Props) {
+export function ServiceCTA({ cta, background = "bg" }: Props) {
   const image = cta.image ?? DEFAULT_IMAGE;
   const hasSecondary = !!cta.secondary;
 
   return (
-    <section className="bg-bg">
+    <section className={BG_CLASS[background]}>
       <div className="max-w-[1480px] xl:max-w-[1680px] 2xl:max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 pt-4 lg:pt-6 pb-4">
         <div className="grid lg:grid-cols-12 gap-4 lg:gap-5 items-stretch">
           <div className="lg:col-span-4 relative rounded-[14px] overflow-hidden aspect-[954/1194]">

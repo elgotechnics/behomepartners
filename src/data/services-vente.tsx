@@ -54,7 +54,7 @@ export const venteService: ServiceConfig = {
 
   hero: {
     label: "Vendre votre bien",
-    h1: "Vendre votre bien immobilier dans les meilleures conditions",
+    h1: "Vendre votre bien dans les meilleures conditions",
     description:
       "De l'estimation à la signature, un accompagnement sur mesure et transparent pour commercialiser votre bien dans le Brabant wallon et les communes environnantes.",
     points: [

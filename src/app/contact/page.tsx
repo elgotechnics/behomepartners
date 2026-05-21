@@ -204,7 +204,7 @@ function ContactForm() {
               onSubmit={(e) => {
                 e.preventDefault();
               }}
-              className="bg-cream rounded-[18px] p-6 lg:p-8 space-y-5 ring-1 ring-inset ring-hairline shadow-[0_24px_50px_-20px_rgba(15,23,42,0.25)]"
+              className="bg-[#ececee] rounded-[18px] p-6 lg:p-8 space-y-5 ring-1 ring-inset ring-black/[0.06] shadow-[0_24px_50px_-20px_rgba(15,23,42,0.25)]"
             >
               <div className="grid grid-cols-1 sm:grid-cols-[0.8fr_1.4fr_1.4fr] gap-5">
                 <Field label="Titre">
@@ -219,6 +219,8 @@ function ContactForm() {
                     </option>
                     <option value="madame">Madame</option>
                     <option value="monsieur">Monsieur</option>
+                    <option value="mademoiselle">Mademoiselle</option>
+                    <option value="maitre">Maître</option>
                     <option value="autre">Autre</option>
                   </select>
                 </Field>
@@ -276,27 +278,48 @@ function ContactForm() {
                 </Field>
               </div>
 
-              <Field label="Sujet">
-                <select
-                  name="sujet"
-                  required
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                  className={`${inputClass} appearance-none`}
-                >
-                  <option value="" disabled>
-                    Sélectionnez un sujet
-                  </option>
-                  <option value="vendre">Vendre mon bien</option>
-                  <option value="estimer">Estimer mon bien</option>
-                  <option value="acheter">Acheter un bien</option>
-                  <option value="louer">Louer un bien</option>
-                  <option value="gestion-locative">Gestion locative</option>
-                  <option value="investir">Investir dans l&apos;immobilier</option>
-                  <option value="promotion">Promotion immobilière</option>
-                  <option value="autre">Autre demande</option>
-                </select>
-              </Field>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <Field label="Sujet">
+                  <select
+                    name="sujet"
+                    required
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                    className={`${inputClass} appearance-none`}
+                  >
+                    <option value="" disabled>
+                      Sélectionnez un sujet
+                    </option>
+                    <option value="vendre">Vendre mon bien</option>
+                    <option value="estimer">Estimer mon bien</option>
+                    <option value="acheter">Acheter un bien</option>
+                    <option value="louer">Louer un bien</option>
+                    <option value="gestion-locative">Gestion locative</option>
+                    <option value="investir">Investir dans l&apos;immobilier</option>
+                    <option value="promotion">Promotion immobilière</option>
+                    <option value="autre">Autre demande</option>
+                  </select>
+                </Field>
+
+                <Field label="Agence à contacter">
+                  <select
+                    name="agence"
+                    required
+                    defaultValue=""
+                    className={`${inputClass} appearance-none`}
+                  >
+                    <option value="" disabled>
+                      Choisissez une agence
+                    </option>
+                    <option value="peu-importe">Peu importe</option>
+                    {AGENCES.map((a) => (
+                      <option key={a.id} value={a.id}>
+                        {a.city}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+              </div>
 
               <Field label="Message">
                 <textarea

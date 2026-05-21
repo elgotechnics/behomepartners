@@ -37,7 +37,7 @@ export function PropertyCard({
       return null;
     })
     .filter((x): x is FeatureItem => x !== null)
-    .slice(0, 2);
+    .slice(0, layout === "carousel" ? 1 : 2);
 
   const coreFeatures: { icon: React.ReactNode; label: string }[] = [
     { icon: <SurfaceIcon />, label: `${listing.surface} m²` },
@@ -78,8 +78,8 @@ export function PropertyCard({
       <div
         className={
           layout === "carousel"
-            ? "px-4 pt-4 pb-3.5 lg:px-5 lg:pt-5 lg:pb-4 xl:px-4 xl:pt-4 xl:pb-3.5"
-            : "px-4 pt-4 pb-3.5 lg:px-5 lg:pt-5 lg:pb-4"
+            ? "px-4 pt-4 pb-2 lg:px-5 lg:pt-5 lg:pb-2.5 xl:px-4 xl:pt-4 xl:pb-2"
+            : "px-4 pt-4 pb-2 lg:px-5 lg:pt-5 lg:pb-2.5"
         }
       >
         <h3 className="sr-only">
@@ -137,7 +137,7 @@ export function PropertyCard({
         <div
           className={
             layout === "carousel"
-              ? "grid grid-cols-5 items-center text-[13px] lg:text-[14px] xl:text-[11.5px] font-medium text-ink/80 border-t border-grid pt-2.5 lg:pt-3 xl:pt-2.5"
+              ? "grid grid-cols-4 items-center text-[13px] lg:text-[14px] xl:text-[12px] font-medium text-ink/80 border-t border-grid pt-2.5 lg:pt-3 xl:pt-2.5"
               : "grid grid-cols-5 items-center text-[13px] lg:text-[14px] font-medium text-ink/80 border-t border-grid pt-2.5 lg:pt-3"
           }
         >
