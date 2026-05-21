@@ -24,8 +24,9 @@ export function PropertyCard({
 }) {
   const price = mode === "vente" ? listing.salePrice : listing.monthlyRent;
 
-  const extraFeatures: { icon: React.ReactNode; label: string }[] = listing
-    .features.map((f) => {
+  type FeatureItem = { icon: React.ReactNode; label: string };
+  const extraFeatures: FeatureItem[] = listing.features
+    .map<FeatureItem | null>((f) => {
       if (/garage/i.test(f)) return { icon: <GarageIcon />, label: "Garage" };
       if (/parking/i.test(f))
         return { icon: <ParkingIcon />, label: "Parking" };
@@ -35,7 +36,7 @@ export function PropertyCard({
       if (/balcon/i.test(f)) return { icon: <BalconyIcon />, label: "Balcon" };
       return null;
     })
-    .filter((x): x is { icon: React.ReactNode; label: string } => x !== null)
+    .filter((x): x is FeatureItem => x !== null)
     .slice(0, 2);
 
   const coreFeatures: { icon: React.ReactNode; label: string }[] = [

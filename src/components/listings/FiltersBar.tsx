@@ -214,7 +214,7 @@ function AdvancedTrigger({
         className="shrink-0 inline-flex items-center gap-2 h-10 pl-3.5 pr-3.5 rounded-full text-[13px] font-semibold transition-all bg-ink text-white hover:bg-ink-deep shadow-[0_8px_18px_-10px_rgba(15,23,42,0.4)]"
       >
         <SlidersIcon />
-        <span>Filtres</span>
+        <span>Filtres avancés</span>
         {active && (
           <span className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-white text-ink text-[10.5px] font-extrabold tabular-nums">
             {count}
@@ -242,14 +242,14 @@ function AdvancedTrigger({
       </span>
       <span className="flex flex-col items-start">
         <span className="text-[10.5px] font-bold tracking-[.2em] uppercase text-ink/50 leading-none">
-          Plus
+          Filtres
         </span>
         <span
           className={`mt-1.5 text-[13.5px] font-semibold leading-tight ${
             active ? "text-ink" : "text-ink/60"
           }`}
         >
-          Filtres
+          Avancés
         </span>
       </span>
       {active && (
