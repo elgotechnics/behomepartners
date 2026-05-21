@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 
 type Testimonial = {
@@ -243,14 +243,27 @@ function Row({
 
 export function TestimonialsMarquee() {
   const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const allReviews = [...reviewsRow1, ...reviewsRow2];
   const [mobileIndex, setMobileIndex] = useState(0);
   const total = allReviews.length;
   const prevMobile = () => setMobileIndex((i) => (i - 1 + total) % total);
   const nextMobile = () => setMobileIndex((i) => (i + 1) % total);
 
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: "200px 0px" }
+    );
+    obs.observe(node);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <section className="bg-bg overflow-hidden">
+    <section ref={sectionRef} className="bg-bg overflow-hidden">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="text-center max-w-[680px] mx-auto mb-12">
           <div className="flex justify-center mb-4">
@@ -320,7 +333,7 @@ export function TestimonialsMarquee() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <Row items={allReviews} paused={paused} />
+          <Row items={allReviews} paused={paused || !inView} />
         </div>
 
         <div className="mt-10 flex justify-center">

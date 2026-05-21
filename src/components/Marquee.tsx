@@ -61,12 +61,12 @@ export function Marquee() {
     <section className="bg-ink text-white">
       <h2 className="sr-only">Be Home Partners en chiffres</h2>
       <div className="max-w-[1480px] mx-auto px-3 sm:px-4 py-7 lg:py-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6">
           {stats.map((s, i) => (
             <div
               key={s.label}
               className={`px-6 text-center ${
-                i !== 0 ? "lg:border-l lg:border-white/20" : ""
+                i !== 0 ? "md:border-l md:border-white/20" : ""
               }`}
             >
               <div className="text-[30px] lg:text-[36px] leading-none font-extrabold tracking-tight">

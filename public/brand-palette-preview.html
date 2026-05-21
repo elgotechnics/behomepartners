@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Be Home Partners — Color System Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bordeaux: #8B1538;
+    --bordeaux-deep: #6F1029;
+    --navy: #1A2845;
+    --navy-deep: #0F1A3D;
+    --midnight: #0A1530;
+    --success: #2F7D5B;
+    --warning: #C97A1F;
+    --error: #B23B3B;
+    --paper: #FFFFFF;
+    --cream: #FAFAF8;
+    --mist: #F5F5F3;
+    --hairline: #E6E6E0;
+    --stone: #9AA3B2;
+    --slate: #8A8580;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background: var(--mist);
+    color: var(--navy);
+    line-height: 1.5;
+    padding: 64px 24px;
+  }
+  .container { max-width: 1240px; margin: 0 auto; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bordeaux);
+    margin-bottom: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--bordeaux);
+    border-radius: 1px;
+  }
+  h1 {
+    font-size: 56px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05;
+    color: var(--navy); margin-bottom: 16px;
+  }
+  h1 .accent { color: var(--bordeaux); }
+  h2 {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  p.lead { font-size: 17px; color: #4b5566; max-width: 640px; }
+  section { margin-top: 80px; }
+  .section-head { margin-bottom: 32px; }
+
+  /* ───── PRIMARY HERO SWATCH ───── */
+  .hero-swatch {
+    background: var(--bordeaux);
+    color: white;
+    padding: 56px 48px;
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-swatch .name {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.25em;
+    text-transform: uppercase; opacity: 0.8; margin-bottom: 12px;
+  }
+  .hero-swatch .label {
+    font-size: 44px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .hero-swatch .hex {
+    font-size: 13px; font-weight: 600; opacity: 0.85; letter-spacing: 0.05em;
+  }
+  .hero-meta {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px;
+    font-size: 13px;
+  }
+  .hero-meta dt {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; opacity: 0.7; margin-bottom: 4px;
+  }
+  .hero-meta dd { font-weight: 600; }
+
+  /* ───── SWATCH GRID ───── */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .swatch {
+    background: white; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 12px 32px -16px rgba(13,15,42,0.18);
+    border: 1px solid var(--hairline);
+  }
+  .swatch .chip {
+    height: 140px; position: relative;
+  }
+  .swatch .chip .pin {
+    position: absolute; top: 12px; right: 12px;
+    background: rgba(255,255,255,0.18); backdrop-filter: blur(8px);
+    color: white;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 4px 8px; border-radius: 999px;
+  }
+  .swatch.light .chip .pin { background: rgba(0,0,0,0.05); color: var(--navy); }
+  .swatch .body { padding: 14px 16px 16px; }
+  .swatch .name { font-size: 14px; font-weight: 800; margin-bottom: 2px; }
+  .swatch .role { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 10px; }
+  .swatch dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; font-size: 11px; }
+  .swatch dt { font-weight: 700; color: var(--slate); letter-spacing: 0.05em; }
+  .swatch dd { font-weight: 600; color: var(--navy); font-variant-numeric: tabular-nums; }
+
+  /* ───── 60/30/10 RATIO ───── */
+  .ratio {
+    display: grid; grid-template-columns: 6fr 3fr 1fr;
+    height: 96px; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 12px 32px -16px rgba(13,15,42,0.18);
+  }
+  .ratio > div {
+    display: flex; flex-direction: column; justify-content: center; padding: 18px 22px;
+    font-weight: 700;
+  }
+  .ratio .pct { font-size: 24px; letter-spacing: -0.01em; }
+  .ratio .lbl { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; margin-top: 2px; }
+  .ratio .a { background: white; color: var(--navy); border: 1px solid var(--hairline); }
+  .ratio .b { background: var(--navy); color: white; }
+  .ratio .c { background: var(--bordeaux); color: white; }
+
+  /* ───── DO / DON'T ───── */
+  .pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .pair { border-radius: 14px; overflow: hidden; border: 1px solid var(--hairline); background: white; }
+  .pair .demo { padding: 36px 28px; min-height: 160px; display: flex; align-items: center; }
+  .pair .demo h4 { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.15; }
+  .pair .demo h4 .u { background: var(--bordeaux); padding: 0 4px; }
+  .pair .caption { padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--hairline); }
+  .pair .caption .verdict {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .pair .caption .ok { background: rgba(47,125,91,0.12); color: var(--success); }
+  .pair .caption .ko { background: rgba(178,59,59,0.12); color: var(--error); }
+  .pair .caption small { color: var(--slate); font-size: 12px; }
+
+  .demo.bg-paper { background: var(--paper); color: var(--navy); }
+  .demo.bg-cream { background: var(--cream); color: var(--navy); }
+  .demo.bg-navy { background: var(--navy); color: white; }
+  .demo.bg-bord { background: var(--bordeaux); color: white; }
+  .demo.bg-mist-bord-text { background: var(--mist); color: var(--bordeaux); }
+
+  /* ───── COMBOS ───── */
+  .combos { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+  .combo { border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); }
+  .combo .stripe { display: flex; height: 56px; }
+  .combo .stripe span { flex: 1; }
+  .combo .meta { padding: 10px 14px; font-size: 12px; background: white; display: flex; justify-content: space-between; }
+  .combo .meta b { font-weight: 700; color: var(--navy); }
+  .combo .meta small { color: var(--slate); }
+
+  .palette-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px -20px rgba(13,15,42,0.18);
+  }
+  .strip-cell {
+    padding: 56px 28px 32px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s ease;
+  }
+  .strip-cell:hover { transform: translateY(-2px); }
+  .strip-pin {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; opacity: 0.75; margin-bottom: 12px;
+  }
+  .strip-name {
+    font-size: 22px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 4px;
+  }
+  .strip-hex {
+    font-size: 13px; font-weight: 600; opacity: 0.85; letter-spacing: 0.05em;
+  }
+  @media (max-width: 720px) {
+    .palette-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 56px; }
+  .toc a {
+    text-decoration: none; padding: 8px 14px; background: white; border: 1px solid var(--hairline);
+    border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--navy);
+  }
+  .toc a:hover { background: var(--bordeaux); color: white; border-color: var(--bordeaux); }
+  .footer-note {
+    margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--hairline);
+    font-size: 13px; color: var(--slate);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">Color system · Aperçu</div>
+    <h1>La <span class="accent">palette</span> Be Home Partners.</h1>
+    <p class="lead">Quatre couleurs. Un Bordeaux qui signe, un Brabant Navy qui structure, deux neutres qui respirent.</p>
+
+    <nav class="toc" style="margin-top:32px;">
+      <a href="#primary">01 · Primary</a>
+      <a href="#secondary">02 · Secondary</a>
+      <a href="#neutrals">03 · Neutrals</a>
+    </nav>
+  </header>
+
+  <!-- OVERVIEW STRIP -->
+  <section style="margin-top: 56px;">
+    <div class="palette-strip">
+      <div class="strip-cell" style="background: var(--bordeaux); color: white;">
+        <div class="strip-pin">01 · Primary</div>
+        <div class="strip-name">Bordeaux</div>
+        <div class="strip-hex">#8B1538</div>
+      </div>
+      <div class="strip-cell" style="background: var(--navy); color: white;">
+        <div class="strip-pin">02 · Secondary</div>
+        <div class="strip-name">Brabant Navy</div>
+        <div class="strip-hex">#1A2845</div>
+      </div>
+      <div class="strip-cell" style="background: var(--cream); color: var(--navy); border-right: 1px solid var(--hairline);">
+        <div class="strip-pin" style="opacity:0.55;">03 · Neutral</div>
+        <div class="strip-name">Cream</div>
+        <div class="strip-hex">#FAFAF8</div>
+      </div>
+      <div class="strip-cell" style="background: var(--slate); color: white;">
+        <div class="strip-pin">04 · Neutral</div>
+        <div class="strip-name">Stone</div>
+        <div class="strip-hex">#8A8580</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIMARY -->
+  <section id="primary">
+    <div class="section-head">
+      <div class="eyebrow">01 · Primary</div>
+      <h2>Une seule signature.</h2>
+      <p class="lead">La couleur de marque, présente dans le logo. Reconnaissable immédiatement. Utilisée avec parcimonie pour rester puissante.</p>
+    </div>
+
+    <div class="hero-swatch">
+      <div>
+        <div class="name">BeHome Bordeaux</div>
+        <div class="label">#8B1538</div>
+        <div class="hex">Couleur de marque · Présente dans le logo</div>
+      </div>
+      <dl class="hero-meta">
+        <div><dt>HEX</dt><dd>#8B1538</dd></div>
+        <div><dt>RGB</dt><dd>139 · 21 · 56</dd></div>
+        <div><dt>CMJN</dt><dd>28 · 100 · 67 · 28</dd></div>
+        <div><dt>Pantone</dt><dd>7427 C</dd></div>
+        <div><dt>RAL</dt><dd>3005 (Wine red)</dd></div>
+        <div><dt>Contraste sur blanc</dt><dd>9.8 : 1 ✓ AAA</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- SECONDARY -->
+  <section id="secondary">
+    <div class="section-head">
+      <div class="eyebrow">02 · Secondary</div>
+      <h2>L'architecture sombre.</h2>
+      <p class="lead">Le bleu marine vient en contrepoint du Bordeaux. Il apporte la profondeur, la confiance, l'ancrage institutionnel.</p>
+    </div>
+
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="chip" style="background: var(--navy);"><span class="pin">SEC</span></div>
+        <div class="body">
+          <div class="name">Brabant Navy</div>
+          <div class="role">Couleur de structure</div>
+          <dl>
+            <dt>HEX</dt><dd>#1A2845</dd>
+            <dt>RGB</dt><dd>26 · 40 · 69</dd>
+            <dt>CMJN</dt><dd>96 · 84 · 40 · 50</dd>
+            <dt>Pantone</dt><dd>539 C</dd>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEUTRALS -->
+  <section id="neutrals">
+    <div class="section-head">
+      <div class="eyebrow">03 · Neutrals</div>
+      <h2>L'oxygène du système.</h2>
+      <p class="lead">Deux neutres pour structurer 60 % de la composition : un fond crème, un gris texte. Pas de noir absolu : la base sombre est le Brabant Navy.</p>
+    </div>
+
+    <div class="swatch-grid">
+      <div class="swatch light">
+        <div class="chip" style="background: var(--cream);"><span class="pin">N · 01</span></div>
+        <div class="body">
+          <div class="name">Cream</div>
+          <div class="role">Surface principale</div>
+          <dl><dt>HEX</dt><dd>#FAFAF8</dd><dt>RGB</dt><dd>250·250·248</dd></dl>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: var(--slate);"><span class="pin">N · 02</span></div>
+        <div class="body">
+          <div class="name">Stone</div>
+          <div class="role">Texte secondaire · Captions</div>
+          <dl><dt>HEX</dt><dd>#8A8580</dd><dt>RGB</dt><dd>138·133·128</dd></dl>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px; padding:20px 24px; background:white; border:1px dashed var(--hairline); border-radius:12px;">
+      <div style="font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--slate); margin-bottom:8px;">Note technique · Shades</div>
+      <p style="font-size:13px; color:var(--slate); line-height:1.55; margin:0;">
+        Trois teintes implicites complètent les neutres en usage digital, sans figurer dans la palette officielle :
+        <b style="color:var(--navy);">Paper #FFFFFF</b> (blanc pur, cards flottantes sur Cream),
+        <b style="color:var(--navy);">Mist #F5F5F3</b> (variante très subtile de Cream pour sections alternées),
+        <b style="color:var(--navy);">Hairline #E6E6E0</b> (bordures et séparateurs fins).
+        Pour les bordures, utiliser de préférence le Brabant Navy à 10 % d'opacité.
+      </p>
+    </div>
+  </section>
+
+  <p class="footer-note">
+    Be Home Partners · Color System v2 · Inspiré de Pentagram, Wolff Olins, deBroome (2026 best practices).
+    Format final : palette .ase, .clr, Pantone book — à exporter pour Adobe / Figma / print.
+  </p>
+
+</div>
+</body>
+</html>

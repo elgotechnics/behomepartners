@@ -2,7 +2,8 @@ const navLinks = [
   "À vendre",
   "À louer",
   "Estimer mon bien",
-  "À propos",
+  "Nos agences",
+  "Références",
   "Blog",
   "Nous rejoindre",
 ];
@@ -33,7 +34,7 @@ const agencies = [
 
 export function Footer() {
   return (
-    <footer className="bg-bg">
+    <footer className="bg-paper">
       <div className="max-w-[1480px] xl:max-w-[1680px] 2xl:max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 pb-2">
         <div className="bg-ink text-white rounded-[14px] overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 px-8 lg:px-14 pt-14 pb-10 items-end border-b border-white/10">
@@ -52,7 +53,7 @@ export function Footer() {
                 Recevez en avant-première nos nouvelles annonces, off-market et
                 tendances du Brabant wallon.
               </p>
-              <form className="relative flex w-full max-w-[460px] rounded-[12px] overflow-hidden bg-white border border-white/30 shadow-sm">
+              <form className="relative flex w-full max-w-[460px] rounded-[12px] overflow-hidden bg-white shadow-sm">
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email
                 </label>
@@ -66,7 +67,7 @@ export function Footer() {
                   type="submit"
                   className="relative px-5 py-3.5 bg-accent text-white text-[11px] font-bold tracking-[.15em] uppercase hover:opacity-90 transition-opacity"
                 >
-                  S&apos;inscrire →
+                  S&apos;inscrire<span aria-hidden className="hidden sm:inline"> →</span>
                 </button>
               </form>
             </div>
@@ -86,7 +87,7 @@ export function Footer() {
               </p>
 
               <a
-                href="mailto:contact@behomepartners.be"
+                href="mailto:info@behomepartners.be"
                 className="inline-flex items-center gap-2.5 text-white text-[13px] font-semibold mb-6 hover:opacity-90"
               >
                 <svg
@@ -104,7 +105,7 @@ export function Footer() {
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="m22 7-10 6L2 7" />
                 </svg>
-                contact@behomepartners.be
+                info@behomepartners.be
               </a>
 
               <div className="flex gap-2.5 mb-6">

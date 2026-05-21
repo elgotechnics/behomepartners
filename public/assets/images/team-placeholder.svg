@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Portrait à venir">
+  <rect width="300" height="300" fill="#E3E5E8"/>
+  <g fill="#BCC1C7">
+    <circle cx="150" cy="120" r="44"/>
+    <path d="M76 260c0-41 33-74 74-74s74 33 74 74v40H76z"/>
+  </g>
+</svg>

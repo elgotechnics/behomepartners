@@ -45,8 +45,8 @@ export function CtaPrefooter() {
               </h2>
               <p className="text-base leading-relaxed opacity-85 mb-8 max-w-[520px]">
                 Vendre, acheter, louer ou simplement vous renseigner : on est à
-                un appel ou un message. La première conversation est toujours
-                la plus utile.
+                un appel ou un message. Un premier échange suffit souvent à y
+                voir clair.
               </p>
 
               <div className="flex mb-10">

@@ -16,7 +16,7 @@ const ctaButtonVariants = cva(
           "bg-transparent text-accent ring-2 ring-inset ring-accent hover:bg-accent hover:text-white",
         inverted: "bg-white text-accent hover:bg-white",
         ghost:
-          "bg-transparent text-white ring-1 ring-inset ring-white/40 hover:bg-white hover:text-accent",
+          "bg-white/10 text-white hover:bg-white hover:text-accent",
       },
       size: {
         sm: "text-[11px] h-11 px-5",
