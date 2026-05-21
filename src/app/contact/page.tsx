@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Header } from "@/components/ui/header-2";
 import { Footer } from "@/components/Footer";
@@ -38,7 +38,9 @@ export default function ContactPage() {
     <>
       <Header />
       <main className="flex-1">
-        <ContactForm />
+        <Suspense fallback={null}>
+          <ContactForm />
+        </Suspense>
         <Agences
           id="bureaux"
           background="cream"
